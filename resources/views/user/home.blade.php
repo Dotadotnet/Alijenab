@@ -1,60 +1,12 @@
 @extends('user.layout.main')
-@section('style')
-    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> --}}
+@section('title')
+    کافه عالیجناب | جایی برای یه قهوه واقعی
+@endsection
+@section('header')
+    <meta name="description"
+        content="در کافه عالیجناب طعم غذای کره‌ای، سوشی، قهوه تخصصی و دسرهای تازه را در فضایی گرم و متفاوت تجربه کنید." />
 @endsection
 @section('main')
-    <div class=" w-full   ">
-        <div class="swiper-container relative swiper-one w-[100vw] lg:h-[30vw]  h-[50vw]   select-none	">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper select-none	 ">
-                <!-- Slides -->
-                @foreach ($events as $event)
-                    <a href="{{ $event->link ? $event->link : '#null' }}" class="swiper-slide size-12 select-none	  ">
-                        <div class="size-full select-none relative	 flex items-center justify-center">
-                            <img class=" select-none size-full object-cover " src="{{ '/storage/' . $event->img }}">
-                            @if ($event->caption)
-                                <div class="absolute  sm:h-1/2 flex  w-full justify-center sm:items-center bottom-0">
-                                    <div
-                                        class="w-[250%] lg:w-1/3 text scale-[0.65] sm:scale-100 dark:bg-dark-opacity-30 bg-light-opacity-30 p-3 backdrop-blur rounded-lg">
-                                        {!! $event->caption !!}
-                                    </div>
-                                </div>
-                                
-                            @endif
-                        </div>
-                    </a>
-                  
-                @endforeach
-            </div>
-            <div class="absolute  flex items-center size-full top-0 right-0">
-                <div class="w-full flex px-3  sm:px-5 md:px-7 lg:px-10 justify-between">
-                    <div
-                        class="swiper-event-button-prev cursor-pointer hover:scale-125  select-none rounded-full bg-primary-200 border-2 border-primary-100 size-8 flex justify-center items-center sm:size-14  z-20	">
-                        <i class="fa  fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
-                    </div>
-                    <div
-                        class="swiper-event-button-next cursor-pointer hover:scale-125 select-none rounded-full bg-primary-200 border-2 border-primary-100 size-8 flex justify-center items-center sm:size-14 z-20	">
-                        <i class="fa fa-caret-left text-white text-[30px] sm:text-[40px]" aria-hidden="true"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class=" pagination-div flex justify-center items-center">
-            @for ($i = 0; $i < count($events); $i++)
-                <div data-slide="{{ $i }}" onclick="swich_to_slide({{ $i }},this)"
-                    class=" border-2 border-primary-100 dark:border-primary-200 cursor-pointer
-             size-16 mx-1 overflow-hidden 
-            md:size-20 lg:size-24 rounded-md  ">
-                    <img class="size-full object-cover " src="{{ '/storage/' . $events[$i]->img }}">
-                </div>
-            @endfor
-        </div>
-
-    </div>
-    <div class="font-nastaliq text-center mt-5 text p-6 text-3xl sm:mt-9 text sm:p-12 sm:text-6xl">
-        به قنادی ناب خوش آمدید
-    </div>
     <div>
         @php
             for ($i = 0; $i < count($categorys); $i++) {
@@ -66,25 +18,84 @@
                 }
             }
         @endphp
+        <div class="w-full justify-center sm:mt-8 mt-2 px-5 items-center flex">
+            <div class="w-full sm:w-3/4 h-[60vh] sm:h-[75vh] rounded-3xl  group overflow-hidden relative">
+                <div class="absolute top-0 right-0 size-full flex flex-col justify-between px-4 py-12 md:p-20 lg:p-24 z-20">
+                    <div>
+                        <div
+                            class="flex text-white text-xl sm:text-3xl gap-2 flex-wrap font-bold items-center justify-start">
+                            <span class="text-nowrap"> به </span>
+                            <h1 class="text-nowrap font-extrabold"> کافه عالیجناب </h1>
+                            <span class="text-nowrap"> خوش آمدید </span>
+                        </div>
 
+                        <h2 class=" font-tanha mt-4 text-white text-lg sm:text-xl">
+                            جایی که طعم و داستان با هم قهوه می‌خورند
+                        </h2>
+                        <p class="font-tanha mt-3 text-white text-base sm:text-lg">
+                            قهوه‌های تخصصی، دسرهای خانگی، غذاهای کره‌ای و برنامه‌های ویدیویی همه در یک کافه .
+                        </p>
+                    </div>
+                    <div class="flex sm:justify-start flex-wrap gap-4 justify-center">
+                        <a href="/menu"
+                            class="px-6 sm:px-8 flex justify-center items-center py-3 sm:py-4 text-white rounded-2xl
+         bg-white/10 backdrop-blur-md
+         hover:bg-white/20
+         border border-white/20
+         cursor-pointer
+         shadow-lg 
+         transition-all duration-300
+         hover:backdrop-blur-xl
+         hover:shadow-2xl">
+                            مشاهده منو
+                        </a>
 
-        <div class=" flex flex-wrap justify-center w-full ">
+                        <a href="/contact"
+                            class="px-6 sm:px-8 flex justify-center items-center py-3 sm:py-4 text-white rounded-2xl
+         bg-white/10 backdrop-blur-md
+         border border-white/20
+         shadow-lg
+                  cursor-pointer
+         transition-all duration-300
+         hover:backdrop-blur-xl
+         hover:bg-white/20
+         hover:shadow-2xl">
+                            آدرس و تماس
+                        </a>
+                    </div>
+                </div>
+                <div class="absolute top-0 right-0 size-full flex flex-col justify-center opacity-15 z-10 bg-black">
+
+                </div>
+                <img src="/image/unnamed.webp" class="size-full sm:hidden group-hover:scale-110 object-cover" />
+                <img src="/image/unnamed4.webp"
+                    class="size-full hidden sm:inline-block group-hover:scale-110 object-cover" />
+            </div>
+        </div>
+        <br>
+        @component('user.components.line_text', ['text' => 'دسته بندی ها'])
+        @endcomponent
+        <div class=" flex flex-wrap  gap-3 justify-center  w-full ">
             @foreach ($categorys as $category)
-                <a data-aos="fade-in" href="{{ '#category_' . $category['id'] }}">
-                    <div
-                        class="sm:size-64 border-2 border-primary-200 dark:border-white group overflow-hidden rounded-xl shadow-md relative shadow-black dark:shadow-gray-400 m-2 sm:m-5   dark:bg-gray-800 bg-white size-40">
-                        <img class="size-full group-hover:scale-125" src="{{ '/storage/' . $category['img'] }}"
-                            alt="">
-                        <div class="absolute flex flex-col justify-center bg-[rgba(0,0,0,0.5)]  top-0 right-0 size-full">
-                            <p class="text-lg font-bold text-white text-center sm:text-3xl">
-                                {{ $category['name'] }}
-                            </p>
-                            <br>
-                            <p class="text-base flex items-center justify-center  text-center text-white sm:text-lg">
-                                <span style="text-shadow: 0px 0px 1px 2px #078c91 "
-                                    class="font-bold text-lg sm:text-3xl">{{ $category['count'] }}</span>
-                                <span class="mr-2 mb-0.5 sm:mb-1">محصول</span>
-                            </p>
+                <a rel="nofollow" class="group" href="{{ '#category_' . $category['id'] }}">
+                    <div class=" flex flex-col  ">
+                        <div class="h-full">
+                            <img class="size-24 group-hover:rotate-12 sm:size-32 "
+                                src="{{ '/storage/' . $category['img'] }}" alt="">
+                        </div>
+                        <div>
+
+                            <div class="   h-full justify-center flex flex-col  ">
+                                <p
+                                    class="text-md font-bold text-center text-primary-200 my-1 font-tanha dark:text-white  sm:text-lg">
+                                    {{ $category['name'] }}
+                                </p>
+                                <p class=" flex justify-center text-gray-600 dark:text-gray-300 sm:text-md">
+                                    <span style="text-shadow: 0px 0px 1px 2px #078c91 "
+                                        class="font-bold text-md sm:text-lg">{{ $category['count'] }}</span>
+                                    <span class="mr-2 mb-0.5 sm:mb-1">محصول</span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -92,14 +103,16 @@
         </div>
     </div>
 
+
     {{-- <i class="fa fa-bullhorn" aria-hidden="true"></i> --}}
     <br>
     <div class=" div-offer flex mt-5 sm:mt-0 flex-col p-3 md:flex-row bg-primary-200 mx-3 sm:mx-8 rounded-lg  ">
         <div
-            class="texts w-full md:w-48 bg-[#09adb3] z-20 relative rounded-lg shadow-[0px_0px_2px_1px_rgba(255,255,255,1)]">
+            class="texts w-full md:w-48  bg-white/30 backdrop-blur-md
+         hover:bg-white/40 z-20 relative rounded-lg shadow-[0px_0px_2px_1px_rgba(255,255,255,1)]">
             <div class="absolute flex justify-center w-full -top-10">
                 <div class="bg-red-600 mx-1 sm:hidden  text-white text-nowrap rounded-t-3xl z-10 py-2   px-2 text-base">
-                    تا <b class="max-offer">0</b> درصد تخفیف
+                    تا <b class="max-offer">{{ $mostOff }}</b> درصد تخفیف
                 </div>
             </div>
 
@@ -112,11 +125,10 @@
                 </div>
                 <div class="hidden sm:flex text-white font-bold   justify-center">
                     <div class="bg-red-600 mx-1 text-nowrap rounded-full py-2 px-2 text-base">
-                        تا <b class="max-offer">0</b> درصد تخفیف
+                        تا <b class="max-offer">{{ $mostOff }}</b> درصد تخفیف
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="w-full sm:px-2 md:pt-0 pt-4 justify-center  flex items-center">
             <div class="swiper-offer   swiper -z-50 w-full relative">
@@ -124,6 +136,88 @@
                 <div class="parallax-bg" style="background-image:url(path/to/image.jpg)" data-swiper-parallax="-23%">
                 </div>
                 <div class="swiper-wrapper">
+
+                    @foreach ($offers as $offer)
+                        <div class="swiper-slide">
+                            <div class="flex justify-center">
+                                <div class=" bg-white  relative w-40 sm:w-48   rounded-lg   dark:bg-gray-800 ">
+                                    <div class='absolute z-10 top-4 '><span
+                                            class='text-white  flex items-center w-12 justify-center flex-row-reverse bg-red-600 px-1 sm:px-2 rounded-e-3xl '><span
+                                                class='text-xs sm:text-sm font-bold flex  items-center mr-0.5'>%</span><span
+                                                class='flex text-sm sm:text-base items-center mt-0 sm:mt-[1.5px] font-bold'>
+                                                {{ $offer['off'] }}
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="absolute top-2 left-2">
+                                        <div class=" justify-center items-center ">
+                                        </div>
+                                    </div>
+                                    <a rel="nofollow" href="{{ '/product/' . $offer->id }}">
+                                        <img class=" size-36  sm:size-40 m-2 sm:m-4 mb-1 sm:mb-2 object-cover rounded-lg"
+                                            src="{{ '/storage/' . $offer->thumbnail }}" alt="product image" />
+                                    </a>
+                                    <div class="px-3 sm:px-5 pb-3">
+                                        <a href="{{ '/product/' . $offer->id }}">
+                                            <h5 data-swiper-parallax="-100"
+                                                class="sm:text-lg text-base font-semibold tracking-tight text-gray-900 dark:text-white">
+                                                {{ $offer->name }}
+                                            </h5>
+                                        </a>
+                                        <span
+                                            class=" w-full scale-[0.6] sm:scale-75 mt-1 opacity-[0.4] w-full  justify-center flex items-center text-sm font-bold   text-gray-900 dark:text-white">
+                                            <b class="inline relative">
+                                                <div style="width:calc(100% + 8px)"
+                                                    class="absolute  z-10 flex justify-center items-center top-0.5 -right-1  h-full">
+                                                    <div class="w-full bg-black rounded-sm   dark:bg-white h-0.5">
+                                                        
+                                                    </div>
+                                                </div>
+                                                {{ \App\Helpers\Helper::price($offer->price) }}
+                                            </b>
+                                        </span>
+                                        <span
+                                            class=" mt-1 w-full font-bold w-full  justify-center flex items-center text-md font-bold   text-gray-900 dark:text-white">
+                                            {{ \App\Helpers\Helper::price($offer->price - ($offer->price / 100) * $offer->off) }}
+                                        </span></span></span>
+                                        <div>
+                                            <button data-id="{{ $offer->id }}"
+                                                class="group  mt-3 add-to-cart bg-primary-200 sm:text-2xl w-full text-lg h-10 sm:h-12 flex justify-center items-center text-white hover:font-bold  group rounded-full ">
+                                                <i class="fa hover:font-bold fa-cart-plus" aria-hidden="true"></i>
+                                            </button>
+                                            <div data-id="{{ $offer->id }}" id="{{ $offer->id }}"
+                                                class="group flex  hidden  box-card-control mt-3  dark:bg-gray-700  bg-gray-200 sm:text-2xl w-full text-lg h-10 sm:h-12 flex justify-between px-1 items-center text-white hover:font-bold  group rounded-full ">
+                                                <button
+                                                    class="rounded-full dark:shadow-gray-200 shadow-gray-800  hover:shadow-[0px_0px_3px_0.5px] cursor-pointer text-gray-600 dark:text-gray-100 dark:bg-gray-600 flex justify-center items-center text-xl sm:text-2xl size-8 sm:size-10 bg-gray-300 plus">
+
+                                                    <svg class="text-gray-600 dark:text-gray-100 size-6 sm:size-8"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1-2 0v-6H5a1 1 0 0 1 0-2h6V5a1 1 0 0 1 1-1" />
+                                                    </svg>
+                                                </button>
+                                                <span class="number font-bold dark:text-white text-gray-800">
+                                                    1
+                                                </span>
+                                                <button
+                                                    class="rounded-full cursor-pointer dark:shadow-gray-200 shadow-gray-800  hover:shadow-[0px_0px_3px_0.5px] dark:text-gray-100 dark:bg-gray-600   text-gray-600 flex justify-center items-center text-2xl size-8 sm:size-10 bg-gray-300 nega">
+                                                    <svg class="  text-gray-600 dark:text-gray-100 size-6 sm:size-8"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M5 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+
                 </div>
                 <div class="swiper-button-prev swiper-button-prev-offer  	">
                     <i class="fa fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
@@ -137,7 +231,8 @@
     <br>
     <div class=" div-sell flex mt-5 sm:mt-0 flex-col p-3 md:flex-row bg-primary-200 mx-3 sm:mx-8 rounded-lg  ">
         <div
-            class="texts w-full md:w-48 bg-[#09adb3] z-20 relative rounded-lg shadow-[0px_0px_2px_1px_rgba(255,255,255,1)]">
+            class="texts w-full md:w-48 bg-white/30 backdrop-blur-md
+         hover:bg-white/40 z-20 relative rounded-lg shadow-[0px_0px_2px_1px_rgba(255,255,255,1)]">
             <div class="flex flex-row flex-wrap items-center sm:flex-col py-2 sm:py-5 h-full justify-around">
                 <div class="flex justify-center">
                     <i class="fa fa-shopping-cart text-5xl sm:text-8xl -scale-x-100 text-white" aria-hidden="true"></i>
@@ -155,6 +250,97 @@
                 <div class="parallax-bg" style="background-image:url(path/to/image.jpg)" data-swiper-parallax="-23%">
                 </div>
                 <div class="swiper-wrapper">
+                    @foreach ($selecteds as $selected)
+                        <div class="swiper-slide !h-full">
+                            <div class="flex  !h-full justify-center">
+                                <div class="!h-full bg-white  relative w-40 sm:w-48   rounded-lg   dark:bg-gray-800 ">
+
+                                    @if ($selected['off'])
+                                        <div class='absolute z-10 top-4 '><span
+                                                class='text-white  flex items-center w-12 justify-center flex-row-reverse bg-red-600 px-1 sm:px-2 rounded-e-3xl '><span
+                                                    class='text-xs sm:text-sm font-bold flex  items-center mr-0.5'>%</span><span
+                                                    class='flex text-sm sm:text-base items-center mt-0 sm:mt-[1.5px] font-bold'>
+                                                    {{ $selected['off'] }}
+                                                </span>
+                                            </span>
+                                        </div>
+                                    @endif
+
+                                    <div class="absolute top-2 left-2">
+                                        <div class=" justify-center items-center ">
+                                        </div>
+                                    </div>
+                                    <a rel="nofollow" href="{{ '/product/' . $selected->id }}">
+                                        <img class=" size-36  sm:size-40 m-2 sm:m-4 mb-1 sm:mb-2 object-cover rounded-lg"
+                                            src="{{ '/storage/' . $selected->thumbnail }}" alt="product image" />
+                                    </a>
+                                    <div class="px-3 sm:px-5 pb-3">
+                                        <a  href="{{ '/product/' . $selected->id }}" >
+                                            <h5 data-swiper-parallax="-100"
+                                                class="sm:text-lg text-base font-semibold tracking-tight text-gray-900 dark:text-white">
+                                                {{ $selected->name }}
+                                            </h5>
+                                        </a>
+                                        @if ($selected->off)
+                                            <span
+                                                class=" w-full scale-[0.6] sm:scale-75 mt-1 opacity-[0.4] w-full  justify-center flex items-center text-sm font-bold   text-gray-900 dark:text-white">
+                                                <b class="inline relative">
+                                                    <div style="width:calc(100% + 8px)"
+                                                        class="absolute  z-10 flex justify-center items-center top-0.5 -right-1  h-full">
+                                                        <div class="w-full bg-black rounded-sm   dark:bg-white h-0.5">
+
+                                                        </div>
+                                                    </div>
+                                                    {{ \App\Helpers\Helper::price($selected->price) }}
+                                                </b>
+                                            </span>
+                                            <span
+                                                class=" mt-1 w-full font-bold w-full  justify-center flex items-center text-md font-bold   text-gray-900 dark:text-white">
+                                                {{ \App\Helpers\Helper::price($selected->price - ($selected->price / 100) * $selected->off) }}
+                                            </span></span></span>
+                                        @else
+                                            <div
+                                                class="flex justify-center items-center text-md mt-4 font-bold mb-5 sm:text-lg text-gray-900 dark:text-white">
+                                                {{ \App\Helpers\Helper::price($selected->price) }}
+                                            </div>
+                                        @endif
+
+                                      <div>
+                                            <button data-id="{{ $selected->id }}"
+                                                class="group  mt-3 add-to-cart bg-primary-200 sm:text-2xl w-full text-lg h-10 sm:h-12 flex justify-center items-center text-white hover:font-bold  group rounded-full ">
+                                                <i class="fa hover:font-bold fa-cart-plus" aria-hidden="true"></i>
+                                            </button>
+                                            <div data-id="{{ $selected->id }}" id="{{ $selected->id }}"
+                                                class="group flex  hidden  box-card-control mt-3  dark:bg-gray-700  bg-gray-200 sm:text-2xl w-full text-lg h-10 sm:h-12 flex justify-between px-1 items-center text-white hover:font-bold  group rounded-full ">
+                                                <button
+                                                    class="rounded-full dark:shadow-gray-200 shadow-gray-800  hover:shadow-[0px_0px_3px_0.5px] cursor-pointer text-gray-600 dark:text-gray-100 dark:bg-gray-600 flex justify-center items-center text-xl sm:text-2xl size-8 sm:size-10 bg-gray-300 plus">
+
+                                                    <svg class="text-gray-600 dark:text-gray-100 size-6 sm:size-8"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1-2 0v-6H5a1 1 0 0 1 0-2h6V5a1 1 0 0 1 1-1" />
+                                                    </svg>
+                                                </button>
+                                                <span class="number font-bold dark:text-white text-gray-800">
+                                                    1
+                                                </span>
+                                                <button
+                                                    class="rounded-full cursor-pointer dark:shadow-gray-200 shadow-gray-800  hover:shadow-[0px_0px_3px_0.5px] dark:text-gray-100 dark:bg-gray-600   text-gray-600 flex justify-center items-center text-2xl size-8 sm:size-10 bg-gray-300 nega">
+                                                    <svg class="text-gray-600 dark:text-gray-100 size-6 sm:size-8"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M5 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="swiper-button-prev swiper-button-prev-sell  	">
                     <i class="fa fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
@@ -165,109 +351,131 @@
             </div>
         </div>
     </div>
-    <div data-aos="fade-in"
-        class="font-nastaliq  sm:py-6 py-3 text-center mt-5 text mb-0 text-3xl sm:mt-9 text  sm:text-6xl">
-        حالا چرا قنادی ناب ؟
+
+
+    <section class=" py-20">
+        <div class="max-w-7xl mx-auto px-6" dir="rtl">
+
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-4xl footer-group font-tanha  before:-right-3  font-bold dark:text-white text-gray-800">
+                    داستان ما
+                </h2>
+
+                <a href="/about"
+                    class="dark:text-gray-100  group dark:hover:text-primary-200 hover:text-primary-200 text-gray-600 flex items-center gap-2  transition">
+                    مطالعه کامل
+                    <i class="fa fa-arrow-left group-hover:-translate-x-1" aria-hidden="true"></i>
+                </a>
+            </div>
+
+            <!-- Content -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                <!-- Text -->
+                <div>
+                    <p class="text-base sm:text-lg dark:text-gray-50  text-gray-700 leading-relaxed ">
+                        کافه عالیجناب ترکیبی است از تجربه آرام یک کافه محلی و انرژی
+                        غذاهای خیابانی کره‌ای. ما مکان را برای لحظات خوش شما آماده
+                        می‌کنیم؛ از صبحانه تا شب .
+                        <br>
+                        ایجاد محیطی گرم که در آن غذا، موسیقی و گفت‌وگو به هم می‌آمیزند. از آغاز کوچک تا رشد به عنوان یک محل
+                        فرهنگی محلی .
+                    </p>
+                </div>
+
+                <!-- Image Placeholder -->
+                <div class="flex justify-center sm:justify-end items-center">
+                    <div
+                        class="w-full overflow-hidden max-w-md h-64 bg-gray-200 rounded-2xl flex items-center justify-center text-gray-500 font-semibold">
+                        <img class="size-full object-cover" src="/image/shop1.jpeg" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between items-center mb-12">
+            <h2 class="text-4xl font-tanha footer-group  before:-right-3 font-bold dark:text-white text-gray-800">
+                مقاله های ما
+            </h2>
+
+            <a href="/blogs"
+                class="dark:text-gray-100 group dark:hover:text-primary-200 hover:text-primary-200 text-gray-600 flex items-center gap-2  transition">
+                تمام وبلاگ ها
+                <i class="fa fa-arrow-left group-hover:-translate-x-1" aria-hidden="true"></i>
+            </a>
+        </div>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2">
-
-
-        <main class="w-full bg-transparent p-5" data-aos="fade-left">
-            <div class="card rounded-md mt-4 w-full bg-transparent  p-0 h-32 md:h-36 lg:h-52 flex justify-center">
-                <div class="w-full cursor-default rounded-md bg-gray-300 p-2 md:p-3 dark:bg-gray-800 ">
-                    <div class="flex flex-col h-full relative justify-around pt-0 md:pt-2  ">
-                        <div class="flex flex-col h-full justify-around ">
-                            <p class="text text-center z-20 lg:text-3xl md:text-xl  ">
-                                مورد اطمینان و دارای مجوز
-                            </p>
-                            <div class="flex justify-center  ">
-
-                                <a href="">
-                                    <img class="size-16 md:size-28 mx-2 md:mx-4 border-2 border-primary-200 rounded-lg"
-                                        src="{{ asset('image/enamad.png') }}" alt="">
-                                </a>
-                                <a href="">
-                                    <img class="size-16 md:size-28 mx-2 border-2 border-primary-200 md:mx-4 rounded-lg mr-2"
-                                        src="{{ asset('image/samandehi.jpg') }}" alt="">
-                                </a>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </main>
-
-
-
-
-
-        <main class="w-full bg-transparent p-5" data-aos="fade-right">
-            <div class="card rounded-md mt-4 w-full bg-transparent  p-0 h-32 md:h-36 lg:h-52 flex justify-center">
-                <div class="w-full rounded-md cursor-default bg-gray-300 p-2 md:p-4 dark:bg-gray-800 ">
-                    <div class="flex flex-col h-full relative justify-around pt-0 md:pt-2  ">
-                        <div class="absolute top-0  h-full justify-center items-center flex left-0">
-                            <i class="fa opacity-15 text text-8xl lg:text-[190px] fa-truck"></i>
-                        </div>
-                        <p class="text z-20 lg:text-3xl md:text-xl text-base">
-                            ارسال رایگان
-                        </p>
-                        <p class="text z-20   md:text-lg text-sm">
-                            داری ارسال رایگان به سراسر کشور در اسرع وقت
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <main class="w-full bg-transparent p-5" data-aos="fade-left">
-            <div class="card rounded-md mt-4 w-full bg-transparent  p-0 h-32 md:h-36 lg:h-52 flex justify-center">
-                <div class="w-full rounded-md  cursor-default bg-gray-300 p-2 md:p-4 dark:bg-gray-800 ">
-                    <div class="flex flex-col h-full relative justify-around pt-0 md:pt-2  ">
-                        <div class="absolute top-0  h-full justify-center items-center flex left-0">
-                            <i class="fa opacity-15 text text-8xl lg:text-[190px] fa-bell"></i>
-                        </div>
-                        <p class="text z-20 lg:text-3xl md:text-xl text-base">
-                            وضعیت سفارشات
-                        </p>
-                        <p class="text z-20   md:text-lg text-sm">
-                            درصورت خرید ما شمارو 24 ساعته درمورد وضعیت سفارشتتون مطلع خواهیم کرد
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-
-        <main class="w-full bg-transparent p-5" data-aos="fade-right">
-            <div class="card rounded-md mt-4 w-full bg-transparent  p-0 h-32 md:h-36 lg:h-52 flex justify-center">
-                <div class="w-full rounded-md cursor-default bg-gray-300 p-2 md:p-4 dark:bg-gray-800 ">
-                    <div class="flex flex-col h-full relative justify-around pt-0 md:pt-2  ">
-                        <div class="absolute top-0  h-full justify-center items-center flex left-0">
-                            <i class="fa opacity-15 text text-9xl lg:text-[200px] fa-commenting"></i>
-                        </div>
-
-                        <p class="text z-20 lg:text-3xl md:text-xl text-base">
-
-                            پشتیبانی مستمر
-
-                        </p>
-                        <p class="text z-20   md:text-lg text-sm">
-                            ما از طریق شماره تلفن های قرار داده شده و چت وبسایت پاسخگو و همراه شما هستیم
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <p class="text-xl mt-3 sm:text-3xl pr-6 p-1 text sm:pr-12 ">
-        وبلاگ ها
-    </p>
 
     <div class="sm:p-5 p-3 div-blog">
         <div class="swiper-blog  swiper -z-50 w-full relative">
             <!-- Parallax background element -->
             <div class="swiper-wrapper  ">
+                @foreach ($blogs as $blog)
+                    <div class="swiper-slide   ">
+                        <div class="flex w-full flex-col justify-center items-center">
+                            <a href="{{ $blog['link'] }}" class=" group ">
+                                <div
+                                    class="sm:w-96 w-72 h-40   sm:h-48 overflow-hidden rounded-2xl border-2 border-primary-200 relative">
+
+
+                                    <div class="absolute flex z-10 flex-col justify-start top-1 right-0 size-full">
+                                        <div class="flex flex-col justify-between size-full">
+                                            <div class="w-full flex px-3 pt-2 justify-between">
+                                                <span
+                                                    class="
+                                                  bg-white/10 backdrop-blur-md
+                                                  border-white hover:bg-white/20 border border-white/20
+                                                 text-sm sm:text-base p-2  flex justify-center items-center font-bold rounded-xl text-white">
+                                                    {!! '<span class="mt-0 ml-2">' . $blog['data'][0] . '</span>' . ' ' . $blog['data'][1] !!}
+                                                </span>
+
+                                                <span
+                                                    class="
+                                                  bg-white/10 backdrop-blur-md
+                                                  border-white hover:bg-white/20 border border-white/20
+                                                 text-sm sm:text-base p-2  flex justify-center  items-center font-bold rounded-xl text-white">
+                                                    {!! $blog['data'][2] !!}
+                                                </span>
+                                            </div>
+                                            <div class="mb-3 flex justify-center items-center">
+                                                <span
+                                                    class="
+                                                  bg-white/10 backdrop-blur-md
+                                                  border-white hover:bg-white/20 border border-white/20
+                                                 text-sm sm:text-base  p-2 text-wrap  max-w-60 sm:max-w-80  flex justify-center  items-center font-bold rounded-xl text-white">
+                                                    {!! $blog['title'] !!}
+                                                </span>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+
+
+                                    <img class=" group-hover:scale-105 object-cover size-full" src="{{ $blog['img'] }}">
+                                </div>
+
+                                <div class="w-full flex justify-center  ">
+                                    <div
+                                        class="bg-primary-200 text-center text-wrap text-xs sm:text-sm p-2 w-[calc(100%-2rem)] flex justify-center items-center font-bold rounded-b-xl text-white">
+                                        {{ $blog['caption'] }}
+                                    </div>
+                                </div>
+
+
+                            </a>
+
+                        </div>
+                    </div>
+                @endforeach
             </div>
             <div class="swiper-button-prev swiper-button-prev-blog   	">
                 <i class="fa fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
@@ -279,391 +487,138 @@
     </div>
     <br>
     <br>
+    <div class=" fixed w-full justify-center flex items-center" >
+
+    </div>
 @endsection
 @section('script')
     {{-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script> --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> --}}
+
     <script>
-        const pagination_divs = document.querySelectorAll('div.pagination-div div');
-        const swiper = new Swiper(".swiper-container.swiper-one", {
-            effect: "fade",
-            grabCursor: true,
-            loop: true,
-            pauseOnMouseEnter: true,
-            speed: 2000,
-            autoplay: {
-                delay: 2000,
-                disableOnInteraction: true,
-            },
-            cubeEffect: {
-                shadow: false,
-                slideShadows: false,
-                shadowOffset: 20,
-                shadowScale: 0.94,
-            },
-        });
-        document.querySelector('.swiper-event-button-next').addEventListener('click', () => {
-            swiper.slideNext(1000)
-        })
-        document.querySelector('.swiper-event-button-prev').addEventListener('click', () => {
-            swiper.slidePrev(1000)
-        })
-
-        function swich_to_slide(id, move = true) {
-            let div_selected = null;
-            for (let i = 0; i < pagination_divs.length; i++) {
-                let pagination_div = pagination_divs[i];
-                if (pagination_div.dataset.slide == id) {
-                    pagination_div.classList.add('active-slide');
-                } else {
-                    pagination_div.classList.remove('active-slide')
-                }
-            }
-            if (move) {
-                console.log(id)
-                swiper.slideToLoop(id, 1000)
-            }
-        }
-        swiper.on('slideChange', function() {
-            swich_to_slide(swiper.realIndex, false);
-        });
-
-
-
-        function pricee(price) {
-            price = Math.ceil(price / 1000) * 1000;
-            const type = ['', 'هزار', 'میلیون', 'میلیارد', 'تیلیارد'];
-            const priceLen = String(price).length;
-            const select3_3 = Math.ceil(priceLen / 3);
-            const resultArray = [];
-
-            for (let i = 0; i < select3_3; i++) {
-                const num = String(price).split('').reverse().join('').substring(i * 3, (i + 1) * 3);
-                if (parseInt(num)) {
-                    resultArray.push('<span style="white-space: nowrap;" class="price"><span> ' + parseInt(num.split('')
-                        .reverse().join('')) + ' </span>' + type[i] + '</span>');
-                }
-            }
-            let result = resultArray.reverse().join(
-                    "<span style='text-align:center; white-space:nowrap; margin:0px 4px'> و </span>") +
-                '<span>تومان<span/>';
-            return result.trim() === '<span>تومان<span/>' ? '0 تومان' : result.trim();
-        }
-
         window.addEventListener('load', () => {
-            var max_offer = 0;
-            const div_offer = document.querySelector('div.div-offer');
-            const divOffer = () => {
-                let doc = document.documentElement;
-                let top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-                let offset_top_el = div_offer.offsetTop;
-                if (Math.abs(offset_top_el - top) < 1200 && !document.querySelector(
-                        'div.swiper-offer div.swiper-wrapper').innerHTML.trim()) {
-                    document.querySelector('div.swiper-offer div.swiper-wrapper').innerHTML = '.';
-                    window.axios({
-                        method: 'get',
-                        url: '/api/product/all',
-                    }).then(function(response) {
-                        let data = response.data;
-                        document.querySelector('div.swiper-offer div.swiper-wrapper').innerHTML = ''
-                        data.forEach(item => {
-                            if (item.off) {
 
-                                if (parseInt(item.off) > parseInt(document.querySelectorAll(
-                                        'b.max-offer')[
-                                        0].innerHTML)) {
-                                    document.querySelectorAll('b.max-offer').forEach(
-                                        offer_div => {
-                                            offer_div.innerHTML = item.off;
-                                        })
-                                }
-                                document.querySelector(
-                                        'div.swiper-offer div.swiper-wrapper')
-                                    .innerHTML += `    
-<div class="swiper-slide   ">
-    <div class="flex justify-center">
-<div class=" bg-white  relative w-40 sm:w-48   rounded-lg   dark:bg-gray-800 ">
-   ${item.off ? "<div class='absolute z-10 top-4 '><span class='text-white  flex items-center w-12 justify-center flex-row-reverse bg-red-600 px-1 sm:px-2 rounded-e-3xl '><span class='text-xs sm:text-sm font-bold flex  items-center mr-0.5'>%</span><span class='flex text-sm sm:text-base items-center mt-0 sm:mt-[1.5px] font-bold'>" + item.off + "</span></span></div>" : ''}
-    <div class="absolute top-2 left-2">
-    <div class=" justify-center items-center ">
-    </div>
-</div>
- <a href="${'/product/' + item.id}"  >
-        <img class=" size-36  sm:size-40 m-2 sm:m-4 mb-1 sm:mb-2 object-cover rounded-lg" src="${'/storage/' + JSON.parse(item.img)[0]}" alt="product image" />
-        </a>
-    <div class="px-3 sm:px-5 pb-3">        
-        <a href="${'/product/' + item.id}"  >
-            <h5 data-swiper-parallax="-100" class="sm:text-lg text-base font-semibold tracking-tight text-gray-900 dark:text-white">${item.name}</h5>
-        </a>
-         <span
-                                class=" w-full scale-[0.6] sm:scale-75 mt-1 opacity-[0.4] w-full  justify-center flex items-center text-sm font-bold   text-gray-900 dark:text-white">
-                                <b class="inline relative">
-                                    <div style="width:calc(100% + 8px)" class="absolute  z-10 flex justify-center items-center top-0.5 -right-1  h-full">
-                                              <div class="w-full bg-black rounded-sm   dark:bg-white h-0.5">
-                                                         
-                                              </div>
-                                    </div>
-                                    ${pricee(item.price)}</b>
-                            </span>
-        <span class=" mt-1 w-full font-bold w-full  justify-center flex items-center text-xs sm:text-sm font-bold   text-gray-900 dark:text-white">${pricee(item.price - (item.price / 100) * item.off )}</span></span></span>        
-        <button data-id="${ item.id }"
-        class="group mt-3 add-to-cart bg-primary-200 sm:text-2xl w-full text-lg h-10 sm:h-12 flex justify-center items-center text-white hover:font-bold  group rounded-lg ">
-        <i class="fa hover:font-bold fa-cart-plus" aria-hidden="true"></i> 
-    </button>
-    </div>
-</div>
-</div>
-</div>`
-                            }
-                        });
-                        setTimeout(() => {
-                            const swiper_offer = new Swiper(".swiper-offer", {
-                                effect: 'free',
-                                grabCursor: true,
-                                loop: true,
-                                pauseOnMouseEnter: true,
-                                speed: 1000,
-                                autoplay: {
-                                    delay: 0,
-                                },
-                                breakpoints: {
-                                    // when window width is >= 320px
-                                    370: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 5
-                                    },
-                                    700: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 10
-                                    },
-                                    768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 10
-                                    },
-                                    // when window width is >= 640px
-                                    1280: {
-                                        slidesPerView: 4,
-                                        spaceBetween: 40
-                                    }
-                                },
-                                autoplay: {
-                                    delay: 2000,
-                                    disableOnInteraction: true,
-                                },
+            const swiper_offer = new window.Swiper(".swiper-offer", {
+                effect: 'free',
+                grabCursor: true,
+                loop: true,
+                pauseOnMouseEnter: true,
+                speed: 1000,
+                autoplay: {
+                    delay: 0,
+                },
+                breakpoints: {
+                    // when window width is >= 320px
+                    370: {
+                        slidesPerView: 2,
+                        spaceBetween: 5
+                    },
+                    700: {
+                        slidesPerView: 3,
+                        spaceBetween: 10
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 10
+                    },
+                    // when window width is >= 640px
+                    1280: {
+                        slidesPerView: 4,
+                        spaceBetween: 40
+                    }
+                },
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: true,
+                },
 
-                                navigation: {
-                                    nextEl: '.swiper-button-next-offer',
-                                    prevEl: '.swiper-button-prev-offer',
-                                },
-                            });
-                        }, 2000);
+                navigation: {
+                    nextEl: '.swiper-button-next-offer',
+                    prevEl: '.swiper-button-prev-offer',
+                },
+            });
 
-                    }).catch(() => {}).then(() => {
-                        window.reload_button_add_cart_events()
-                    })
+            const swiper_sell = new window.Swiper(".swiper-sell", {
+                effect: 'free',
+                grabCursor: true,
+                loop: true,
+                pauseOnMouseEnter: true,
+                speed: 1000,
+                autoplay: {
+                    delay: 0,
+                },
+                breakpoints: {
+                    // when window width is >= 320px
+                    370: {
+                        slidesPerView: 2,
+                        spaceBetween: 5
+                    },
+                    700: {
+                        slidesPerView: 3,
+                        spaceBetween: 10
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 10
+                    },
+                    // when window width is >= 640px
+                    1280: {
+                        slidesPerView: 4,
+                        spaceBetween: 40
+                    }
+                },
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: true,
+                },
 
-                }
-            }
-            window.addEventListener('scroll', () => {
-                divOffer()
-            })
-            divOffer()
-
-            const div_sell = document.querySelector('div.div-sell');
-            const divSell = () => {
-                let doc = document.documentElement;
-                let top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-                let offset_top_el = div_sell.offsetTop;
-                if (Math.abs(offset_top_el - top) < 1200 && !document.querySelector(
-                        'div.swiper-sell div.swiper-wrapper').innerHTML.trim()) {
-                    document.querySelector('div.swiper-sell div.swiper-wrapper').innerHTML = '.';
-                    window.axios({
-                        method: 'get',
-                        url: '/selected-items-api',
-                    }).then(function(response) {
-                        let data = response.data;
-                        document.querySelector('div.swiper-sell div.swiper-wrapper').innerHTML = '';
-                        data.forEach(item => {
-                            document.querySelector('div.swiper-sell div.swiper-wrapper')
-                                .innerHTML += `    
-<div class="swiper-slide   ">
-    <div class="flex justify-center">
-<div class=" bg-white  relative w-40 sm:w-48   rounded-lg   dark:bg-gray-800 ">
-   ${item.off ? "<div class='absolute z-10 top-4 '><span class='text-white  flex items-center w-12 justify-center flex-row-reverse bg-red-600 px-1 sm:px-2 rounded-e-3xl '><span class='text-xs sm:text-sm font-bold flex  items-center mr-0.5'>%</span><span class='flex text-sm sm:text-base items-center mt-0 sm:mt-[1.5px] font-bold'>" + item.off + "</span></span></div>" : ''}
-    <div class="absolute top-2 left-2">
-    <div class=" justify-center items-center ">
-    </div>
-</div>
- <a href="${'/product/' + item.id}"  >
-        <img class=" size-36  sm:size-40 m-2 sm:m-4 mb-1 sm:mb-2 object-cover rounded-lg" src="${'/storage/' + JSON.parse(item.img)[0]}" alt="product image" />
-        </a>
-    <div class="px-3 sm:px-5 pb-3">        
-        <a href="${'/product/' + item.id}"  >
-            <h5 data-swiper-parallax="-100" class="sm:text-lg text-base font-semibold tracking-tight text-gray-900 dark:text-white">${item.name}</h5>
-        </a>
-        <span class=" mt-1 w-full font-bold w-full   flex items-center text-xs sm:text-sm font-bold   text-gray-900 dark:text-white">${pricee(item.price - (item.price / 100) * item.off )}</span></span></span>        
-        <button data-id="${ item.id }"
-        class="group mt-3 add-to-cart bg-primary-200 sm:text-2xl w-full text-lg h-10 sm:h-12 flex justify-center items-center text-white hover:font-bold  group rounded-lg ">
-        <i class="fa hover:font-bold fa-cart-plus" aria-hidden="true"></i> 
-    </button>
-    </div>
-</div>
-</div>
-</div>`
-                        });
-                        setTimeout(() => {
-                            const swiper_sell = new Swiper(".swiper-sell", {
-                                effect: 'free',
-                                grabCursor: true,
-                                loop: true,
-                                pauseOnMouseEnter: true,
-                                speed: 1000,
-                                autoplay: {
-                                    delay: 0,
-                                },
-                                breakpoints: {
-                                    // when window width is >= 320px
-                                    370: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 5
-                                    },
-                                    700: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 10
-                                    },
-                                    768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 10
-                                    },
-                                    // when window width is >= 640px
-                                    1280: {
-                                        slidesPerView: 4,
-                                        spaceBetween: 40
-                                    }
-                                },
-                                autoplay: {
-                                    delay: 2000,
-                                    disableOnInteraction: true,
-                                },
-
-                                navigation: {
-                                    nextEl: '.swiper-button-next-sell',
-                                    prevEl: '.swiper-button-prev-sell',
-                                },
-                            });
-                        }, 2000);
-
-                    }).catch(() => {}).then(() => {
-                        window.reload_button_add_cart_events()
-                    })
+                navigation: {
+                    nextEl: '.swiper-button-next-sell',
+                    prevEl: '.swiper-button-prev-sell',
+                },
+            });
 
 
 
-                }
+            const swiper_blog = new window.Swiper(".swiper-blog", {
+                effect: 'free',
+                grabCursor: true,
+                loop: true,
+                pauseOnMouseEnter: true,
+                speed: 1000,
+                autoplay: {
+                    delay: 0,
+                },
+                breakpoints: {
+                    // when window width is >= 320px
+                    400: {
+                        slidesPerView: 1,
+                        spaceBetween: 5
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 10
+                    },
+                    // when window width is >= 640px
+                    1280: {
+                        slidesPerView: 3,
+                        spaceBetween: 40
+                    }
+                },
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: true,
+                },
 
-            }
-            window.addEventListener('scroll', () => {
-                divSell()
-            })
-            divSell()
+                navigation: {
+                    nextEl: '.swiper-button-next-blog',
+                    prevEl: '.swiper-button-prev-blog',
+                },
+            });
 
 
 
 
-
-
-
-
-            const div_blog = document.querySelector('div.div-blog');
-            const divBlog = () => {
-                let doc = document.documentElement;
-                let top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-                let offset_top_el = div_blog.offsetTop;
-                if (Math.abs(offset_top_el - top) < 1200 && !document.querySelector(
-                        'div.swiper-blog div.swiper-wrapper').innerHTML.trim()) {
-                    document.querySelector('div.swiper-blog div.swiper-wrapper').innerHTML = '.';
-                    window.axios({
-                        method: 'get',
-                        url: '/api/all/blog',
-                    }).then(function(response) {
-                        let data = response.data;
-                        document.querySelector('div.swiper-blog div.swiper-wrapper').innerHTML = '';
-                        data.forEach(item => {
-                            document.querySelector('div.swiper-blog div.swiper-wrapper')
-                                .innerHTML += `    
-<div class="swiper-slide   ">
-<div class="flex w-full flex-col justify-center items-center">
-    <a href="${item.link}" class=" group ">
-    <div class="sm:w-96 w-72 h-40   sm:h-48 overflow-hidden rounded-2xl border-2 border-primary-200 relative">
-        <div class="absolute flex flex-col justify-between top-1 right-0 size-full">
-            <div></div>
-            <div class="w-full flex justify-center" >
-                <span class="bg-primary-200 text-sm sm:text-base p-2 w-36 flex justify-center items-center font-bold rounded-t-2xl text-white">
-                    ${ '<span class="mt-0 ml-2">' + item.data[0] +  '</span>' + ' ' + item.data[1] + ' ' + '<span class="mt-0.5 mr-2">' + item.data[2] +  '</span>'  }
-                </span>
-            </div>
-        </div>
-          <img class=" group-hover:scale-125 object-cover size-full" src="${ '/storage/' + item.img}">
-        </div>
-
-     <div class="w-full flex justify-center">
-        <div class="bg-primary-200 text-sm sm:text-base p-2 w-60 sm:w-80 flex justify-center items-center font-bold rounded-b-2xl text-white">
-          ${item.title}
-            </div>
-        </div>
-        </a>
-
-</div>
-</div>`
-
-                        });
-                        setTimeout(() => {
-                            const swiper_blog = new Swiper(".swiper-blog", {
-                                effect: 'free',
-                                grabCursor: true,
-                                loop: true,
-                                pauseOnMouseEnter: true,
-                                speed: 1000,
-                                autoplay: {
-                                    delay: 0,
-                                },
-                                breakpoints: {
-                                    // when window width is >= 320px
-                                    400: {
-                                        slidesPerView: 1,
-                                        spaceBetween: 5
-                                    },
-                                    768: {
-                                        slidesPerView: 2,
-                                        spaceBetween: 10
-                                    },
-                                    // when window width is >= 640px
-                                    1280: {
-                                        slidesPerView: 3,
-                                        spaceBetween: 40
-                                    }
-                                },
-                                autoplay: {
-                                    delay: 2000,
-                                    disableOnInteraction: true,
-                                },
-
-                                navigation: {
-                                    nextEl: '.swiper-button-next-blog',
-                                    prevEl: '.swiper-button-prev-blog',
-                                },
-                            });
-                        }, 3000);
-
-                    }).catch(() => {}).then(() => {})
-
-                }
-
-            }
-            window.addEventListener('scroll', () => {
-                divBlog()
-            })
-            divBlog()
         })
     </script>
 @endsection

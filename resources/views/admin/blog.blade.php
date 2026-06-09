@@ -26,7 +26,20 @@
             @method('PUT')
         @endif
         @php
-            $inputs = [['name' => 'title', 'text' => 'عنوان', 'type' => 'fa-num']];
+            $inputs = [
+                [
+                    'name' => 'title',
+                    'placeholder' => "عنوان را وارد کنید",
+                    'text' => 'عنوان',
+                    'type' => 'fa-num',
+                ],
+                [
+                    'name' => 'title_en',
+                    'text' => 'عنوان به انگیسی',
+                    'placeholder' => 'عنوان بلاگ را به انگلیسی وارد کنید ( اختیاری )',
+                    'type' => 'en-num',
+                ],
+            ];
         @endphp
         @if ($status == 'edite')
             <input name="id" value="{{ $data->id }}" class=" hidden">
@@ -44,7 +57,7 @@
             @endphp
         @endif
         <div class=" flex flex-col">
-            <div class="grid md:grid-cols-2 gap-1 grid-cols-1">
+            <div class="grid md:grid-cols-2 gap-5 mt-2 px-5 grid-cols-1">
                 @foreach ($inputs as $input)
                     @component('admin.components.input', $input)
                     @endcomponent
@@ -58,10 +71,26 @@
                     </div>
                 @endif
             </div>
-
+ <div class="mx-7 mt-6 ">
+                @component('admin.components.input', [
+                    'name' => 'caption',
+                    'text' => 'توضیحات',
+                    'type' => 'en-fa',
+                    'value' => isset($data->caption) ? $data->caption : '',
+                    'placeholder' => 'توضیحات خود رو درمورد این دسته بندی بنویسید',
+                ])
+                @endcomponent
+            </div>
+             <div class="justify-center mt-12 flex items-center">
+            <div class=" w-3/4 sm:w-1/2">
+                <div class="en single">
+                    <input type="file" class="filepond" name="thumbnail" data-allow-reorder="true" data-max-files="1">
+                </div>
+            </div>
+        </div>
             <br>
             <br>
-            <textarea class=" hidden" name="caption"></textarea>
+            <textarea class="hidden" name="amount"></textarea>
             <div class="document-editor">
                 <div class="document-editor__toolbar"></div>
                 <div class="document-editor__editable-container">
@@ -87,4 +116,26 @@
             </button>
         </div>
     </form>
+    @if ($status == 'create')
+        <script type="module">
+            FilePond.create(
+                document.querySelector('input[name*=thumbnail]'), {
+                    labelIdle: "عکس کاور خود را بارگزاری کنید",
+                    storeAsFile: true,
+                    allowFileTypeValidation: true,
+                    acceptedFileTypes: ['image/*'],
+                });
+        </script>
+    @else
+        <script type="module">
+            const file_upload_thumbnail = FilePond.create(
+                document.querySelector('input[name*=thumbnail]'), {
+                    labelIdle: "عکس کاور خود را بارگزاری کنید",
+                    storeAsFile: true,
+                    allowFileTypeValidation: true,
+                    acceptedFileTypes: ['image/*'],
+                });
+            file_upload_thumbnail.addFile(@json(Storage::url($data->thumbnail)))
+        </script>
+    @endif
 @endsection

@@ -78,6 +78,7 @@ if (errors) {
 
 
 import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
+const namesText = ["amount", 'caption']
 if (document.querySelector('.document-editor__editable')) {
   window.onload = () => {
     const current_url = window.location.href;
@@ -88,18 +89,26 @@ if (document.querySelector('.document-editor__editable')) {
           toolbar: {
             shouldNotGroupWhenFull: true
           },
-          ckfinder : {
-            uploadUrl : '/panel/upload/file/ckeditor'
+          ckfinder: {
+            uploadUrl: '/panel/upload/file/ckeditor'
           }
         })
         .then(editor => {
           const toolbarContainer = document.querySelector('.document-editor__toolbar');
           toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-          document.querySelector('textarea[name="caption"]').value = editor.getData();
-          editor.model.document.on('change', () => {
-            document.querySelector('textarea[name="caption"]').value = editor.getData();
-          });
+          namesText.forEach(nameText => {
+            if (document.querySelector(`textarea[name="${nameText}"]`)) {
+              document.querySelector(`textarea[name="${nameText}"]`).value = editor.getData();
 
+            }
+          });
+          editor.model.document.on('change', () => {
+            namesText.forEach(nameText => {
+              if (document.querySelector(`textarea[name="${nameText}"]`)) {
+                document.querySelector(`textarea[name="${nameText}"]`).value = editor.getData();                
+              }
+            });
+          });
         })
         .catch(err => {
           console.error(err);

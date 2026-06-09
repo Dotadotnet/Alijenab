@@ -20,6 +20,8 @@ class UserAuthController extends Controller
         $data = [];
         $phone = null;
         $inputs = $request->all();
+
+
         foreach ($inputs as $input) {
             $data[$input['fild']] = $input['value'];
         }
@@ -34,28 +36,65 @@ class UserAuthController extends Controller
         if (BlockUsers::where(['phone' => $phone])->count()) {
             return response(['phone' => ['این شماره توسط ادمین مسدود شده است']]);
         }
-        $data = json_encode($data);
-        VerifyPhones::where(['phone' => $phone])->delete();
 
-        $code_ver = substr(md5(rand(10000, 99999)), -20);
-        $link = route('verify_link', ['phone' => $phone, 'code' => $code_ver]);
-        try {
-            sms::send(". سلام لینک تایید شماره نقل ناب ، برای تایید شماره روی لینک زیر کیلیک بفرمایید \n $link", $phone);
-        } catch (\Throwable $th) {
-            return response(['phone' => ['شماره شما درست نمی باشد']]);
+        $phone_veri = VerifyPhones::where(['phone' => $phone])->get();
+        $limit_time = 180;
+        $distance = 0 ;
+        if(count($phone_veri)){
+            $distance = time() - $phone_veri[0]->time;
         }
-        $verify_phones = new VerifyPhones();
-        $verify_phones->phone = $phone;
-        $verify_phones->data = $data;
-        $verify_phones->code = $code_ver;
-        $verify_phones->time = time();
-        $verify_phones->save();
-        return response('ok');
+
+        $user = Auth::guard('user');
+        if(isset($user) &&  $user && $data['phone'] == $user->user()->phone){
+           return response(
+                [
+                    "title" => "این شماره در سیستم شما ثبت شده است",
+                    "caption" => "شما درحال انتقال به پنل کاربری خود هستید",
+                    "status" => "success" ,
+                    "redirect" => true
+                ]
+            );
+        }
+        if (count($phone_veri)  &&  $distance <  $limit_time) {
+            return response(
+                [
+                    "title" => "آخرین لینک ارسال شده خود را برسی کنید .",
+                    "caption" => " آخرین لینک شما $distance ثانیه پیش برای شما ارسال شده برای دریافت مجدد چند دقیقه دیگه تلاش کنید",
+                    "status" => "warning"
+                ]
+            );
+        } else {
+            $data = json_encode($data);
+            VerifyPhones::where(['phone' => $phone])->delete();
+            $code_ver = substr(md5(rand(10000, 99999)), -20);
+            $link = route('verify_link', ['phone' => $phone, 'code' => $code_ver]);
+            // $link = str_replace(env("APP_URL"),"",$link);
+            try {
+                sms::send(" سلام لینک تایید شماره کافه عالیجناب ، برای تایید شماره روی لینک زیر کیلیک بفرمایید . \n $link", $phone);
+            } catch (\Throwable $th) {
+                return response(['phone' => ['شماره شما درست نمی باشد']]);
+            }
+            $verify_phones = new VerifyPhones();
+            $verify_phones->phone = $phone;
+            $verify_phones->data = $data;
+            $verify_phones->code = $code_ver;
+            $verify_phones->time = time();
+            $verify_phones->save();
+            return response(
+                [
+                    "title" => "لینک تایید لحظاتی پیش برای شما ارسال شد",
+                    "caption" => "برای تایید روی آن کلیک کنید",
+                    "status" => "success"
+                ]
+            );
+        }
     }
     public function chack_verify($phone)
     {
-        $phone_veri = VerifyPhones::where(['phone' => $phone, 'data' => 'accept'])->get();
-        if (count($phone_veri) && time() - $phone_veri[0]->time < 200) {
+        $phone_veri = VerifyPhones::where(['phone' => $phone])->get();
+        $distance = time() - $phone_veri[0]->time;
+        $limit_time = 180;
+        if (count($phone_veri) && $phone_veri[0]->data == "accept"  &&  $distance <  $limit_time) {
             $user_now = User::where(['phone' => $phone_veri[0]->phone])->get();
             if (count($user_now)) {
                 VerifyPhones::where(['phone' => $phone, 'data' => 'accept'])->delete();
@@ -66,16 +105,18 @@ class UserAuthController extends Controller
                     return response('profile');
                 }
             } else {
-                return response('no');
+                return response(["time" => $limit_time - $distance, 'res' => 'no']);
             }
         } else {
-            return response('no');
+            return response(["time" => $limit_time - $distance, 'res' => 'no']);
         }
     }
+
+
     public function link_verify($phone, $code)
     {
         $phone_veri = VerifyPhones::where(['phone' => $phone, 'code' => $code])->get();
-        if (count($phone_veri) && time() - $phone_veri[0]->time < 200) {
+        if (count($phone_veri) && time() - $phone_veri[0]->time < 180) {
             $phone_veri = $phone_veri[0];
             $user_now = User::where(['phone' => $phone_veri->phone])->get();
             if (!count($user_now)) {

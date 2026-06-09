@@ -2,7 +2,7 @@
 {
     const all_input_items = document.querySelectorAll("div.input-admin");
     const characters_en = "QWERTYUIOPLKJHGFDSAZXCVBNM qwertyuiopasdfghjklzxcvbnm,.?!+-@_:/";
-    const characters_fa = "ضصثقفغعهخحجچپچشسیبلاتنمکگظطزرذدئو./.وئدذرزطظظشسیبلاتنمکگچجحخهعغفقثصضا آ ؟!";
+    const characters_fa = "ضصثقفغعهخحجچپچشسیبلاتنمکگظطزرذدئو./.وئدذرزطظظشسیبلاتنمکگچجحخهعغفقثصضا  ژآ ؟!";
     const numbers = "0987654321 ۱۲۳۴۵۶۷۸۹۰ +";
     const map_pattern = [["fa", characters_fa], ["en", characters_en], ["num", numbers]];
     var host = window.location.protocol + "//" + window.location.host;
@@ -168,6 +168,7 @@ window.openOrder = function openOrder(id) {
     let phone = document.querySelector('div.show-order-info b.phone');
     let plate = document.querySelector('div.show-order-info b.plate');
     let unit = document.querySelector('div.show-order-info b.unit');
+    let address = document.querySelector('div.show-order-info b.address');
     let postal_code = document.querySelector('div.show-order-info b.postal-code');
     let teble_div = document.querySelector('div.show-order-info div.table-order');
     let link_loc = document.querySelector('div.show-order-info a.location');
@@ -196,6 +197,9 @@ window.openOrder = function openOrder(id) {
             if (unit) {
                 unit.innerHTML = data.unit;
             }
+            if (address) {
+                address.innerHTML = data.address;
+            }
             if (data.postal_code) {
                 if (postal_code) {
                     postal_code.innerHTML = data.postal_code;
@@ -220,10 +224,10 @@ window.openOrder = function openOrder(id) {
                     teble_div.innerHTML += `
                     <div class="mt-2 select-none flex justify-between items-center bg-gray-300 dark:bg-gray-700 rounded-full p-3">
                         <img class=" select-none rounded-full size-20"
-                            src="/storage/${JSON.parse(item.img)[0]}"
+                            src="/storage/${item.thumbnail}"
                             alt="">
                         <span class="text select-none  text-xl">${item.name}</span>
-                        <span class="text select-none  text-xl ml-5">${item.type} ${item.count}</span>
+                        <span class="text select-none  text-xl ml-5">${item.count}</span>
                     </div>
                     `;
                 }

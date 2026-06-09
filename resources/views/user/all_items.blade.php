@@ -1,4 +1,11 @@
 @extends('user.layout.main')
+@section('header')
+    <meta name="description"
+        content="منوی کامل کافه شامل غذاهای اصیل کره‌ای، قهوه‌های تخصصی، نوشیدنی‌های گرم و سرد، شیک‌های متنوع، ساندویچ‌ها و دسرهای خوش‌طعم.">
+@endsection
+@section('title')
+    منو کامل | کافه عالیجناب
+@endsection
 @section('main')
     <br><br>
     <br> <br class="hidden sm:block">
@@ -13,27 +20,26 @@
                 <!-- Slides -->
                 @foreach ($categorys as $category)
                     <div data-id="{{ $category->id }}"
-                        class="swiper-slide group flex justify-center  size-24 sm:size-44  select-none	  ">
+                        class="swiper-slide group flex justify-center  size-20 sm:size-36  select-none	  ">
                         <div class="size-full flex justify-center items-center">
-                            <div class=" select-none relative size-24 sm:size-36  	 flex items-center justify-center">
+                            <div class=" select-none relative size-20 sm:size-36  	 flex items-center justify-center">
                                 <div class="size-full flex justify-center absolute top-0 right-0">
                                     <div class="relative">
-                                        <img class=" select-none border-2 border-primary-200 scale-95   size-full   object-cover rounded-full "
-                                            src="{{ '/storage/' . $category->img }}">
-                                        <div
-                                            class="bg-black  scale-95 group-hover:hidden   justify-center items-center  size-full  absolute right-0 rounded-full  z-10 top-0   opacity-50">
-                                        </div>
-                                        <div
-                                            class="flex text-white group-hover:hidden font-bold text-base  sm:text-3xl justify-center items-center  size-full scale-75 absolute right-0 rounded-full  z-10 top-0">
-                                            <p class="text-center">
+                                        <div class="size-full amount-slide  pb-5">
+                                            <div class="size-full">
+                                                <img class=" select-none   size-full    "
+                                                    src="{{ '/storage/' . $category->img }}">
+                                            </div>
+                                            <p
+                                                class="text-center text-nowrap w-full dark:text-white text-primary-200 sm:text-lg font-bold text-base">
                                                 {{ $category->name }}
                                             </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="size-full hidden select rotate -z-10 justify-center absolute top-0 right-0">
+                                {{-- <div class="size-full hidden select rotate -z-10 justify-center absolute top-0 right-0">
                                     <img src="/image/sidebar dark.png" class="size-full scale-[1.3] logo  " alt="">
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
 
@@ -42,25 +48,13 @@
 
             </div>
             <div class="absolute  flex items-center size-full top-0 right-0">
-                <div class="w-full flex px-3  sm:px-5 md:px-7 lg:px-10 justify-between">
-                    <div
-                        class="swiper-category-button-prev cursor-pointer hover:scale-125  select-none rounded-full bg-primary-200 border-2 border-primary-100 size-8 flex justify-center items-center sm:size-14  z-20	">
-                        {{-- <i class="fa  fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i> --}}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="fa fa-caret-left text-white translate-x-0.5 sm:translate-x-1  rotate-180 size-6 sm:size-8  "
-                            viewBox="0 0 16 16">
-                            <path fillRule="evenodd"
-                                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
-                        </svg>
+                <div class="w-full flex px-3  sm:px-5 md:px-7 items-center h-36 lg:px-10 justify-between">
+
+                    <div class="swiper-button-prev !static cursor-pointer swiper-category-button-prev  	">
+                        <i class="fa fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
                     </div>
-                    <div
-                        class="swiper-category-button-next cursor-pointer hover:scale-125 select-none rounded-full bg-primary-200 border-2 border-primary-100 size-8 flex justify-center items-center sm:size-14 z-20	">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="fa fa-caret-left text-white size-6 sm:size-8 -translate-x-0.5 sm:-translate-x-1 "
-                            viewBox="0 0 16 16">
-                            <path fillRule="evenodd"
-                                d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
-                        </svg>
+                    <div class="swiper-button-next !static cursor-pointer swiper-category-button-next  	">
+                        <i class="fa fa-caret-left text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -71,19 +65,114 @@
     </div>
     <br>
     <br>
-    <div class=" box-product-scroll-slider sm:mx-10 mx-2 mt-6 sm:mt-10">
+    <div class=" box-product-scroll-slider sm:mx-10 mx-2  sm:mt-10">
         @foreach ($categorys as $category)
             <div id="{{ $category->id }}"
-                class=" category-bable  my-2 text text-center cursor-pointer bg-gradient-to-l  text-white from-transparent via-primary-200 to-transparent rounded-lg  relative p-2 hover:font-bold">
+                class=" category-bable  my-2 text text-center cursor-pointer bg-gradient-to-l  text-white from-transparent  to-transparent rounded-lg  relative p-2 hover:font-bold">
                 <span class="mr-2 ">
-                    {{ $category->name }}
+
+                    <div class="flex items-center px-0 sm:px-4 text-gray-500">
+                        <span
+                            class="flex-1 shadow-primary-200 dark:shadow-primary-100 shadow-[0px_0px_6px_3px] h-1 bg-white rounded-full"></span>
+                        <h3
+                            class="px-3 font-tanha sm:px-6 font-bold text-gray-800 dark:text-white sm:text-2xl text-xl whitespace-nowrap">
+                            {{ $category->name }}
+                        </h3>
+                        <span
+                            class="flex-1 shadow-primary-200 dark:shadow-primary-100 shadow-[0px_0px_6px_3px] h-1 bg-white rounded-full"></span>
+                    </div>
+
                 </span>
             </div>
             <div class=" sm:pt-8 pt-4 flex flex-wrap justify-around p-1 sm:p-4">
                 @foreach ($products as $product)
                     @if ($product->category == $category->id)
-                        <div
-                            class="animate__animated relative group animate__zoomIn sm:w-96 w-full mb-4 similar_item cursor-pointer p-1  sm:p-2 flex bg-white border border-gray-200 rounded-lg  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        <div class="flex cart-shoping animate__animated animate__zoomIn relative w-full sm:w-96 group bg-white dark:bg-gray-800 p-2 rounded-2xl  "
+                            data-id="{{ $product->id }}" id="{{ $product->id }}">
+                            <div class=" relative">
+
+
+
+                                <div class="absolute z-10 right-0 bottom-0  size-full flex justify-center items-end">
+                                    <div class="w-full p-2 scale-[1.1]">
+                                        <button data-id="{{ $product->id }}"
+                                            class="group  border border-white/20 hover:bg-white/30 mt-3 add-to-cart  bg-white/10 backdrop-blur-sm text-xl w-full  h-8 flex justify-center items-center text-white hover:font-bold  group rounded-full ">
+                                            <i class="fa hover:font-bold fa-cart-plus" aria-hidden="true"></i>
+                                        </button>
+                                        <div data-id="{{ $product->id }}" id="{{ $product->id }}"
+                                            class="group flex  w-full   box-card-control border border-white/20   bg-white/10 backdrop-blur-sm
+          text-sm  h-8 px-1 flex justify-between  items-center text-white hover:font-bold  group rounded-full ">
+                                            <button
+                                                class="
+                                                    bg-white/10 backdrop-blur-sm          hover:bg-white/20
+          rounded-full   cursor-pointer text-gray-600 group hover:text-white dark:text-gray-100 d flex justify-center items-center text-xl sm:text-2xl size-6 bg-gray-300 plus">
+
+                                                <svg class="group-hover:text-white text-gray-100 size-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path d="M0 0h24v24H0z" fill="none" />
+                                                    <path fill="currentColor"
+                                                        d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1-2 0v-6H5a1 1 0 0 1 0-2h6V5a1 1 0 0 1 1-1" />
+                                                </svg>
+                                            </button>
+                                            <span class="number select-none font-bold px-1 text-white ">
+                                                1
+                                            </span>
+                                            <button
+                                                class="
+                                                    bg-white/10 backdrop-blur-sm hover:text-white         hover:bg-white/20
+          rounded-full   cursor-pointer text-gray-100 group flex justify-center items-center text-xl sm:text-2xl size-6 bg-gray-300 nega">
+                                                <svg class="group-hover:text-white text-gray-100 size-4"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                    <path d="M0 0h24v24H0z" fill="none" />
+                                                    <path fill="currentColor"
+                                                        d="M5 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-28 h-28 overflow-hidden rounded-2xl">
+                                    <img class="size-full select-none group-hover:scale-105  object-cover rounded-2xl "
+                                        src="{{'/storage/' . $product->thumbnail}}" alt="">
+                                </div>
+                            </div>
+                            <div style="width: calc(100% - 88px)" class="flex py-2 flex-col relative justify-around pr-5">
+                                <p class="text flex justify-between items-center">
+                                    <a href="{{ '/product/' . $product->id }}"
+                                        class="text-lg sm:text-xl select-none font-bold">{{$product->name}}</a>
+                                    <a href="{{ '/product/' . $product->id }}" rel="nofollow"
+                                        class="dark:text-gray-100 pl-2 group text-sm dark:hover:text-primary-200 hover:text-primary-200 text-gray-600 flex items-center gap-2  transition">
+                                        @if ($product->off)
+                                            <span> %{{ $product->off }} تخفیف </span>
+                                        @else
+                                            <span> مشاهده </span>
+                                        @endif
+                                        <i class="fa fa-arrow-left group-hover:-translate-x-1" aria-hidden="true"></i>
+                                    </a>
+                                </p>
+
+                                <p class="text text-sm  ">
+                                <div class="flex justify-between  items-center">
+                                    <div class="w-full flex flex-wrap  items-center ">
+                                        <span
+                                            class=" select-none   flex-nowrap text-xs opacity-50 scale-75 line-through sm:text-sm text-nowrap text">
+                                            {{ \App\Helpers\Helper::price($product->price) }}
+                                        </span>
+                                        <span class=" select-none  flex-nowrap text-sm sm:text-base text-nowrap text">
+                                            {{ \App\Helpers\Helper::price(($product->off ? $product->price - ($product->price / 100) * $product->off : $product->price)) }}
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            </p>
+
+                        </div>
+            </div>
+            {{-- <div
+                            class="animate__animated animate__zoomIn relative group  sm:w-96 w-full mb-4 similar_item cursor-pointer p-1  sm:p-2 flex bg-white border border-gray-200 rounded-lg  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                             @if ($product->off)
                                 <div class='absolute z-10 sm:top-2 sm:right-2 top-1 right-1'><span
                                         class='text-white  flex items-center flex-row-reverse bg-red-600 px-1 sm:px-2 rounded-3xl'><span
@@ -94,10 +183,10 @@
                             @endif
                             <div
                                 class=" w-[90px] sm:w-[110px] h-20 sm:h-24 flex-shrink-0  flex justify-center items-center  relative">
-                                <a href="{{ '/products/' . $product->id }}">
+                                <a href="{{ '/product/' . $product->id }}">
                                     <div class="  absolute top-0 right-0 h-full w-full flex   items-center">
                                         <span class=" size-[80px] sm:size-[100px] rounded-lg overflow-hidden ">
-                                            <img data-src="{{ isset(json_decode($product->images)[0]) ? json_encode([$product->thumbnail , ...json_decode($product->images)]) : '' }}"
+                                            <img data-src="{{ isset(json_decode($product->images)[0]) ? json_encode([$product->thumbnail, ...json_decode($product->images)]) : '' }}"
                                                 src="{{ '/storage/' . $product->thumbnail }}"
                                                 class=" h-full w-full  object-cover " alt="">
                                         </span>
@@ -143,11 +232,11 @@
                                 </div>
 
                             </div>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
+                        </div> --}}
+        @endif
         @endforeach
+    </div>
+    @endforeach
     </div>
 
 
@@ -189,7 +278,7 @@
                 data_poss.reverse()
                 let id = 0;
                 data_poss.forEach(poss => {
-                    if (poss.poss - 10 < possition_box) {
+                    if (poss.poss + 40 < possition_box) {
                         if (!id)
                             id = poss.id;
                     }

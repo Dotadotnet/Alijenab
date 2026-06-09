@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ورود</title>
     <link rel="shortcut icon" href="{{ asset('image/user.png') }}" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/4fa9804fb1.js" crossorigin="anonymous"></script>
     @vite('resources/css/auth.css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
@@ -120,8 +119,6 @@
             });
         </script>
     @endif
-    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="fb668e62-2aa3-4e8a-8c23-6bc77ce7e50e";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
-
 </body>
 
 </html>

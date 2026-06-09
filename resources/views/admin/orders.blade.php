@@ -116,7 +116,7 @@
                 </div>
                 <button
                     class="focus:outline-none change-value mr-2 text-white bg-cyan-400 hover:bg-cyan-500 focus:ring-4 focus:ring-cyan-200 font-lg rounded-lg text-sm size-9 flex justify-center items-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-900">
-                    <i class="fa text-lg fa-pencil-square-o" aria-hidden="true"></i>
+                    <i class="fa text-lg fa-pen" aria-hidden="true"></i>
                 </button>
             </div>
         </th>
@@ -132,7 +132,7 @@
                 </div>
                 <button
                     class="focus:outline-none change-value mr-2 text-white bg-cyan-400 hover:bg-cyan-500 focus:ring-4 focus:ring-cyan-200 font-lg rounded-lg text-sm size-9 flex justify-center items-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-900">
-                    <i class="fa text-lg fa-pencil-square-o" aria-hidden="true"></i>
+                    <i class="fa text-lg fa-pen" aria-hidden="true"></i>
                 </button>
             </div>
         </th>
@@ -149,7 +149,7 @@
                 @elseif ($order['invoice'])
                     <button onclick="this.parentNode.children[1].classList.remove('hidden')"
                         class="focus:outline-none invoice text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-lg rounded-lg text-sm size-11 flex justify-center items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">
-                        <i class="fa fa-file-image-o text-2xl" aria-hidden="true"></i>
+                        <i class="fa fa-file-image text-2xl" aria-hidden="true"></i>
                     </button>
                     <div onclick="openInvoice(this,event)"
                         class="fixed hidden flex top-0 text items-center justify-center size-full z-[10000] right-0 backdrop-blur dark:bg-dark-opacity-30 bg-light-opacity-30">
@@ -246,15 +246,15 @@
             let text = change_value_button.parentNode.querySelector('div.text');
             let id = change_value_button.parentNode.parentNode.parentNode.children[0].innerHTML.trim();
             const function_change_value = () => {
-                if (icon.classList.contains('fa-pencil-square-o')) {
-                    icon.classList.remove('fa-pencil-square-o')
+                if (icon.classList.contains('fa-pen')) {
+                    icon.classList.remove('fa-pen')
                     icon.classList.add('fa-check');
                     text.classList.add('hidden')
                     input.classList.remove('hidden')
                     input.focus()
                 } else {
                     text.innerHTML = input.value;
-                    icon.classList.add('fa-pencil-square-o')
+                    icon.classList.add('fa-pen')
                     icon.classList.remove('fa-check');
                     text.classList.remove('hidden')
                     input.classList.add('hidden')

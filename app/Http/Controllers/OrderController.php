@@ -112,23 +112,16 @@ class OrderController extends Controller
         $user = Auth::guard('user')->user();
         $user = User::find($user->id);
         if ($order->user_id == $user->id) {
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
-                CURLOPT_RETURNTRANSFER => 1,
-                CURLOPT_URL => 'https://api64.ipify.org?format=json',
-                CURLOPT_USERAGENT => 'Codular Sample cURL Request'
-            ));
-            $resp = curl_exec($curl);
-            curl_close($curl);
-            $ip = json_decode($resp)->ip;
             $data = Helper::analyzeData(json_decode($order->order));
-            $data['location'] = Location::get($ip);
             $data['postal_code'] = null;
             $data['plate'] = '';
             $data['unit'] = '';
             if ($order->plate) {
                 $data['plate'] = $order->plate;
             }
+            if ($order->address) {
+                $data['address'] = $order->address;
+            } 
             if ($order->unit) {
                 $data['unit'] = $order->unit;
             }
@@ -156,6 +149,16 @@ class OrderController extends Controller
         $user = Auth::guard('user')->user();
         if ($order->user_id == $user->id) {
             User::where(['id' => $user->id])->update(['plate' => (int)$plate]);
+        }
+    }
+
+
+    public function change_address($id, $address)
+    {
+        $order = Order::find($id);
+        $user = Auth::guard('user')->user();
+        if ($order->user_id == $user->id) {
+            User::where(['id' => $user->id])->update(['address' => $address]);
         }
     }
 
@@ -198,6 +201,7 @@ class OrderController extends Controller
             'lat' => $location[0],
             'lng' => $location[1],
             'plate' => $request->plate,
+            'address' => $request->address,
             'unit' => $request->unit,
             'postal_code' => null,
         ]);
@@ -217,7 +221,7 @@ class OrderController extends Controller
             ]);
         } else {
             Order::where(['id' => $id_order])->update([
-                'time_send' => 'ارسال در حداکثر دو روز',
+                'time_send' => 'ارسال در ساعاتی دیگر',
                 'status' => 'ثبت شده',
                 'color' => 'green',
                 'caption' => 'سفارش شما با موفقیت به ثبت رسیده ولی هنوز آماده سازی نشده است',
@@ -239,6 +243,7 @@ class OrderController extends Controller
             'lat' => null,
             'lng' => null,
             'plate' => $request->plate,
+            'address' => $request->address,
             'unit' => $request->unit,
             'postal_code' => $request->postal_code,
         ]);
@@ -359,7 +364,8 @@ class OrderController extends Controller
         return response('ok');
     }
 
-    public function cancelOrder($id) {
+    public function cancelOrder($id)
+    {
         $order = Order::find($id);
         $user = Auth::guard('user')->user();
         if ($order->user_id == $user->id) {

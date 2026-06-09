@@ -1,25 +1,28 @@
 <footer class=" w-full flex flex-col sm:flex-row flex-wrap justify-center sm:justify-around p-3 sm:p-5">
     <div class="text footer-group shadow-primary-200 w-full md:w-auto   ">
         <div class="flex  flex-col m-3">
-            <span class="mr-4 text-md sm:text-lg"> <i class="fa fa-phone" aria-hidden="true"></i>
+            <span class="mr-4 text-md sm:text-lg"> 
+                <i class="fa fa-phone" aria-hidden="true"></i>
                 تماس با ما :</span>
-            <a href="tel:02122396648" class="md:mr-24 mr-10 text-md mt-3 hover:pr-5 hover:font-bold ">02122396648</a>
-            <a href="tel:09127813121" class="md:mr-24 mr-10 text-md mt-3 hover:pr-5 hover:font-bold ">09127813121</a>
+            <a rel="nofollow" href="tel:02122396648" class="md:mr-24 mr-10 text-md mt-3 hover:pr-5 hover:font-bold ">02122396648</a>
+            <a rel="nofollow" href="tel:09127813121" class="md:mr-24 mr-10 text-md mt-3 hover:pr-5 hover:font-bold ">09127813121</a>
             <span class="mr-4 mt-3 text-md sm:text-lg"> <i class="fa fa-map-marker" aria-hidden="true"></i>
                 آدرس ما :</span>
-            <a target="black" href="https://maps.app.goo.gl/YchVRFmCiNRHcyaz9"
-                class="md:mr-16 sm:mr-6 mr-3 text-sm mt-3 hover:pr-5 hover:font-bold ">
-                ارومیه ، کوچه شهید سلیمانی
-                ، پلاک 2
+            <a   target="black" href="{{ env('LOCATION_URL_GOOGLE') }}"
+                class="md:mr-16 sm:mr-6 mr-3 text-sm mt-3 hover:-translate-x-4 hover:font-bold ">
+              تجريش ، مجتمع تجاری ارگ ، جنب خروجی پارکینگ
             </a>
         </div>
     </div>
+
+
+    
     <div class="text footer-group shadow-primary-200 w-full md:w-auto mt-4 sm:mt-0  ">
         <div class="flex flex-col m-3">
             <span class="mr-4 text-md sm:text-lg"> <i class="fa fa-envelope" aria-hidden="true"></i>
                 انتقادات و پیشنهادات شما :</span>
-            <a href="mailto:Aminiamiraliamini1400@outlook.com"
-                class="  md:mr-10 sm:mr-10 mr-3 text-md mt-3 hover:pr-5 hover:font-bold ">Aminiamiraliamini1400@outlook.com</a>
+            <a href="mailto:info@alijenabcafe.ir"
+                class="  md:mr-10 sm:mr-10 mr-3 text-md mt-3 hover:pr-5 hover:font-bold ">info@alijenabcafe.ir</a>
             <a href="/about" class="mr-4 text-md sm:text-lg hover:pr-5 hover:font-bold mt-3"> <i
                     class="fa translate-y-1 fa-info-circle" aria-hidden="true"></i>
                 درباره ما</a>

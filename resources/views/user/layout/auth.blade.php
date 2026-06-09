@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> @section('title') لاگین @show </title>
     <!-- Custom styles -->
-    <script src="https://kit.fontawesome.com/4fa9804fb1.js" crossorigin="anonymous"></script>
     @vite('resources/css/auth.css')
     
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -24,6 +23,7 @@
         </div>
     </div>
     @vite('resources/js/auth.js')
+        @vite('resources/js/crisp_chat.js')
 </body>
 
 </html>

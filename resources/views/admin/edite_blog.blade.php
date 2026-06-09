@@ -8,7 +8,7 @@
 @endforeach --}}
     @component('admin.components.table', [
         'data' => $blogs,
-        'column_name' => ['id' => 'آیدی','img' => "عکس",'title' => 'عنوان',"link" => 'دیدن صحفه'],
+        'column_name' => ['id' => 'آیدی','thumbnail' => "عکس",'title' => 'عنوان',"link" => 'دیدن صحفه'],
         'table' => 'blog',
     ])
 

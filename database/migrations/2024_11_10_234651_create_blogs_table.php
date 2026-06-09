@@ -14,16 +14,13 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            // $table->string('admin');
+            $table->string("thumbnail");
             $table->longText('amount');
             $table->string('title');
+            $table->string('title_en');
+            $table->string('caption');
             $table->timestamps();
-        });
-        sleep(5);
-        $blog = new Blog();
-        $blog->title = 'درباره ما';
-        $blog->amount = '...';
-        $blog->save();
+        });       
     }
 
     /**
@@ -31,7 +28,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-       
+
         Schema::dropIfExists('blogs');
     }
 };

@@ -71,13 +71,13 @@
                                 <tr class="bg-gray-100 py-3  dark:bg-gray-700 dark:border-gray-700  ">
                                     <th scope="row" class="flex h-full  text-gray-900 whitespace-nowrap dark:text-white">
                                         <img class="size-14 my-1 sm:size-20 object-cover rounded-full"
-                                            src="{{ '/storage/' . json_decode($item['img'])[0] }}" alt="Jese image">
+                                            src="{{ '/storage/' . $item["thumbnail"] }}" alt="Jese image">
                                     </th>
                                     <td class=" sm:text-lg text-base text px-4 ">
                                         {{ $item['name'] }}
                                     </td>
                                     <td class=" sm:text-lg text-base text ">
-                                        {!! $item['count'] . ' ' . '<span class="pb-4">' . $item['type'] . '</span>' !!}
+                                        {!! $item['count'] . ' ' . '<span class="pb-4">' . '</span>' !!}
                                     </td>
                                 </tr>
                             @endforeach

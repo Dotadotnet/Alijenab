@@ -13,58 +13,95 @@ if (!localStorage.getItem('carts_data')) {
     localStorage.setItem('carts_data', JSON.stringify([]))
 }
 
+const iconsSvg: NodeListOf<HTMLImageElement> = document.querySelectorAll('[data-icon]');
+iconsSvg.forEach(iconSvg => {
+    let icon_name = iconSvg.dataset.icon;
+    let url = `/media/img/custom/svg/Bulk/${icon_name}.svg`
+    iconSvg.style.backgroundImage = `url('${url}')`;
+});
+
+
 function format_item_bar_product(data: { id: string, price: number, url: string, off: null | string, img: string | Array<string>, name: string }): string {
     let image = typeof (data.img) == 'string' ? data.img : data.img[0];
     let image_2 = typeof (data.img) == 'string' ? null : data.img;
     return `
-    <div  class="animate__animated relative group animate__zoomIn sm:w-96 w-full mb-4 similar_item cursor-pointer p-1  sm:p-2 flex bg-white border border-gray-200 rounded-lg  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-   ${data.off ? "<div class='absolute z-20 sm:top-2 sm:right-2 top-1 right-1'><span class='text-white  flex items-center flex-row-reverse bg-red-600 px-1 sm:px-2 rounded-3xl'>" + '<span class="text-xs sm:text-sm font-bold flex  items-center mr-0.5">%</span>' + '<span class="flex text-sm sm:text-base items-center mt-0 sm:mt-[1.5px] font-bold">' + data.off + '</span>' + "</span></div>" : ''}
-   
-    <div class=" w-[90px] sm:w-[110px] flex-shrink-0 h-24  sm:h-28 flex justify-center items-center  relative">
-                                <a href="${data.url}">
-                                    <div class="  justify-center h-full w-full flex   items-center">
-                                        <span
-                                            class=" size-[80px] sm:size-[100px] rounded-lg overflow-hidden border-[1px] border-white">
-                                            <img data-src='${JSON.stringify(image_2)}'  class=" h-full w-full  object-cover "
-                                                src="${'/storage/' + image}" alt="">
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-        <div class=" flex flex-col w-full justify-between pr-1 items-center">
-        <div class="flex justify-between items-center w-full"> 
-        <span class=" text-base flex items-center sm:text-xl text  w-full font-bold ">
-        ${data.name}
-        </span>
-        
-        <span>
-    <button data-id="${data.id}"
-        class="group add-to-cart translate-x-1 translate-y-1 sm:translate-x-0 sm:translate-y-0 bg-primary-200 sm:text-2xl text-lg size-10 sm:size-12 flex justify-center items-center text-white hover:font-bold border-2 border-transparent group rounded-xl ">
-        <i class="fa hover:font-bold fa-cart-plus" aria-hidden="true"></i>
-    </button>
-    <div class=" justify-center items-center ">
-    </div>
-</span>
-        </div>
-        <div class="flex justify-between items-center w-full"> 
-        <span class=" text-xs mb-2 mr-2 flex items-center sm:text-base text  w-full font-bold ">
-           ${data.off ?
-            '<div class="flex flex-col justify-center items-center"> <div class="line-through h-4 sm:h-5 inline-block opacity-50 scale-75"><span class="line-through opacity-50 scale-75">' + price(data.price) + '</span></div>' +
-            '<p>' + price(data.price - (data.price / 100) * parseInt(data.off)) + '</p></div>'
+       <div class="flex cart-shoping animate__animated animate__zoomIn relative w-full sm:w-96 group bg-gray-100 dark:bg-gray-900 p-2 rounded-2xl  "  data-id="${data.id}" id="${data.id}" >
+                        <div class=" relative" >
+                        <div class="absolute z-10 right-0 bottom-0  size-full flex justify-center items-end" >
+                                   <div class="w-full p-2 scale-[1.1]">
+                                          <button data-id="${data.id}"
+                                                class="group  border border-white/20 hover:bg-white/30 mt-3 add-to-cart  bg-white/10 backdrop-blur-sm text-xl w-full  h-8 flex justify-center items-center text-white hover:font-bold  group rounded-full ">
+                                                <i class="fa hover:font-bold fa-cart-plus" aria-hidden="true"></i>
+                                            </button>
+                                            <div data-id="${data.id}" id="${data.id}"
+                                                class="group flex  w-full   box-card-control border border-white/20   bg-white/10 backdrop-blur-sm
+          text-sm  h-8 px-1 flex justify-between  items-center text-white hover:font-bold  group rounded-full ">
+                                                <button
+                                                    class="
+                                                    bg-white/10 backdrop-blur-sm          hover:bg-white/20
+          rounded-full   cursor-pointer text-gray-600 group hover:text-white dark:text-gray-100 d flex justify-center items-center text-xl sm:text-2xl size-6 bg-gray-300 plus">
+
+                                                    <svg class="group-hover:text-white text-gray-100 size-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1-2 0v-6H5a1 1 0 0 1 0-2h6V5a1 1 0 0 1 1-1" />
+                                                    </svg>
+                                                </button>
+                                                <span class="number select-none font-bold px-1 text-white ">
+                                                     1
+                                                </span>
+                                       <button
+                                                    class="
+                                                    bg-white/10 backdrop-blur-sm hover:text-white         hover:bg-white/20
+          rounded-full   cursor-pointer text-gray-100 group flex justify-center items-center text-xl sm:text-2xl size-6 bg-gray-300 nega">
+                                                    <svg class="group-hover:text-white text-gray-100 size-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M5 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                        </div>
+                        <div class="w-28 h-28 overflow-hidden rounded-2xl" >
+                        <img class="size-full select-none group-hover:scale-105  object-cover rounded-2xl " src="${'/storage/' + data.thumbnail}" alt="">
+                        </div>
+                </div>
+                <div style="width: calc(100% - 88px)" class="flex py-2 flex-col relative justify-around pr-5" >
+                  <p class="text flex justify-between items-center">
+                     <a  href="${'/product/' + data.id}" class="text-lg sm:text-xl select-none font-bold">${data.name}</a>
+                   <a href="${'/product/' + data.id}" rel="nofollow"
+                class="dark:text-gray-100 pl-2 group text-sm dark:hover:text-primary-200 hover:text-primary-200 text-gray-600 flex items-center gap-2  transition">
+                ${data.off ?
+            `<span>  %${ data.off } تخفیف </span>`
             :
-            '<span class="mt-2">' + price(data.price) + '</span>'}
-        </span>
-        
-        <span>
-    
-</span>
+            "<span> مشاهده </span> "
+        }
+                <i class="fa fa-arrow-left group-hover:-translate-x-1" aria-hidden="true"></i>
+            </a>
+                  </p>
+                
+                  <p class="text text-sm  ">
+                    <div class="flex justify-between  items-center">
+                    <div class="w-full flex flex-wrap  items-center " >
+                      <span class=" select-none   flex-nowrap text-xs opacity-50 scale-75 line-through sm:text-sm text-nowrap text">
+                    ${price(data.price)}   
+                    </span> 
+                    <span class=" select-none  flex-nowrap text-sm sm:text-base text-nowrap text">
+                    ${price(data.off ? data.price - (data.price / 100) * parseInt(data.off) : data.price)}   
+                    </span> 
+                  
+                    </div>
+              
+                        </div>
 
+                        </div>
+                  </p>
 
-        </div>
-            
-        </div>
-    </div>
-    
+                </div>
+          </div>
 `;
 }
 
@@ -120,6 +157,7 @@ if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localS
     document.documentElement.classList.add('dark');
     if (logos_website) {
         logos_website.forEach((logo_website) => {
+
             logo_website.src = logo_website.src.replace('light', 'dark')
         })
     }
@@ -241,13 +279,21 @@ const reload_count_cart_shop = () => {
         count_shoping_cart_sapn.innerHTML = JSON.parse(data_local).length;
     }
 }
+
+function toPerNum(input: string | number | null | undefined): string {
+    if (input === null || input === undefined) return '';
+    return String(input).replace(/\d/g, (digit: string): string => {
+        return '۰۱۲۳۴۵۶۷۸۹'[Number(digit)];
+    });
+}
+
 const tailwind_loader: string = '<span class="loader"></span>'
 const remove_icon_cart: string = `<i class="fa fa-times font-bold scale-125" aria-hidden="true"></i>`;
 function reload_button_add_cart_events() {
     reload_count_cart_shop()
     const buttons_add_carts = document.querySelectorAll('button.add-to-cart');
     buttons_add_carts.forEach(button_add_cart => {
-        let button = button_add_cart;
+        const button = button_add_cart;
         let icon = button_add_cart.querySelector('i');
         if (icon) {
             let data_local = localStorage.getItem('carts_data');
@@ -260,92 +306,34 @@ function reload_button_add_cart_events() {
                     }
                 });
             }
+            const button_controll = button.parentElement?.querySelector("div.box-card-control");
             if (!founded) {
-                button.innerHTML = `<i class="fa font-bold fa-cart-plus" aria-hidden="true"></i>`
+                button_controll?.classList.add("hidden")
+                button.classList.remove("hidden")
             } else {
-
-                button.innerHTML = remove_icon_cart;
+                button_controll?.classList.remove("hidden")
+                button.classList.add("hidden")
             }
-            button.addEventListener('click', () => {
-                if (button.children[0].classList.contains('fa')) {
-                    button.innerHTML = tailwind_loader;
-                    window.axios({
-                        method: 'get',
-                        url: host + '/add-remove-cart/' + button.dataset.id,
-                    }).then(function (response: any) {
-                        let data: any = response.data;
-                        let data_local = localStorage.getItem('carts_data');
-                        let data_result: any = [];
-                        let founded = false;
-                        if (data_local) {
-                            let items: { count: string, id: string }[] = JSON.parse(data_local);
-                            items.forEach(item => {
-                                if (item.id == button.dataset.id) {
-                                    founded = true;
-                                }
-                            });
-                        }
-                        window.axios({
-                            method: 'get',
-                            url: host + '/api/product/id/' + button.dataset.id,
-                        }).then(function (response: any) {
-
-                            let name: string = response.data[0].name;
-                            if (!founded) {
-                                window.location.hash = 'cart'
-
-                                if (data_local) {
-                                    let items: { count: string, id: string }[] = JSON.parse(data_local);
-                                    let res = items.push({ count: 1, id: button.dataset.id });
-                                    localStorage.setItem('carts_data', JSON.stringify(items))
-                                }
-
-
-                                let buttons_add_carts = document.querySelectorAll('button.add-to-cart');
-
-                                buttons_add_carts.forEach(butto_add_cart => {
-                                    if (butto_add_cart.dataset.id === button.dataset.id)
-                                        butto_add_cart.innerHTML = remove_icon_cart;
-                                });
-                                reload_count_cart_shop()
-                            } else {
-                                snackbar({
-                                    text: "",
-                                    type: "primary",
-                                    persistent: false,
-                                    addClass: 'en',
-                                    duration: 'long',
-                                    action: {
-                                        text: `${name} از سبد خرید <b style='font-weight:bolder' class='text-red-600'>حذف شد</b> برای مشاهده اینجا کلیک کنید`,
-                                        color: "rgb(255,255,255)",
-                                        link: host + '/cart'
-                                    }
-                                });
-                                if (data_local) {
-                                    let items: { count: string, id: string }[] = JSON.parse(data_local);
-                                    let items_res: any = []
-                                    items.forEach(item => {
-                                        if (item.id !== button.dataset.id) {
-                                            items_res.push(item);
-                                        }
-                                    })
-                                    localStorage.setItem('carts_data', JSON.stringify(items_res))
-                                }
-                                buttons_add_carts.forEach(butto_add_cart => {
-                                    if (butto_add_cart.dataset.id === button.dataset.id)
-                                        butto_add_cart.innerHTML = `<i class="fa font-bold fa-cart-plus" aria-hidden="true"></i>`;
-                                });
-                                reload_count_cart_shop()
-                            }
-
-                        }).catch(function (error: Error) {
-                        }).then(function () { });
-
-
-                    }).catch(function (error: Error) {
-                    }).then(function () { });
+            button.onclick = (event: Event) => {
+                let button_controll = button.parentElement?.querySelector("div.box-card-control");
+                let founded = false;
+                let data_local = localStorage.getItem('carts_data');
+                if (data_local) {
+                    let items: { count: string, id: string }[] = JSON.parse(data_local);
+                    items.push({ id: button.dataset.id, count: 1 });
+                    localStorage.setItem("carts_data", JSON.stringify(items))
                 }
-            })
+                buttons_add_carts.forEach(button_addcart => {
+                    if (button_addcart.dataset.id == button.dataset.id) {
+                        let button_controll = button_addcart.parentElement?.querySelector("div.box-card-control");
+                        button_controll?.classList.remove("hidden")
+                        button_addcart.classList.add("hidden")
+                    }
+                })
+
+                reload_count_cart_shop()
+                load_controller_card()
+            }
         }
 
     })
@@ -354,69 +342,40 @@ window.reload_button_add_cart_events = () => {
     reload_button_add_cart_events()
 };
 
+reload_button_add_cart_events()
 
-function price(price: number): string {
+
+
+
+function price(price: Number): String {
     price = Math.ceil(price / 1000) * 1000;
-    const type: string[] = ['', ' هزار ', ' میلیون ', ' میلیارد ', ' تیلیارد '];
-    const priceLen: number = String(price).length;
-    const select3_3: number = Math.ceil(priceLen / 3);
-    const resultArray: string[] = [];
-    for (let i: number = 0; i < select3_3; i++) {
-        const num: string = String(price).split('').reverse().join('').substring(i * 3, (i + 1) * 3);
-        if (parseInt(num)) {
-            resultArray.push(  parseInt(num.split('').reverse().join(''))  + type[i] );
+
+    const type = ['', 'هزار', 'میلیون', 'میلیارد', 'تیلیارد'];
+    const priceLen = String(price).length;
+    const select33 = Math.ceil(priceLen / 3);
+
+    const resultArray = [];
+
+    for (let i = 0; i < select33; i++) {
+        const num = String(price)
+            .split('')
+            .reverse()
+            .join('')
+            .substr(i * 3, 3);
+
+        if (parseInt(num, 10)) {
+            resultArray.push(
+                String(parseInt(num.split('').reverse().join(''), 10)) +
+                '‌ ' +
+                type[i]
+            );
         }
     }
-    let result = resultArray.reverse().join(" و ") + " " + 'تومان';
-    return result.trim() === 'تومان' ? '0 تومان' : result.trim();
+
+    return toPerNum(resultArray.reverse().join(' و ') + '‌تومان');
 }
 
-const margeDataSartShop = () => {
-    window.axios({
-        method: 'get',
-        url: host + '/shop-carts-user',
-    }).then(function (response: any) {
-        let local_data: any = localStorage.getItem('carts_data');
-        if (response.data && local_data) {
-            let data: any[] = response.data;
-            let items: { id: number, count: number }[] = JSON.parse(local_data);
-            data.forEach(item_db => {
-                let isset = false;
-                for (let i = 0; i < items.length; i++) {
-                    const item = items[i];
-                    if (item_db.product_id == item.id) {
-                        isset = true
-                    }
-                }
-                if (!isset)
-                    items.push({ id: item_db.product_id, count: 1 })
-            });
-            localStorage.setItem('carts_data', JSON.stringify(items))
-            window.axios({
-                method: 'post',
-                url: host + '/merge-data-cart',
-                data: { data: items }
-            }).then(function (response: any) {
-            }).catch(function (error: Error) {
-            }).then(function () { });
 
-
-
-
-
-        }
-        reload_button_add_cart_events()
-        reload_count_cart_shop()
-    }).catch(() => {
-        reload_button_add_cart_events()
-        reload_count_cart_shop()
-    }).then(() => {
-        reload_button_add_cart_events()
-        reload_count_cart_shop()
-
-    })
-}
-margeDataSartShop()
 
 
 
@@ -599,7 +558,10 @@ const renderCartLocal = () => {
 
             const cart_box = document.querySelector('div.cart-shoping-main');
             if (cart_box) {
+             
                 cart_box.innerHTML += `
+
+           
         <h1 class="text text-center sm:mt-32 text-lg ">
             سبد خرید شما خالی است
         </h1>
@@ -629,43 +591,67 @@ const renderCartLocal = () => {
                     let data: any[] = response.data;
                     data.forEach(item => {
                         cart_box.innerHTML += `
-                        <div class="flex cart-shoping relative  mb-4 "  data-price="${item.off ? item.price - (item.price / 100) * item.off : item.price}" data-id="${item.id}" id="${item.id}" data-type="${item.type}">
-                 <button class=" remove text-white absolute left-0 -top-2 bg-red-600 cursor-pointer flex justify-center items-center size-7 text-lg rounded-lg">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                     </button>
-                        <div class="w-20" >
-                  <img class="size-20 rounded-lg" src="${'/storage/' + JSON.parse(item.img)[0]}" alt="">
+                        <div class="flex cart-shoping relative bg-gray-100 dark:bg-gray-900 p-2 rounded-2xl  mb-4 "  data-price="${item.off ? item.price - (item.price / 100) * item.off : item.price}" data-id="${item.id}" id="${item.id}" data-type="${item.type}">
+               
+                        <div class=" relative" >
+                        <div class="absolute right-0 bottom-0  size-full flex justify-center items-end" >
+                                   <div class="w-full p-2">
+                                          
+                                            <div data-id="{{ $selected->id }}" id="{{ $selected->id }}"
+                                                class="group flex  w-full   box-card-control  bg-white/10 backdrop-blur-sm
+          text-sm  h-8 px-1 flex justify-between  items-center text-white hover:font-bold  group rounded-full ">
+                                                <button
+                                                    class="
+                                                    bg-white/10 backdrop-blur-sm          hover:bg-white/20
+          rounded-full   cursor-pointer text-gray-600 dark:text-gray-100 d flex justify-center items-center text-xl sm:text-2xl size-6 bg-gray-300 plus">
+
+                                                    <svg class="text-gray-100 size-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1-2 0v-6H5a1 1 0 0 1 0-2h6V5a1 1 0 0 1 1-1" />
+                                                    </svg>
+                                                </button>
+                                                <span class="number select-none font-bold px-1 text-white ">
+                                                     ${item.count}
+                                                </span>
+                                       <button
+                                                    class="
+                                                    bg-white/10 backdrop-blur-sm          hover:bg-white/20
+          rounded-full   cursor-pointer text-gray-100 d flex justify-center items-center text-xl sm:text-2xl size-6 bg-gray-300 nega">
+                                                    <svg class="text-gray-100 size-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M5 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                        </div>
+                  <img class="w-28 h-24 overflow-hidden object-cover rounded-2xl " src="${'/storage/' + item.thumbnail}" alt="">
                 </div>
-                <div style="width: calc(100% - 88px)" class="flex flex-col justify-around pr-2" >
+                <div style="width: calc(100% - 88px)" class="flex py-2 flex-col relative justify-around pr-3" >
+ <button class=" remove text-white  opacity-80 hover:opacity-100 dark:bg-gray-800 bg-gray-300 absolute left-0 top-0 cursor-pointer flex justify-center items-center size-7 text-lg rounded-full">
+                        <svg class=" size-6 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+	<path d="M0 0h24v24H0z" fill="none" />
+	<path fill="currentColor" d="m13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29l-4.3 4.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l4.29-4.3l4.29 4.3a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42Z" />
+</svg>
+
+                     </button>
                   <p class="text flex justify-between">
                      <a href="${'/product/' + item.id}" class="text-sm select-none font-bold">${item.name}</a>
-                   
+                  
                   </p>
-                  <p class="text text-sm">
-                  <p class="scale-75 select-none mb-1 w-full flex-nowrap text-nowrap text">
-                                ${price(item.off ? item.price - (item.price / 100) * item.off : item.price)}   
-                  </p>            
-                  </p>
+                
                   <p class="text text-sm  ">
-                    <div class="flex  items-center">
-                        <button type="button" 
-                            class="text-white   plus bg-blue-700 text-lg size-6 flex justify-center items-center hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg   dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                        </button>
-                        <span class="text flex w-16 justify-center items-center mr-2">
-                            <span data-type="${item.type}"
-                                class="number select-none text-base  font-bold flex items-center">
-                                  ${item.count}
-                            </span>
-                            <span
-                             data-type="${item.type}"   class="mr-1 mb-1 select-none text-sm font-bold">
-                               ${item.type == 'numerical' ? 'عدد' : 'کیلو'}
-                            </span>
-                        </span>
-                        <button type="button"
-                            class="text-white nege mr-2 bg-blue-700  flex justify-center items-center text-lg size-6 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg   dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                            <i class="fa fa-minus" aria-hidden="true"></i>
-                        </button>
+                    <div class="flex justify-between  items-center">
+                         <p class=" select-none  w-full flex-nowrap text-sm text-nowrap text">
+                                ${price(item.off ? item.price - (item.price / 100) * item.off : item.price)}   
+                  </p> 
+              
+                        </div>
+
                         </div>
                   </p>
 
@@ -715,12 +701,119 @@ const renderCartLocal = () => {
         }
     }
 }
+
+
+function plusItemCard(id: number) {
+    let cards_local_storage = localStorage.getItem('carts_data');
+    let card_edited = [];
+    if (cards_local_storage) {
+        let cards = JSON.parse(cards_local_storage)
+        cards.forEach(card => {
+            if (card.id == id) {
+                card_edited.push({ id: card.id, count: card.count + 1 })
+            } else {
+                card_edited.push(card)
+            }
+        });
+    }
+    localStorage.setItem("carts_data", JSON.stringify(card_edited));
+    load_controller_card()
+}
+
+function negaItemCard(id: number) {
+    let cards_local_storage = localStorage.getItem('carts_data');
+    let card_edited = [];
+    if (cards_local_storage) {
+        let cards = JSON.parse(cards_local_storage)
+        cards.forEach(card => {
+            if (card.id == id) {
+                card_edited.push({ id: card.id, count: card.count - 1 })
+            } else {
+                card_edited.push(card)
+            }
+        });
+    }
+    localStorage.setItem("carts_data", JSON.stringify(card_edited));
+    load_controller_card()
+
+}
+
+function removeItemCard(id: number) {
+    let cards_local_storage = localStorage.getItem('carts_data');
+    let card_edited = [];
+    if (cards_local_storage) {
+        let cards = JSON.parse(cards_local_storage)
+        cards.forEach(card => {
+            if (card.id !== id) {
+                card_edited.push(card)
+            }
+        });
+    }
+    localStorage.setItem("carts_data", JSON.stringify(card_edited));
+}
+
+
+
+
+function load_controller_card() {
+    const boxs_card_control: NodeListOf<HTMLElement> = document.querySelectorAll('div.box-card-control')
+
+    let cards_local_storage = localStorage.getItem('carts_data');
+    if (cards_local_storage) {
+        boxs_card_control.forEach(box_card_control => {
+            let cards = JSON.parse(cards_local_storage)
+            let number = box_card_control.querySelector("span.number");
+            let plus_butt = box_card_control.querySelector("button.plus");
+            let nega_butt = box_card_control.querySelector("button.nega");
+            if (number && plus_butt && nega_butt) {
+                let count_of_cart = 0;
+                let id = 0;
+                cards.forEach(card => {
+                    if (card.id == box_card_control.dataset.id) {
+                        number.innerHTML = card.count;
+                        count_of_cart = card.count;
+
+                    }
+                    id = card.id
+                });
+
+
+
+                nega_butt.onclick = () => {
+                    if (count_of_cart >= 1) {
+                        negaItemCard(box_card_control.dataset.id);
+                    } else {
+                        boxs_card_control.forEach(box_control => {
+                            if (box_control.dataset.id == box_card_control.dataset.id) {
+                                box_control.parentElement?.querySelector("button")?.classList.remove("hidden")
+                                box_control.classList.add("hidden")
+                                removeItemCard(box_control.dataset.id)
+                            }
+                        });
+                        reload_count_cart_shop()
+                    }
+                };
+
+
+
+
+                plus_butt.onclick = () => { plusItemCard(box_card_control.dataset.id) };
+
+
+                // nega_butt.addEventListener("click", () => { negaItemCard(box_card_control.dataset.id) })
+            }
+        });
+    }
+}
+
+load_controller_card()
 function load_evens_carts() {
     const carts: NodeListOf<HTMLElement> = document.querySelectorAll('div.cart-shoping');
+
     carts.forEach(cart => {
         let plus_buttons = cart.querySelectorAll('button.plus');
         let type = cart.dataset.type;
-        let nega_buttons = cart.querySelectorAll('button.nege');
+        let nega_buttons = cart.querySelectorAll('button.nega');
         let numbers = cart.querySelectorAll('span.number');
         let remove_buttons = cart.querySelectorAll('button.remove');
         const save_data = () => {
@@ -731,33 +824,35 @@ function load_evens_carts() {
                 if (number) {
                     data.push({ id: cart.dataset.id, count: parseFloat(number.innerHTML) })
                 }
-
                 localStorage.setItem('carts_data', JSON.stringify(data))
             });
         }
         const functionPlus = () => {
+
             numbers.forEach(number => {
-                let speed = type == "numerical" ? 1 : 0.5;
                 let num = parseFloat(number.innerHTML);
-                number.innerHTML = String(num + speed);
+                number.innerHTML = String(num + 1);
             })
             save_data()
+            load_controller_card()
         }
-        plus_buttons.forEach(plus_button => {
-            plus_button.addEventListener('click', () => { functionPlus() })
-        })
         const functionNega = () => {
             numbers.forEach(number => {
-                let speed = type == "numerical" ? 1 : 0.5;
                 let num = parseFloat(number.innerHTML);
-                if (num - speed < 0) {
+                if (num - 1 < 0) {
                     number.innerHTML = '0';
                 } else {
-                    number.innerHTML = String(num - speed);
+                    number.innerHTML = String(num - 1);
                 }
             })
             save_data()
+            load_controller_card()
         }
+        plus_buttons.forEach(plus_button => {
+
+            plus_button.addEventListener('click', () => { functionPlus() })
+        })
+
         nega_buttons.forEach(nega_button => {
             nega_button.addEventListener('click', () => { functionNega() })
         })
@@ -778,7 +873,6 @@ function load_evens_carts() {
 
                     });
                 }
-                console.log(result_data);
                 localStorage.setItem('carts_data', JSON.stringify(result_data));
                 window.axios({
                     method: 'delete',
@@ -851,19 +945,16 @@ function format_item_bar(data: format_item_bar_type): string {
     return `
      <a href='${data.url} ' class="sm:w-96 group w-full mb-4">
     <div  class="animate__animated  animate__zoomIn similar_item cursor-pointer p-2 flex bg-white border border-gray-200 rounded-lg  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <div class=" w-[120px] flex-shrink-0 flex justify-center items-center  relative">
-            <img class="group-hover:rotate-180" src="${host + '/image/similar_item.png'}" alt="">
-            <div class="  absolute top-0 right-0 h-full w-full flex justify-center items-center">
-                <span class="size-[80px] rounded-full overflow-hidden border-[1px] border-white">
-                    <img class=" h-full w-full main object-cover " src="${host + '/storage/' + data.img}" alt="">
-                </span>
-            </div>
+        <div class=" flex-shrink-0 flex justify-center items-center  relative">
+                <div class=" size-36 " >
+                <img class=" size-full  " src="${host + '/storage/' + data.img}" alt="">
+                </div>
         </div>
-        <div class="p-2 pt-6 flex flex-col justify-between">
-            <p class=" text-2xl text  w-full font-bold ">
+        <div class="p-2 pt-6 flex flex-col w-full justify-between">
+            <p class=" text-2xl text text-center  w-full font-bold ">
             ${data.name}
             </p>
-            <p class="text mt-8 mr-4 flex items-center opacity-60">
+            <p class="text mt-8 mr-4 justify-center text-center flex items-center opacity-60">
                   <span class="mt-1 font-bold text-xl"> ${data.count} </span> <span class="mr-2 mt-0.5"> محصول </span>
             </p>
             <br>
@@ -925,6 +1016,7 @@ const close_cart_bar = () => {
     }, 1000)
 }
 
+// load_controller_card
 const function_onchange = () => {
     let hash_string: string = window.location.hash.substring(1);
     if (hash_string.includes('category')) {
@@ -932,7 +1024,6 @@ const function_onchange = () => {
     } else {
         document.documentElement.classList.remove('overflow-hidden');
     }
-    console.log(button_bar);
 
     if (div_bar && button_bar && hash_string.includes('category')) {
         if (text_address_bar)
@@ -973,7 +1064,7 @@ const function_onchange = () => {
                     if (div_bar_item) {
                         let product_result: any = product
                         product_result.url = '/product/' + product.id;
-                        product_result.img = [ product.thumbnail , ...JSON.parse(product.images)];
+                        product_result.img = [product.thumbnail, ...JSON.parse(product.images)];
                         product_result.id = product.id;
                         product_result.price = product.price;
                         product_result.off = product.off;
@@ -982,6 +1073,7 @@ const function_onchange = () => {
                 });
                 reloadImageSwich()
                 reload_button_add_cart_events()
+                load_controller_card()
                 window.axios({
                     method: 'get',
                     url: host + '/api/category/id/' + hash_splite[1],
@@ -1061,11 +1153,11 @@ for (let i = 0; i < copyButtons.length; i++) {
         if (input_copy)
             input_copy.select(); //select input value
         document.execCommand("copy");
-        e.currentTarget.setAttribute("tooltip", "Copied!");
+        e.currentTarget.setAttribute("tooltip", "کپی شد !");
     };
 
     const resetTooltip = (e: any) => {
-        e.currentTarget.setAttribute("tooltip", "Copy to clipboard");
+        e.currentTarget.setAttribute("tooltip", "کپی کردن آدرس");
     };
     if (copyButton) {
         copyButton.addEventListener("click", (e) => copyText(e));
@@ -1227,57 +1319,8 @@ if (button_show_comments && comment_box && show_count_comments) {
         }
     })
 }
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        let chat_button = document.querySelector("span.cc-157aw");
-        let function_edite = () => {
-            let alerts = document.querySelectorAll('div.cc-1no03 a[role~=alert]');
-            let links = document.querySelectorAll('div.cc-1no03 a[rel~=nofollow]');
-            let input_email = document.querySelector('div.cc-1no03 input[name~=message_field_identity-email]');
 
-            alerts.forEach(alert => {
-                alert.remove()
-            });
-            links.forEach(link => {
-                link.remove()
-            });
-            if (input_email) {
-                input_email.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove()
-            }
-            let all_elements: NodeListOf<HTMLElement> = document.querySelectorAll('div.cc-1no03 *');
-            all_elements.forEach(element => {
-                element.style.cssText += 'font-family:sans !important';
-            });
-            let option_button = document.querySelector('a.cc-8ve5w.cc-gge6o');
-            if (option_button) {
-                option_button.remove();
-            }
-        }
-        let all_elements: NodeListOf<HTMLElement> = document.querySelectorAll('div.cc-1no03 *');
-
-        if (chat_button) {
-
-
-            let chatbox: null | HTMLElement = document.querySelector('div.cc-1no03');
-            if (chatbox) {
-                if (chatbox.dataset.visible === 'true') {
-                    let interval = setInterval(() => { function_edite(); }, 100);
-                    localStorage.setItem('interval_chat_box', String(interval));
-                } else {
-                    let interval = localStorage.getItem('interval_chat_box');
-                    if (interval) {
-                        clearInterval(parseInt(interval))
-                    }
-                    setTimeout(() => {
-                        let interva = setInterval(() => { function_edite(); }, 100);
-                        localStorage.setItem('interval_chat_box', String(interva));
-                    })
-                }
-            }
-        }
-    }, 3000)
-})
-var blog: HTMLElement | null = document.querySelector('div.blog');
+var blog: HTMLElement | null = document.querySelector('div.amount');
 const nav_blog: HTMLElement | null = document.querySelector('div.nav-blog');
 const div_titles_blog: HTMLElement | null = document.querySelector('div.titles');
 const product_div: HTMLElement | null = document.querySelector('div.product-div');
@@ -1301,7 +1344,7 @@ if (blog && nav_blog) {
             set_hight()
         }, 100)
     }, 5000)
-    const headers_tag: NodeListOf<HTMLElement> = document.querySelectorAll('div.blog h2');
+    const headers_tag: NodeListOf<HTMLElement> = document.querySelectorAll('div.amount h2');
     for (let i = 0; i < headers_tag.length; i++) {
         let element: HTMLElement | null = headers_tag[i];
         let span: HTMLElement | null = element.querySelector('span')
@@ -1318,7 +1361,7 @@ if (blog && nav_blog) {
                         <div class="flex  items-center">
                             <div class="loader1"></div>
                             <span
-                                class="text group-hover:after:w-full after:transition-all group-hover:font-bold after:w-0 after:content-[''] after:rounded-md after:right-0 after:bg-primary-200 after:h-1 relative after:absolute after:-bottom-1  text-lg mr-3">
+                                class="text group-hover:after:w-full after:transition-all group-hover:font-bold after:w-0 after:content-[''] after:rounded-md after:right-0 after:dark:bg-white after:bg-primary-200 after:h-[3px] relative after:absolute after:-bottom-2  text-lg mr-3">
                                 ${text}
                             </span>
                         </div>
@@ -1331,27 +1374,27 @@ if (blog && nav_blog) {
 
 
 // remove labal 
-let itemsShouldRemove = ["div.leaflet-bottom.leaflet-right",'a[href*="neshan.org"]','a[href*="openstreetmap.org"]']
+let itemsShouldRemove = ["div.leaflet-bottom.leaflet-right", 'a[href*="neshan.org"]', 'a[href*="openstreetmap.org"]']
 
 window.addEventListener('load', () => {
 
     itemsShouldRemove.forEach(itemShouldRemove => {
-    let selector = itemShouldRemove;
-    let fatherEl = "";
-    if (selector.includes(">")) {
-        let toArray = selector.split(">")
-        selector = toArray[1].trim();
-        fatherEl = toArray[0].trim();
-    }
-    document.querySelectorAll(selector).forEach(el => {
-        if (fatherEl) {
-            const parent = el.closest(fatherEl);
-            if (parent) parent.remove();
-        } else {
-            el.remove();
+        let selector = itemShouldRemove;
+        let fatherEl = "";
+        if (selector.includes(">")) {
+            let toArray = selector.split(">")
+            selector = toArray[1].trim();
+            fatherEl = toArray[0].trim();
         }
+        document.querySelectorAll(selector).forEach(el => {
+            if (fatherEl) {
+                const parent = el.closest(fatherEl);
+                if (parent) parent.remove();
+            } else {
+                el.remove();
+            }
+        });
     });
-});
 
 
 

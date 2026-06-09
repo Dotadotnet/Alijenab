@@ -107,7 +107,7 @@
                     'name' => 'summery',
                     'text' => 'توضیحات',
                     'value' => isset($data->summery) ? $data->summery : '',
-                    'type' => 'fa',
+                    'type' => 'en-fa',
                     'placeholder' => 'توضیحات خود رو درمورد این محصول بنویسید',
                 ])
                 @endcomponent

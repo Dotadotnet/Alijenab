@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string("order");
             $table->string('unit')->nullable();
             $table->string('plate')->nullable();
-            $table->string('postal_code',10)->nullable();
+            $table->string('postal_code', 10)->nullable();
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
+            $table->string('address')->nullable();
             $table->string('caption')->nullable();
             $table->string('time_send')->nullable();
             $table->string('status')->nullable();
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-         Schema::dropIfExists('orders');
+        Schema::dropIfExists('orders');
     }
 };

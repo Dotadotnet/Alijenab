@@ -8,7 +8,17 @@ use App\Models\Config;
 
 class Helper
 {
-  
+
+    public static function toPerNum($number)
+    {
+        $number = (string)$number ;
+        return str_replace(
+            ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+            ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'],
+            $number
+        );
+    }
+
     public static function price(int $price): string
     {
         $price = ceil($price / 1000) * 1000;
@@ -19,10 +29,10 @@ class Helper
         for ($i = 0; $i < $select_3_3; $i++) {
             $num =  substr(strrev((string)$price), $i * 3, 3);
             if ((int)$num) {
-                array_push($result_array,  (string)(int)strrev($num) . "‌ "   . $type[$i] );
+                array_push($result_array,  (string)(int)strrev($num) . "‌ "   . $type[$i]);
             }
         }
-        return  implode(" و ", array_reverse($result_array)) . "‌" . 'تومان';
+        return  self::toPerNum(implode(" و ", array_reverse($result_array)) . "‌" . 'تومان');
     }
     public static function type_sell($type_sell_db): string
     {
@@ -53,17 +63,16 @@ class Helper
             foreach ($product as $key => $value) {
                 $data[$i][$key] = $value;
             }
-            $data[$i]['type'] = $data[$i]['type'] === 'numerical' ? 'عدد' : 'کیلو';
             $data[$i]['price'] = ($data[$i]['off'] ? $data[$i]['price'] - ($data[$i]['price'] / 100) * $data[$i]['off'] : $data[$i]['price']);
             $data[$i]['result_price'] = (float)$data[$i]['price'] * (float)$data[$i]['count'];
             $all_price += $data[$i]['result_price'];
             $data[$i]['result_price'] = Helper::price($data[$i]['result_price']);
             $data[$i]['price'] = Helper::price($data[$i]['price']);
         }
-        if((int)$configs[0]->amount > $all_price){
+        if ((int)$configs[0]->amount > $all_price) {
             $all_price = ceil($all_price / 1000) * 1000;
             $all_price += (int)$configs[1]->amount;
-          }
+        }
         return (['data' => $data, 'result' => Helper::price($all_price), 'int_price' => $all_price]);
     }
     public static function getIp(): string

@@ -43,14 +43,15 @@ class ProductController extends Controller
         ]);
         $all_images = [];
         $images = $request->images;
-        foreach ($images as $image) {
-            $path = $image->storeAs(
-                'img/products',
-                md5(time() . $image->hashName() . rand(1, 9000000)) . '.' . $image->extension()
-            );
-            array_push($all_images, $path);
+        if ($images) {
+            foreach ($images as $image) {
+                $path = $image->storeAs(
+                    'img/products',
+                    md5(time() . $image->hashName() . rand(1, 9000000)) . '.' . $image->extension()
+                );
+                array_push($all_images, $path);
+            }
         }
-
         if ($request->filled('nameEn')) {
             $nameEn = $request->nameEn;
         } else {
@@ -89,15 +90,14 @@ class ProductController extends Controller
      */
     public function shortLink(string $id)
     {
-        $data = Product::find($id);
-        $name = $data->name;
-        return redirect(route('userShow', ['category' => str_replace(' ', '-', Category::find($data->category)->name), 'name' => str_replace(' ', '-', $name)]));
+        $product = Product::find($id);
+                return redirect(route('userShow', ['category' => str_replace(' ', '-', Category::find($product->category)->nameEn), 'name' => str_replace(' ', '-', $product->nameEn)]));
     }
     public function userShow($category, $name)
     {
-        $id_category = Category::where(['name' => str_replace('-', ' ', $category)])->get()[0]->id;
-        $data = ((Product::where(['category' => $id_category, 'name' => str_replace('-', ' ', $name)]))->get()[0]->toArray());
-        $data['category'] = [(Category::find($data['category']))->name, $data['category']];
+        $category = Category::where(['nameEn' => str_replace('-', ' ', $category)])->get()[0];
+        $data = ((Product::where(['category' => $category->id, 'nameEn' => str_replace('-', ' ', $name)]))->get()[0]->toArray());
+        $data['category'] = [$category->name, $data['category']];
         $data['imgs'] = [];
         array_push($data['imgs'], Storage::url($data['thumbnail']));
         foreach (json_decode($data['images']) as $img) {
@@ -168,9 +168,10 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         $data = Product::find($id);
-        foreach (json_decode($data->img) as $img) {
+        foreach (json_decode($data->images) as $img) {
             Storage::delete($img);
         }
+        Storage::delete($data->thumbnail);
         ShoppingCart::where('product_id', $id)->delete();
         Product::where('id', $id)->delete();
         return response('File Deleted', 200);

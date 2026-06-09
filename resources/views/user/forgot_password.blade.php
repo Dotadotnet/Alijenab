@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>فراموشی رمز عبور</title>
     <link rel="shortcut icon" href="{{ asset('image/user.png') }}" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/4fa9804fb1.js" crossorigin="anonymous"></script>
     @vite('resources/css/auth.css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">

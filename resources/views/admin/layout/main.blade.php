@@ -9,7 +9,6 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('media/img/custom/image/admin.png') }}" type="image/x-icon">
     <!-- Custom styles -->
-    {{-- <script src="https://kit.fontawesome.com/4fa9804fb1.js" crossorigin="anonymous"></script> --}}
     @vite('resources/css/admin.css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/admin.min.css') }}">
@@ -56,9 +55,11 @@ border-[3px] size-10 flex items-center justify-center rounded-2xl close-search">
             </div>
             <div class="all">
                 <h3 class="text">
-                    <b class="name"></b>
-                    به شماره
-                    <b class="phone"></b>
+                    <b class="name ml-2"></b>
+                    <span class="mr-2">
+                        به شماره
+                    </span>
+                    <b class="phone mr-2 font-bold"></b>
                 </h3>
                 <div class="flex flex-col p-2 max-h-[50vh] table-order overflow-auto">
                     
@@ -67,6 +68,10 @@ border-[3px] size-10 flex items-center justify-center rounded-2xl close-search">
                 <h3 class="text">
                     اطلاعات ارسال :
                 </h3>
+                <br>
+                <div class="flex justify-center items-center" >
+               <b class="address" ></b>
+                </div>
                 <br>
                 <div class="flex justify-center px-20">
                     <span
@@ -79,12 +84,12 @@ border-[3px] size-10 flex items-center justify-center rounded-2xl close-search">
                     </a>
                 </div>
                 <br>
-                <div class="flex px-28 justify-between">
-                    <span class="bg-gray-300 border-2 border-blue-600 dark:bg-gray-700 p-3 rounded-lg">
-                        پلاک : <b class="plate"></b>
+                <div class="flex gap-3 px-28 justify-between">
+                    <span class="bg-gray-300 flex border-2 border-blue-600 dark:bg-gray-700 p-3 rounded-lg">
+                        پلاک  <b class="plate mr-2 "></b>
                     </span>
-                    <span class="bg-gray-300 border-2 border-blue-600 dark:bg-gray-700 p-3 rounded-lg">
-                        واحد : <b class="unit"></b>
+                    <span class="bg-gray-300 flex border-2 border-blue-600 dark:bg-gray-700 p-3 rounded-lg">
+                        واحد  <b class="unit mr-2"></b>
                     </span>
                 </div>
             </div>

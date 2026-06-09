@@ -2,8 +2,10 @@
 @section('style')
 @endsection
 @section('main')
-    <h1 style="text-shadow: 10px 10px 20px green , -10px -10px 20px blue , 10px -10px 20px blue , -10px 10px 20px green  "
-        class=" animate__animated  animate__bounceInRight text-9xl text-white sm:text-[300px] flex justify-center items-center">
+    <br>
+    <br>
+    <h1 style="text-shadow: 10px 10px 20px rgb(202, 236, 255) , -10px -10px 20px #128e6b , 10px -10px 20px #128e6b , -10px 10px 20px rgb(202, 236, 255)  "
+        class=" animate__animated    animate__bounceInRight text-9xl text-white sm:text-[300px] flex justify-center items-center">
         404
     </h1>
     <h2 class=" text-center text-2xl sm:text-3xl text animate__animated  animate__bounceInLeft">
@@ -12,7 +14,7 @@
     <br>
     <div class="flex sm:mt-4 justify-center items-center">
         <a href="/"
-            class="text-white cursor-pointer sm:scale-150 scale-125 bg-gradient-to-r from-green-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">بازگشت
+            class="text-white cursor-pointer sm:scale-150 scale-125 bg-gradient-to-r from-primary-200 to-primary-100 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">بازگشت
             به خانه</a>
     </div>
     <br><br>

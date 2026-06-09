@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('unit')->nullable();
             $table->string('plate')->nullable();
             $table->string('postal_code', 10)->nullable();
+            $table->string('address')->nullable();
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
-            $table->string("remember_token")->nullable();
             $table->integer('wallet');
             $table->rememberToken();
             $table->timestamps();

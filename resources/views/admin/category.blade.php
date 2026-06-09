@@ -73,7 +73,7 @@
                 @component('admin.components.input', [
                     'name' => 'caption',
                     'text' => 'توضیحات',
-                    'type' => 'fa',
+                    'type' => 'en-fa',
                     'value' => isset($data->caption) ? $data->caption : '',
                     'placeholder' => 'توضیحات خود رو درمورد این دسته بندی بنویسید',
                 ])

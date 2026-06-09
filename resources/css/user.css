@@ -1,3 +1,4 @@
+@import "@fortawesome/fontawesome-free/css/all.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -119,10 +120,10 @@
 
     :root {
         --bg-background: #078c91;
-        --clr-card: rgb(55, 55, 255); 
+        --clr-card: rgb(55, 55, 255);
         --clr-1: #078c91;
-        --clr-2:  #078c91;
-        --clr-3: rgb(0, 186, 0) ;
+        --clr-2: #078c91;
+        --clr-3: rgb(0, 186, 0);
     }
 
     *,
@@ -133,7 +134,7 @@
         box-sizing: border-box;
     }
 
-  
+
 
     main {
         width: 100%;
@@ -144,7 +145,7 @@
 
     .card {
         position: relative;
-     
+
         border-radius: 0.45rem;
         cursor: pointer;
         background-color: var(--clr-card);
@@ -356,39 +357,40 @@
         font-size: 20px;
     }
 
-div.blog .text-huge{
-    @apply text-xl sm:text-3xl ;
+    div.blog .text-huge {
+        @apply text-xl sm:text-3xl;
 
-}
+    }
 
-div.blog .text-big{
-    @apply text-lg sm:text-2xl ;
+    div.blog .text-big {
+        @apply text-lg sm:text-2xl;
 
-}
+    }
 
-div.blog .text-tiny{
-    @apply text-xl sm:text-sm ;
+    div.blog .text-tiny {
+        @apply text-xl sm:text-sm;
 
-}
-div.blog .text-small{
-    @apply text-sm sm:text-base ;
+    }
 
-}
+    div.blog .text-small {
+        @apply text-sm sm:text-base;
+
+    }
 
 
-div.blog *{
-    @apply text text-sm sm:text-base
-}
+    div.blog * {
+        @apply text text-sm sm:text-base
+    }
 
-div.blog img{
-    @apply rounded-lg ;
+    div.blog img {
+        @apply rounded-lg;
 
-}
+    }
 
-html {
-    scroll-behavior: smooth;
-  }
-  
+    html {
+        scroll-behavior: smooth;
+    }
+
 }
 
 @layer components {
@@ -401,7 +403,7 @@ html {
     }
 
     .snackbar {
-        @apply gap-1 sm:gap-2 ;
+        @apply gap-1 sm:gap-2;
         padding: 10px !important;
         border-radius: 6px;
         box-shadow: 4px 2px 16px rgba(0, 0, 0, 0.15);
@@ -416,7 +418,7 @@ html {
     }
 
     .snackbar-action>a {
-        @apply sm:text-sm text-xs font-bold  ;
+        @apply sm:text-sm text-xs font-bold;
         line-height: 20px;
         text-decoration: none;
         cursor: pointer;
@@ -538,8 +540,8 @@ html {
     }
 
     .footer-group::before {
+        @apply dark:shadow-primary-100 shadow-primary-200 shadow-[0px_0px_10px_4px];
         position: absolute;
-        box-shadow: 0px 0px 10px 4px rgb(7, 140, 145);
         content: '';
         width: 5px;
         border-radius: 10px;
@@ -555,34 +557,42 @@ html {
 
     .swiper-button-next,
     .swiper-button-prev {
-        @apply select-none rounded-full bg-primary-200 ;
+        @apply select-none rounded-full bg-black/20 dark:bg-white/10 backdrop-blur-md border border-white/20 shadow-lg;
         width: 50px !important;
         height: 50px !important;
     }
 
+
+
+    [data-icon] {
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
 
     .swiper-button-next:hover,
     .swiper-button-prev:hover {
         @apply scale-125
     }
 
-    .swiper-slide-next .select {
-        display: inline-block !important;
+    .swiper-slide-next .amount-slide {
+
+     @apply !scale-110 !-translate-y-2 ;        
     }
 
     @media only screen and (max-width: 640px) {
 
         .swiper-button-next,
         .swiper-button-prev {
-            width: 35px !important;
-            height: 35px !important;
+            width: 45px !important;
+            height: 45px !important;
         }
     }
 
     .rotate {
         animation: spin 20s linear infinite;
     }
-    
+
 
     @-webkit-keyframes spin {
         0% {
@@ -604,46 +614,101 @@ html {
         }
     }
 
-  /* HTML: <div class="loader"></div> */
-.loader1 {
-    width: 15px ;
-    aspect-ratio: 1 ;
-    border-radius: 50% ;
-    background: #078c91;
-    box-shadow: 0 0 0 0 #078c91 ;
-    animation: l2 1.5s infinite linear ;
-    position: relative  ;
-  }
-  .loader1:before,
-  .loader1:after { 
+    /* HTML: <div class="loader"></div> */
+    .loader1 {
+        width: 15px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background: #078c91;
+        box-shadow: 0 0 0 0 #078c91;
+        animation: l2 1.5s infinite linear;
+        position: relative;
+    }
 
-    content: "" ;
-    border-radius: 50%;
-    position: absolute ;
-    inset: 0 ;
-    box-shadow: 0 0 0 0 #078c91 ;
-    animation: inherit ;
-    animation-delay: -0.5s ;
-  }
-  .loader1:after {
-    animation-delay: -1s ;
-  }
-  @keyframes l2 {
-      100% {box-shadow: 0 0 0 10px #0000}
-  }
+    .dark .loader1 , .dark .loader1:before, .dark .loader1:after  {
+        background-color: white;
+        box-shadow: 0 0 0 0 #ffffff;
+    }
 
-  /* HTML: <div class="loader"></div> */
-.loader {
-    @apply sm:w-10 w-8;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: 
-      radial-gradient(farthest-side,#ffffff 94%,#0000) top/8px 8px no-repeat,
-      conic-gradient(#0000 30%,#ffffff);
-    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
-    animation: l13 1s infinite linear;
-  }
-  @keyframes l13{ 
-    100%{transform: rotate(1turn)}
-  }
+    .loader1:before,
+    .loader1:after {
+        content: "";
+        border-radius: 50%;
+        position: absolute;
+        inset: 0;
+        box-shadow: 0 0 0 0 #078c91;
+        animation: inherit;
+        animation-delay: -0.5s;
+    }
+
+    .loader1:after {
+        animation-delay: -1s;
+    }
+
+    @keyframes l2 {
+        100% {
+            box-shadow: 0 0 0 10px #0000
+        }
+    }
+
+    /* HTML: <div class="loader"></div> */
+    .loader {
+        @apply sm:w-10 w-8;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background:
+            radial-gradient(farthest-side, #ffffff 94%, #0000) top/8px 8px no-repeat,
+            conic-gradient(#0000 30%, #ffffff);
+        -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+        animation: l13 1s infinite linear;
+    }
+
+    @keyframes l13 {
+        100% {
+            transform: rotate(1turn)
+        }
+    }
+}
+
+
+.cafe-card {
+    transition: transform 0.25s ease, box-shadow 0.35s ease;
+}
+
+.cafe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.2);
+}
+
+/* دکمه‌های شفاف: پس‌زمینه کاملاً شفاف با حاشیه مشخص */
+.btn-transparent {
+    background-color: transparent !important;
+    backdrop-filter: blur(0px);
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-transparent:hover {
+    background-color: rgba(180, 83, 9, 0.08) !important;
+    border-color: #b45b0b !important;
+    transform: scale(1.02);
+}
+
+/* ریسپانسیو بهتر برای موبایل */
+@media (max-width: 480px) {
+    .feature-tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.75rem;
+    }
+
+    .btn-transparent {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* خطوط تزیینی */
+.divider-custom {
+    background: linear-gradient(90deg, transparent, #cb8b42, #e7b874, #cb8b42, transparent);
+    height: 2px;
+    width: 100%;
 }

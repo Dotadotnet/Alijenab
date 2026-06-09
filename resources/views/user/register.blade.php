@@ -5,21 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ثبت نام</title>
-    <link rel="shortcut icon" href="{{ asset('image/user.png') }}" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/4fa9804fb1.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="{{ asset('image/favicon.ico') }}">
     @vite('resources/css/auth.css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 </head>
 
 <body class="p-10">
-    <img src="" style="filter: brightness(50%)"
+    <img src="" style="filter: brightness(80%)"
         class=" object-cover backgrand-image fixed top-0 right-0 size-full" alt="">
 
     <div class="fixed info-div    top-0 right-0 size-full flex justify-center items-center p-4 z-20">
         <div class="w-full sm:w-3/4 max-w-[500px] rounded-lg border-2 border-white">
             <div class="w-full -z-30 bg-light-opacity-30 rounded-lg backdrop-blur  p-2">
-                <h3 class=" font-vazir text-primary-200 text-center font-bold pt-2 pb-4 text-xl ">شماره تلفن خود را وارد کنید</h3>
+                <div class="flex justify-center items-center" >
+                    <img src="/image/main-logo.png" class="w-1/2 my-3 sm:my-4"  alt="">
+                </div>
+                <h3 class=" font-vazir text-primary-200 text-center font-bold pt-2 pb-4 text-xl ">شماره تلفن خود را وارد
+                    کنید</h3>
                 {{-- <div class="input-admin relative">
                     <input type="text" name="name" data-type="fa" id="floating_outlined"
                         class="block bg-white px-2.5 pb-2.5 pt-4 w-full text-md text-gray-900 bg-transparent rounded-lg border-1 border-blue-500 appearance-none focus:outline-0 focus:border-blue-600 peer"
@@ -52,10 +55,10 @@
                             </sapn>
                     </div>
                     <input name="phone" onkeyup="typePhone(event,this)" type="number" id="floating_outlined"
-                        class="block bg-white px-12 ltr text-left  pb-3 pt-4 w-full text-md text-gray-900 bg-transparent rounded-lg border-1 border-blue-500 appearance-none focus:outline-0 focus:border-blue-600 peer"
+                        class="block bg-white px-12 ltr text-left tracking-widest text-xl outline-none  pb-3 pt-4 w-full text-md text-gray-900 bg-transparent rounded-lg border-1 border-blue-500 appearance-none focus:outline-0 focus:border-blue-600 peer"
                         placeholder=" " />
                     <label for="floating_outlined"
-                        class="absolute text-[16px] text-primary-200 after:mr-1 after:font-bold duration-300 transform scale-[1] font-bold top-[13px] z-10 origin-[0] peer-placeholder-shown:after:content-none peer-placeholder-shown:text-gray-500 peer-placeholder-shown:after:text-gray-500 px-2 peer-focus:px-2 peer-focus:text-primary-200  peer-placeholder-shown:scale-100  peer-placeholder-shown:font-light peer-focus:font-bold peer-focus:text-primary-200 peer-focus:after:mr-1 peer-focus:after:text-primary-200 peer-focus:after:font-bold peer-focus:scale-[1] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">شماره
+                        class="absolute text-[16px]  text-primary-200 after:mr-1 after:font-bold duration-300 transform scale-[1] font-bold h-full justify-center items-center flex top-0 z-10 origin-[0] peer-placeholder-shown:after:content-none peer-placeholder-shown:text-gray-500 peer-placeholder-shown:after:text-gray-500 px-2 peer-focus:px-2 peer-focus:text-primary-200  peer-placeholder-shown:scale-100  peer-placeholder-shown:font-light peer-focus:font-bold peer-focus:text-primary-200 peer-focus:after:mr-1 peer-focus:after:text-primary-200 peer-focus:after:font-bold peer-focus:scale-[1] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">شماره
                         تماس</label>
                     <div class="absolute h-full flex justify-center items-center left-2 top-0 ">
                         <span
@@ -66,10 +69,12 @@
                 </div>
                 <div class="text-center mt-4">
                     <button type="button"
-                        class="text-white save-register mute text-md font-bold bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 rounded-lg px-5 py-2.5 text-center me-2 mb-2">
-                        تایید      
+                        class="text-white save-register mute text-md font-bold bg-gradient-to-r from-primary-100 to-primary-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-primary-100 dark:focus:ring-primary-200 rounded-lg px-5 py-2.5 text-center me-2 mb-2">
+                        تایید
                     </button>
+                    
                 </div>
+                
             </div>
         </div>
     </div>
@@ -77,18 +82,18 @@
         <div class="w-full sm:w-3/4 max-w-[500px] rounded-lg border-2 border-white">
             <div class="w-full -z-30 bg-light-opacity-30 rounded-lg backdrop-blur  p-2">
                 <h2 class="text-center text-7xl text-green-600">
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <i class="fa text-7xl fa-check-circle" aria-hidden="true"></i>
                 </h2>
                 <h3 class=" tornoment-div font-vazir text-green-600  text-center font-bold pt-2 pb-4 text-2xl ">00:00
                 </h3>
                 <h4 class="font-bold mr-1 ">
-                      لینک تایید به شماره <b class="phone"></b> ارسال شد لطفا برای تایید شماره خود وارد لینک شوید !!!
+                    لینک تایید به شماره <b class="phone"></b> ارسال شد لطفا برای تایید شماره خود وارد لینک شوید !!!
                 </h4>
-             
 
-<br>
+
+                <br>
                 <a class="font-bold mr-2 mt-1  inline-block redirect-link text-primary-200 hover:text-primary-100"
-                href="/login">تصریح شماره</a>
+                    href="#">تصریح شماره</a>
 
 
 
@@ -110,6 +115,12 @@
         var old_value_phone_input = '';
 
         function typePhone(event, el) {
+            if (el.value.includes("09") && el.value.length == 11 && !isNaN(el.value)) {
+                el.value = el.value.replace('09', '')
+            }
+            if (el.value.includes("+98")) {
+                el.value = el.value.replace('+98', '').replaceAll(' ', '')
+            }
             var key = event.keyCode || event.charCode;
             if (key == 8 || key == 46) {
                 old_value_phone_input = event.target.value;
@@ -129,7 +140,8 @@
     </script>
 
     @vite('resources/js/auth.js')
-    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="fb668e62-2aa3-4e8a-8c23-6bc77ce7e50e";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+    @vite('resources/js/crisp_chat.js')
+    @vite('resources/js/user.js')
 </body>
 
 </html>

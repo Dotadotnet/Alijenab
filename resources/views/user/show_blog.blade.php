@@ -5,14 +5,25 @@
 @section('main')
     <div class="flex min-h-[50vh]  md:flex-row flex-col-reverse justify-end px-2 md:px-5">
         <div class="w-full md:w-3/5 blog-main">
-            <h1 class=" text-2xl text sm:text-4xl ">
-                {{ $title }}
-            </h1>
+            <article>
+
+                <h1 class="mr-8 sm:mr-12 mt-4 sm:mt-6 text-2xl footer-group font-sahel before:-right-3 text sm:text-4xl ">
+                    {{ $title }}
+                </h1>
+                <p class="text-center text-lg sm:text-xl dark:text-gray-200 text-gray-800 font-tanha mt-6">
+                    {{ $caption }}
+                </p>
+            </article>
+            <div class="justify-center items-center pt-6 pb-7 px-10 flex">
+                <div class=" w-3/4 ">
+                    <img class="rounded-2xl " src="{{ '/storage/' . $thumbnail }}" alt="">
+                </div>
+            </div>
             <br>
-            <div class="document-editor">
+            <div class="document-editor ">
                 <div class="document-editor__toolbar"></div>
                 <div class="document-editor__editable-container">
-                    <div class="document-editor__editable blog text ck-content p-1">
+                    <div class="document-editor__editable blog amount text ck-content p-1">
                         {!! str_replace(['<h2>&nbsp;</h2>', '<h1>&nbsp;</h1>', '<h3>&nbsp;</h3>'], [], $amount) !!}
                     </div>
                 </div>
@@ -28,8 +39,8 @@
                 dd(env('DB_DATABASE'))
             }} --}}
             <br>
-            <div class=" w-full md:hidden  ">
-                <div class="bg-gray-200 dark:bg-gray-700 pb-8 pt-5 sm:pt-2  md:pt-5 lg:pt-5 xl:pt-2 px-5 rounded-lg w-full">
+            <div class=" w-full md:hidden px-7  ">
+                <div class="bg-gray-200 dark:bg-gray-700 pb-8 pt-5 sm:pt-2  md:pt-5 lg:pt-5 xl:pt-2 px-5 rounded-2xl w-full">
 
                     <div class=" flex flex-col sm:flex-row  md:flex-col lg:flex-col xl:flex-row   w-full  ">
                         <h3 class=" flex items-center  flex-grow text-nowrap m-1 text-xl sm:text-lg text">اشتراک گزاری در
@@ -82,16 +93,18 @@
             <br>
         </div>
         <div class="w-full md:w-2/5 md:absolute nav-blog md:h-full left-0 text-2xl sm:text-3xl text top-32 ">
-            عناوین :
-            <br>
-            <div class="sticky mt-3 top-24">
-                <div class="titles pr-4">
+            <div class="sticky sm:pr-0 pr-7 top-28">
+                <div class="text-2xl  sm:text-3xl">
+                    عناوین :
+                </div>
+
+                <div class="titles py-3 pr-5">
 
                 </div>
                 <p class="w-full h-4">&nbsp;</p>
                 <div class=" w-full md:pl-12 md:inline-block hidden   ">
                     <div
-                        class="bg-gray-200 dark:bg-gray-700 pb-8 pt-5 sm:pt-2  md:pt-5 lg:pt-5 xl:pt-2 px-5 rounded-lg w-full">
+                        class="bg-gray-200 dark:bg-gray-700 pb-8 pt-5 sm:pt-2  md:pt-5 lg:pt-5 xl:pt-2 px-5 rounded-2xl w-full">
 
                         <div class=" flex flex-col sm:flex-row  md:flex-col lg:flex-col xl:flex-row   w-full  ">
                             <h3 class=" flex items-center  flex-grow text-nowrap m-1 text-xl sm:text-lg text">اشتراک گزاری

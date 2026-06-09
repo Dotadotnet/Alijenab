@@ -7,13 +7,12 @@
         $user = Auth::guard('user')->user();
     @endphp
 
-    <div class="flex-col cart-shoping-main mt-4">
+    <div class="flex sm:flex-row gap-4 justify-around flex-col cart-shoping-main  mt-4">
 
     </div>
     <br>
     @if ($user)
-        <div class="w-full justify-center mt-5 flex">
-
+        <div class="w-full justify-center cart-total-price mt-5 flex">
             <div
                 class="lg:p-5 p-3 w-full md:w-[500px] rounded-lg bg-white shadow-lg   dark:shadow-[rgba(255,255,255,0.5)] dark:bg-gray-700">
                 <div class="text-yellow-400">
@@ -71,7 +70,7 @@
             </div>
         </div>
     @else
-        <div class="w-full justify-center xl:hidden mt-5 flex">
+        <div class="w-full justify-center cart-total-price  mt-5 flex">
             <div
                 class="lg:p-5 p-3 w-full md:w-[500px] rounded-lg bg-white shadow-lg   dark:shadow-[rgba(255,255,255,0.5)] dark:bg-gray-700">
                 <div class="text-yellow-400">

@@ -35,46 +35,11 @@ const animateCSS = (element: any, animation: string, prefix = 'animate__') =>
 
     const all_input_items: NodeListOf<HTMLElement> = document.querySelectorAll("div.input-admin");
     const characters_en = "QWERTYUIOPLKJHGFDSAZXCVBNM qwertyuiopasdfghjklzxcvbnm,.?!+-@_";
-    const characters_fa = "ضصثقفغعهخحجچپچشسیبلاتنمکگظطزرذدئووئدذرزطظظشسیبلاتنمکگچجحخهعغفقثصضاآ ";
+    const characters_fa = "ضصثقفغعهخحجچپچشسیبلاتنمکگظطزرذدئووئدذ،ژُِِِِِّّۀ«ۀآـ«,]ٌريالًٍريالًٌّؤإء«ـ[\؛ًَژۀۀآ،ريالرزطظظشسیبلاتنمکگچجحخهعغفقثصضاآ ";
     const numbers = "0987654321۱۲۳۴۵۶۷۸۹۰";
     const map_pattern: [type: string, characters: string][] = [["fa", characters_fa], ["en", characters_en], ["num", numbers]];
     var host = window.location.protocol + "//" + window.location.host + '/';
-    const margeDataSartShop = () => {
-        window.axios({
-            method: 'get',
-            url: host + 'shop-carts-user',
-        }).then(function (response: any) {
-            let local_data: any = localStorage.getItem('carts_data');
-            if (response.data && local_data) {
-                let data: any[] = response.data;
-                let items: { id: number, count: number }[] = JSON.parse(local_data);
-                data.forEach(item_db => {
-                    let isset = false;
-                    for (let i = 0; i < items.length; i++) {
-                        const item = items[i];
-                        if (item_db.product_id == item.id) {
-                            isset = true
-                        }
-                    }
-                    if (!isset)
-                        items.push({ id: item_db.product_id, count: 1 })
-                });
 
-                localStorage.setItem('carts_data', JSON.stringify(items))
-                window.axios({
-                    method: 'post',
-                    url: host + 'merge-data-cart',
-                    data: { data: items }
-                }).then(function (response: any) {
-                }).catch(function (error: Error) {
-                }).then(function () { });
-            }
-            renderCartLocal()
-        }).catch(() => {
-            renderCartLocal()
-        })
-    }
-    margeDataSartShop()
     var error_save_element: HTMLInputElement;
     var error_save_count: number;
     for (let i = 0; i < all_input_items.length; i++) {
@@ -341,7 +306,7 @@ buttons_logout.forEach(button_logout => {
 });
 
 
-const tailwind_loader: string = `<div class="w-full text-center flex justify-center" role="status"><svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/><path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/></svg><span class="sr-only">Loading...</span></div>`;
+const tailwind_loader: string = `<div class="w-full text-center flex justify-center" role="status"><svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-white fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/><path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/></svg><span class="sr-only">Loading...</span></div>`;
 const button_navbar: null | HTMLElement = document.querySelector('button.navbar-button');
 const items_navbar_box: NodeListOf<HTMLElement> = document.querySelectorAll('div.item-navbar-box');
 const item_navbar_circle: null | HTMLElement = document.querySelector('div.item-navbar-circle');
@@ -406,56 +371,87 @@ if (button_save_info) {
         }
     })
 }
-function price(price: number): string {
-    price = Math.ceil(price / 1000) * 1000;    
-    const type: string[] = ['', 'هزار', 'میلیون', 'میلیارد', 'تیلیارد'];
-    const priceLen: number = String(price).length;
-    const select3_3: number = Math.ceil(priceLen / 3);
-    const resultArray: string[] = [];
+function price(price: Number): String {
+    price = Math.ceil(price / 1000) * 1000;
 
-    for (let i: number = 0; i < select3_3; i++) {
-        const num: string = String(price).split('').reverse().join('').substring(i * 3, (i + 1) * 3);
-        if (parseInt(num)) {
-            resultArray.push('<span style="white-space: nowrap;" class="price"><span> ' + parseInt(num.split('').reverse().join('')) + ' </span>' + " " + type[i] + " " + '</span>');
+    const type = ['', 'هزار', 'میلیون', 'میلیارد', 'تیلیارد'];
+    const priceLen = String(price).length;
+    const select33 = Math.ceil(priceLen / 3);
+
+    const resultArray = [];
+
+    for (let i = 0; i < select33; i++) {
+        const num = String(price)
+            .split('')
+            .reverse()
+            .join('')
+            .substr(i * 3, 3);
+
+        if (parseInt(num, 10)) {
+            resultArray.push(
+                String(parseInt(num.split('').reverse().join(''), 10)) +
+                '‌ ' +
+                type[i]
+            );
         }
     }
-    let result = resultArray.reverse().join("<span style='text-align:center;margin:0px 4px'>و</span>") + '<span>تومان<span/>';
-    return result.trim() === '<span>تومان<span/>' ? '0 تومان' : result.trim();
+
+    return toPerNum(resultArray.reverse().join(' و ') + '‌تومان');
 }
+
+
+function toPerNum(input: string | number | null | undefined): string {
+    if (input === null || input === undefined) return '';
+    return String(input).replace(/\d/g, (digit: string): string => {
+        return '۰۱۲۳۴۵۶۷۸۹'[Number(digit)];
+    });
+}
+
 const carts: NodeListOf<HTMLElement> = document.querySelectorAll('div.cart-shoping');
 const all_price_cart_results = document.querySelectorAll('span.price-all');
 const price_results = document.querySelectorAll('span.result-price');
 const show_price_sends = document.querySelectorAll('div.show-price-send ');
 const show_free_sends = document.querySelectorAll('div.show-free-send ');
 const box_buttons_pay = document.querySelector('div.box-buttons');
-const cart_box = document.querySelector('div.cart-shoping-main'); 
+const cart_box = document.querySelector('div.cart-shoping-main');
 // const all_data
 const renderCartLocal = () => {
     let data: any = localStorage.getItem('carts_data');
+    console.log(data);
     if (data) {
 
         let items: { id: number, count: number }[] = JSON.parse(data);
-        console.log(items);
-        
+
         if (!items.length) {
             const cart_box = document.querySelector('div.cart-shoping-main');
-            if (cart_box)
+            if (cart_box) {
+
                 cart_box.innerHTML += `
-        <h1 class="text text-center sm:mt-32 text-2xl sm:text-4xl">
-            سبد خرید شما خالی است
-        </h1> 
-        <style>
-            .dark a.link-home {
-                text-shadow: 2px 2px 1px blue, -2px -2px 1px green
+                <div class=" flex flex-col justify-center items-center ">
+
+                <h1 class="text text-center sm:mt-32 text-2xl sm:text-4xl">
+                سبد خرید شما خالی است
+                </h1> 
+                <style>
+                .dark a.link-home {
+                    text-shadow: 2px 2px 1px blue, -2px -2px 1px green
+                    }
+                    
+                    a.link-home {
+                        text-shadow: 2px 2px 1px blue, -2px -2px 1px red
+                        }
+                        </style>
+                        <a href="/menu" class="text link-home block text-center mt-16 text-2xl sm:text-4xl">
+                        برای اضافه کردن کالا به سبد خرید کلیک کنید
+                        </a>
+                        </div>
+                        `
+            }
+            const cart_total_price: HTMLElement | null = document.querySelector("div.cart-total-price");
+            if (cart_total_price) {
+                cart_total_price.classList.add("hidden")
             }
 
-            a.link-home {
-                text-shadow: 2px 2px 1px blue, -2px -2px 1px red
-            }
-        </style>
-        <a href="/show-all" class="text link-home block text-center mt-16 text-2xl sm:text-4xl">
-            برای اضافه کردن کالا به سبد خرید کلیک کنید
-        </a>`
 
         }
 
@@ -468,93 +464,106 @@ const renderCartLocal = () => {
                 if (response.data) {
                     let data: any[] = response.data;
                     data.forEach(item => {
-                        cart_box.innerHTML += `  <div data-price="${  item.off ? item.price - (item.price / 100) * item.off : item.price }" data-id="${item.id}" id="${item.id}" data-type="${item.type}"
-                    class="mt-3 cart-shoping animate__animated animate__fadeInRight shadow-lg  dark:shadow-[rgba(255,255,255,0.5)]  bg-white dark:bg-gray-700 rounded-lg p-2">
-                    <div class="hidden sm:flex w-full sm:items-center sm:justify-between  pl-4">
-                        <div class="size-28 max-w-none">
-                            <img src="${'/storage/' + JSON.parse(item.img)[0]}"
-                                class="size-full object-cover rounded-lg" alt="">
+                        cart_box.innerHTML += `  
+                                  <div class="flex cart-shoping relative bg-white dark:bg-gray-800 p-2 rounded-2xl  mb-4 "  data-price="${item.off ? item.price - (item.price / 100) * item.off : item.price}" data-id="${item.id}" id="${item.id}" data-type="${item.type}">
+               
+                        <div class=" relative" >
+                        <div class="absolute  sm:hidden flex right-0 bottom-0  size-full justify-center items-end" >
+                                   <div class="w-full p-2">
+                                          
+                                            <div data-id="{{ $selected->id }}" id="{{ $selected->id }}"
+                                                class="group flex  w-full   box-card-control  bg-white/10 backdrop-blur-sm
+          text-sm  h-8 px-1 flex justify-between  items-center text-white hover:font-bold  group rounded-full ">
+                                                <button
+                                                    class="
+                                                    bg-white/10 backdrop-blur-sm          hover:bg-white/20
+          rounded-full   cursor-pointer text-gray-600 dark:text-gray-100 d flex justify-center items-center text-xl sm:text-2xl size-6 bg-gray-300 plus">
+
+                                                    <svg class="text-gray-100 size-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1-2 0v-6H5a1 1 0 0 1 0-2h6V5a1 1 0 0 1 1-1" />
+                                                    </svg>
+                                                </button>
+                                                <span class="number select-none font-bold px-1 text-white ">
+                                                     ${item.count}
+                                                </span>
+                                       <button
+                                                    class="
+                                                    bg-white/10 backdrop-blur-sm          hover:bg-white/20
+          rounded-full   cursor-pointer text-gray-100 d flex justify-center items-center text-xl sm:text-2xl size-6 bg-gray-300 nega">
+                                                    <svg class="text-gray-100 size-4"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M5 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
                         </div>
-                        <div class="sm:h-full  sm:flex sm:justify-center sm:items-center w-40">
-                            <a class="hover:text-blue-600 text transition-none sm:text-xl"
-                                href="${'/product/' + item.id}">${item.name}</a>
-                        </div>
-                        <div class="sm:h-full flex-wrap sm:flex sm:justify-center sm:items-center">
-                            <div class="flex justify-center w-40 items-center">
-                                <button type="button"
-                                    class="text-white plus bg-blue-700 size-8 flex justify-center items-center text-xl hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg   dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                </button>
-                                <span class="text flex w-20 justify-center items-center mr-2">
-                                    <span data-type="${item.type}"
-                                        class="number select-none text-xl pt-1 font-bold flex items-center">
-                                            ${item.count}
-                                    </span>
-                                    <span
-                                        class="mr-1 select-none text-lg font-bold ${item.type == 'numerical' ? 'mb-[3px]' : 'mb-[0px]'}">
-                                        ${item.type == 'numerical' ? 'عدد' : 'کیلو'}
-                                    </span>
-                                </span>
-                                <button type="button"
-                                    class="text-white nege mr-2 bg-blue-700 size-8 flex justify-center items-center text-xl hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg   dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div
-                            class="sm:h-full text text-xl  pb-2 price font-bold w-64 text-nowrap sm:flex sm:justify-center sm:items-center">
-                            ${price(item.off ? item.price - (item.price / 100) * item.off : item.price)}
-                        </div>
-                        <div class="sm:h-full sm:flex sm:justify-center sm:items-center">
-                            <button type="button"
-                                class="focus:outline-none remove text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-2xl size-12 flex justify-center items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
+                  <img class="sm:w-36 sm:h-32 w-28 h-24 overflow-hidden object-cover rounded-2xl " src="${'/storage/' + item.thumbnail}" alt="">
+                </div>
+                <div style="width: calc(100% - 88px)" class="flex py-2 flex-col relative justify-around pr-3" >
+ <button class=" remove sm:top-2 sm:left-3 sm:scale-125 text-white  opacity-80 hover:opacity-100 dark:bg-gray-700 bg-gray-300 absolute left-0 top-0 cursor-pointer flex justify-center items-center size-7 text-lg rounded-full">
+                        <svg class=" size-6 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+	<path d="M0 0h24v24H0z" fill="none" />
+	<path fill="currentColor" d="m13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29l-4.3 4.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l4.29-4.3l4.29 4.3a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42Z" />
+</svg>
+
+                     </button>
+                  <p class="text flex justify-between">
+                     <a href="${'/product/' + item.id}" class="text-lg sm:text-xl lg:text-2xl select-none font-bold">${item.name}</a>
+                  
+                  </p>
+                
+                  <p class="text text-sm  ">
+                    <div class="flex justify-between  items-center">
+                        <div class="w-full flex flex-wrap  items-center " >
+                      <span class=" select-none   flex-nowrap text-sm sm:text-base lg:text-lg opacity-50 scale-75 line-through  text-nowrap text">
+                    ${price(item.price)}   
+                    </span> 
+
+                    
+                    <b class=" select-none  flex-nowrap text-base sm:text-lg lg:text-xl text-nowrap text">
+                    ${price(item.off ? item.price - (item.price / 100) * parseInt(item.off) : item.price)}   
+                    </b> 
+                  
+                    </div>
+                     <div data-id="{{ $offer->id }}" id="{{ $offer->id }}"
+                                                class="group hidden sm:flex  ml-6    max-w-44  dark:bg-gray-700  bg-gray-200 sm:text-2xl w-full text-lg h-10 sm:h-12 flex justify-between px-1 items-center text-white hover:font-bold  group rounded-full ">
+                                                <button
+                                                    class="rounded-full dark:shadow-gray-200 shadow-gray-800  hover:shadow-[0px_0px_3px_0.5px] cursor-pointer text-gray-600 dark:text-gray-100 dark:bg-gray-600 flex justify-center items-center text-xl sm:text-2xl size-8 sm:size-10 bg-gray-300 plus">
+
+                                                    <svg class="text-gray-600 dark:text-gray-100 size-6 sm:size-8"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1-2 0v-6H5a1 1 0 0 1 0-2h6V5a1 1 0 0 1 1-1" />
+                                                    </svg>
+                                                </button>
+                                                <span class="number font-bold dark:text-white text-gray-800">
+                                                    ${item.count} 
+                                                </span>
+                                                <button
+                                                    class="rounded-full cursor-pointer dark:shadow-gray-200 shadow-gray-800  hover:shadow-[0px_0px_3px_0.5px] dark:text-gray-100 dark:bg-gray-600   text-gray-600 flex justify-center items-center text-2xl size-8 sm:size-10 bg-gray-300 nega">
+                                                    <svg class="  text-gray-600 dark:text-gray-100 size-6 sm:size-8"
+                                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M0 0h24v24H0z" fill="none" />
+                                                        <path fill="currentColor"
+                                                            d="M5 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1" />
+                                                    </svg>
+                                                </button>
+                                            </div>
                         </div>
 
-                    </div>
-                    <div class="w-full flex sm:hidden">
-                        <img src="${'/storage/' + JSON.parse(item.img)[0]}"
-                            class=" object-cover rounded-lg size-20 select-none" alt="">
-                        <div class="flex flex-col justify-between py-[1px] pr-2" style="width: calc(100% - 80px)">
-                            <div class="flex justify-between text">
-                                <a class="hover:text-blue-600 text transition-none flex items-center text-nowrap text-base"
-                                    href="${'/product/' + item.id}">${item.name}</a>
-                                <div class="text text-xs flex items-center ">
-                                    <div class="flex price pb-0.5 flex-wrap items-center justify-end ">
-                            ${price(item.off ? item.price - (item.price / 100) * item.off : item.price)}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex justify-between items-center text">
-                                <div class="flex justify-center items-center">
-                                    <button type="button"
-                                        class="text-white plus bg-blue-700 text-xl size-8 flex justify-center items-center hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg   dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                    </button>
-                                    <span class="text flex w-16 justify-center items-center mr-2">
-                                        <span data-type="${item.type}"
-                                            class="number select-none text-lg  font-bold flex items-center">
-                                            ${item.count}
-                                        </span>
-                                        <span
-                                            class="mr-1 ${item.type == 'numerical' ? 'mb-[3px]' : 'mb-[0px]'} select-none text-lg font-bold">
-                                              ${item.type == 'numerical' ? 'عدد' : 'کیلو'}
-                                        </span>
-                                    </span>
-                                    <button type="button"
-                                        class="text-white nege mr-2 bg-blue-700  flex justify-center items-center text-xl size-8 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg   dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                    </button>
-                                    </div>
-                                    <button type="button"
-                                    class="focus:outline-none remove  text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xl size-8 flex justify-center items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </button>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    </div>`
+                        </div>
+                  </p>
+
+                </div>
+          </div>
+                                    `
 
                     });
 
@@ -598,14 +607,18 @@ const renderCartLocal = () => {
         }
     }
 }
+
+renderCartLocal()
 function load_evens_carts() {
     const carts: NodeListOf<HTMLElement> = document.querySelectorAll('div.cart-shoping');
     carts.forEach(cart => {
         let plus_buttons = cart.querySelectorAll('button.plus');
         let type = cart.dataset.type;
-        let nega_buttons = cart.querySelectorAll('button.nege');
+        let nega_buttons = cart.querySelectorAll('button.nega');
         let numbers = cart.querySelectorAll('span.number');
         let remove_buttons = cart.querySelectorAll('button.remove');
+        console.log(plus_buttons);
+
         const save_data = () => {
             let data = [];
             const carts: NodeListOf<HTMLElement> = document.querySelectorAll('div.cart-shoping');
@@ -614,14 +627,13 @@ function load_evens_carts() {
                 if (number) {
                     data.push({ id: cart.dataset.id, count: parseFloat(number.innerHTML) })
                 }
-                console.log(data);
 
                 localStorage.setItem('carts_data', JSON.stringify(data))
             });
         }
         const functionPlus = () => {
             numbers.forEach(number => {
-                let speed = type == "numerical" ? 1 : 0.5;
+                let speed = 1;
                 let num = parseFloat(number.innerHTML);
                 number.innerHTML = String(num + speed);
             })
@@ -633,7 +645,7 @@ function load_evens_carts() {
         })
         const functionNega = () => {
             numbers.forEach(number => {
-                let speed = type == "numerical" ? 1 : 0.5;
+                let speed = 1;
                 let num = parseFloat(number.innerHTML);
                 if (num - speed < 0) {
                     number.innerHTML = '0';
@@ -668,7 +680,6 @@ function load_evens_carts() {
                                 });
                             }
                             localStorage.setItem('carts_data', JSON.stringify(result_data));
-                            console.log(cart)
                             window.axios({
                                 method: 'delete',
                                 url: host + 'remove-cart/' + cart.dataset.id,
@@ -860,85 +871,6 @@ if (pay_wallet) {
     })
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        let chat_button = document.querySelector("span.cc-157aw");
-        let function_edite = () => {
-            let alerts = document.querySelectorAll('div.cc-1no03 a[role~=alert]');
-            let links = document.querySelectorAll('div.cc-1no03 a[rel~=nofollow]');
-            let input_email = document.querySelector('div.cc-1no03 input[name~=message_field_identity-email]');
-
-            alerts.forEach(alert => {
-                alert.remove()
-            });
-            links.forEach(link => {
-                link.remove()
-            });
-            if (input_email) {
-                input_email.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.parentNode?.remove()
-            }
-            let all_elements: NodeListOf<HTMLElement> = document.querySelectorAll('div.cc-1no03 *');
-            all_elements.forEach(element => {
-                element.style.cssText += 'font-family:sans !important';
-            });
-            let option_button = document.querySelector('a.cc-8ve5w.cc-gge6o');
-            if (option_button) {
-                option_button.remove();
-            }
-        }
-        let all_elements: NodeListOf<HTMLElement> = document.querySelectorAll('div.cc-1no03 *');
-
-        if (chat_button) {
-            chat_button.addEventListener('click', () => {
-                let chatbox: null | HTMLElement = document.querySelector('div.cc-1no03');
-                if (chatbox) {
-                    if (chatbox.dataset.visible === 'false') {
-                        let interval = setInterval(() => { function_edite(); }, 500);
-                        localStorage.setItem('interval_chat_box', String(interval));
-                    } else {
-                        let interval = localStorage.getItem('interval_chat_box');
-                        if (interval) {
-                            clearInterval(parseInt(interval))
-                        }
-                    }
-                }
-            })
-
-            let chatbox: null | HTMLElement = document.querySelector('div.cc-1no03');
-            if (chatbox) {
-                if (chatbox.dataset.visible === 'true') {
-                    let interval = setInterval(() => { function_edite(); console.log('ss') }, 500);
-                    localStorage.setItem('interval_chat_box', String(interval));
-                } else {
-                    let interval = localStorage.getItem('interval_chat_box');
-                    if (interval) {
-                        clearInterval(parseInt(interval))
-                    }
-                }
-            }
-
-
-        }
-    }, 3000)
-})
-
 const map_div = document.querySelector('div.disable-map');
 const onHashCh = () => {
     let hash_string: string = window.location.hash.substring(1);
@@ -1063,6 +995,7 @@ if (send_courier_button && send_courier_form && send_post_button && send_post_fo
     send_courier_button.addEventListener('click', send_courier_function)
 }
 const inputs_plate: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name=plate]');
+const inputs_address: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name=address]');
 const inputs_unit: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name=unit]');
 const input_postal_code: HTMLInputElement | null = document.querySelector('input[name=postal_code]');
 var prev_value_input_postal_code = ''
@@ -1138,6 +1071,12 @@ window.axios({
         if (!input_plate.value && parseInt(response.plate))
             input_plate.value = response.plate;
     });
+
+    inputs_address.forEach(input_address => {
+        if (!input_address.value && response.address)
+            input_address.value = response.address;
+    });
+
     if (input_postal_code) {
         if (!input_postal_code.value)
             input_postal_code.value = response.postal_code
@@ -1263,3 +1202,32 @@ register_links.forEach(register_link => {
         localStorage.setItem('redirect', current_url)
     })
 });
+
+
+let itemsShouldRemove = ["div.leaflet-bottom.leaflet-right", 'a[href*="neshan.org"]', 'a[href*="openstreetmap.org"]']
+
+window.addEventListener('load', () => {
+    setInterval(() => {
+        itemsShouldRemove.forEach(itemShouldRemove => {
+            let selector = itemShouldRemove;
+            let fatherEl = "";
+            if (selector.includes(">")) {
+                let toArray = selector.split(">")
+                selector = toArray[1].trim();
+                fatherEl = toArray[0].trim();
+            }
+            document.querySelectorAll(selector).forEach(el => {
+                if (fatherEl) {
+                    const parent = el.closest(fatherEl);
+                    if (parent) parent.remove();
+                } else {
+                    el.remove();
+                }
+            });
+        });
+
+    }, 1000)
+
+
+
+})

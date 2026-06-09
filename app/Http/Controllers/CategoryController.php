@@ -32,7 +32,6 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
-            'caption' => 'required',
             'image' => ['file', 'image', 'required'],
         ]);
         if ($request->filled('nameEn')) {
@@ -101,7 +100,7 @@ class CategoryController extends Controller
       
         $data_update['nameEn'] = $nameEn;
         $this_category = Category::find($id);
-          if ( $data_update['nameEn'] !== $this_category->nameEn &&  count(Category::where(['nameEn' => $nameEn])->get())) {
+        if ( $data_update['nameEn'] !== $this_category->nameEn &&  count(Category::where(['nameEn' => $nameEn])->get())) {
             return redirect()->back()->with('error',  "شناسه انگلیسی $nameEn تکراری است");
         }
         if ($request->hasFile('image')) {

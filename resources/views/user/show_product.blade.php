@@ -33,7 +33,7 @@
 
                                         </div>
                                     </div>
-                                    
+
                                     {!! App\Helpers\Helper::price($price) !!}
                                 </b>
                             </span>
@@ -114,7 +114,7 @@
 
         </div>
         <div class="w-full md:w-1/2 md:absolute nav-blog md:h-full right-0 text-2xl sm:text-3xl text top-32 ">
-            <div class="sticky mt-3 top-24">
+            <div class="sticky mt-3 top-32">
                 <div class="swiper-pro swiper xl:size-96 lg:size-80 md:size-72 size-64 select-none	">
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper select-none	 ">
@@ -137,18 +137,18 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="swiper-button-prev swiper-button-prev-pro	">
+                    <div class="swiper-button-prev swiper-button-prev-pro cursor-pointer	">
                         <i class="fa fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
                     </div>
-                    <div class="swiper-button-next 	swiper-button-next-pro ">
+                    <div class="swiper-button-next 	swiper-button-next-pro cursor-pointer ">
                         <i class="fa fa-caret-left text-white text-[30px] sm:text-[40px]" aria-hidden="true"></i>
                     </div>
                 </div>
                 <br>
-                <div class=" pagination-div flex justify-center items-center">
+                <div class=" pagination-div z-10 flex justify-center items-center">
                     @for ($i = 0; $i < count($imgs); $i++)
                         <div data-slide="{{ $i }}"
-                            class=" border-2 photo-slide border-primary-100 dark:border-primary-200 cursor-pointer
+                            class=" border-2 photo-slide border-primary-100 cursor-pointer
                  size-16 mx-1 overflow-hidden 
                 md:size-20 lg:size-24 rounded-md  ">
                             <img class="size-full object-cover " src="{{ $imgs[$i] }}">
@@ -156,7 +156,7 @@
                     @endfor
                 </div>
                 <div
-                    class=" fixed top-[70px] sm:top-20 z-[60000000000000000000000000000000000000000000000000]  left-3 animate__animated animate__pulse animate__delay-3s  animate__infinite inline-block">
+                    class=" fixed top-20 sm:top-24 z-[60000000000000000000000000000000000000000000000000]  left-7 animate__animated animate__pulse animate__delay-3s  animate__infinite inline-block">
                     @component('user.components.add_card', ['id' => $id])
                     @endcomponent
                 </div>
@@ -289,6 +289,47 @@
             </div>
         </div> --}}
     {{-- </div>  --}}
+    <div class="fixed z-10 w-full right-0 bottom-0    flex justify-center items-end">
+        <div class="absolute flex justify-center items-center top-0 right-0 w-full">
+
+            <div class=" w-36 -translate-y-14 sm:-translate-y-20 scale-150 sm:scale-[2]">
+                <button data-id="{{ $id }}"
+                    class="group  border border-white/20 hover:bg-white/30  add-to-cart  bg-white/10 backdrop-blur-sm text-xl w-full  h-8 flex justify-center items-center text-white hover:font-bold  group rounded-full ">
+                    <i class="fa hover:font-bold fa-cart-plus" aria-hidden="true"></i>
+                </button>
+                <div data-id="{{ $id }}" id="{{ $id }}"
+                    class="group flex  w-full   box-card-control border border-white/20   bg-white/10 backdrop-blur-sm
+          text-sm  h-8 px-1 flex justify-between  items-center text-white hover:font-bold  group rounded-full ">
+                    <button
+                        class="
+                                                    bg-white/10 backdrop-blur-sm          hover:bg-white/20
+          rounded-full   cursor-pointer text-gray-600 group hover:text-white dark:text-gray-100 d flex justify-center items-center text-xl sm:text-2xl size-6 bg-gray-300 plus">
+
+                        <svg class="group-hover:text-white text-gray-100 size-4" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path fill="currentColor"
+                                d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1-2 0v-6H5a1 1 0 0 1 0-2h6V5a1 1 0 0 1 1-1" />
+                        </svg>
+                    </button>
+                    <span class="number select-none font-bold px-3 text-white ">
+                        1
+                    </span>
+                    <button
+                        class="
+                                                    bg-white/10 backdrop-blur-sm hover:text-white         hover:bg-white/20
+          rounded-full   cursor-pointer text-gray-100 group flex justify-center items-center text-xl sm:text-2xl size-6 bg-gray-300 nega">
+                        <svg class="group-hover:text-white text-gray-100 size-4" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24">
+                            <path d="M0 0h24v24H0z" fill="none" />
+                            <path fill="currentColor" d="M5 12a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
@@ -325,6 +366,7 @@
             document.querySelector("div.swiper-button-next-pro").addEventListener("click", () => {
                 swiper.slideNext(1000)
             })
+
             function swich_to_slide(id, move = true) {
                 let div_selected = null;
                 for (let i = 0; i < pagination_divs.length; i++) {
@@ -349,7 +391,7 @@
                 swich_to_slide(swiper.realIndex, false);
             });
 
-          
+
 
 
             window.axios({

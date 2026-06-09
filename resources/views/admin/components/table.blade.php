@@ -1,5 +1,5 @@
 @php
-    $interface_rule_image_name = ['image', 'img', 'photo'];
+    $interface_rule_image_name = ['image', 'thumbnail', 'img', 'photo'];
 @endphp
 {{-- <div class=" relative">
     <i class="fa fa-search absolute text-sm text-gray-300" aria-hidden="true" style="right: 10px; top:8px"></i>
@@ -47,21 +47,20 @@
 
                             @endphp
                             <td style="min-width:100px;"
-                                class=" py-1  font-medium text-gray-900 whitespace-nowrap dark:text-white font-parastoo">
+                                class=" py-1  font-medium text-gray-900 whitespace-nowrap dark:text-white ">
                                 <img class="w-20 h-20 border-1 rounded-full" src="{{ Storage::url($image_src) }}">
                             </td>
                             {{-- {{ url($item[$key]) }} --}}
-
                         @elseif($key === 'link')
-                        <td class="px-7 py-1  font-medium text-gray-900 whitespace-nowrap dark:text-white font-parastoo">
-                            <a href="{{ $item[$key] }}"
-                                class="focus:outline-none show-order-info text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-lg rounded-lg text-sm size-11 flex justify-center items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">
-                                <i class="fa text-2xl fa-eye" aria-hidden="true"></i>
-                            </a>
-                        </td>
+                            <td class="px-7 py-1  font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                                <a href="{{ $item[$key] }}"
+                                    class="focus:outline-none show-order-info text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-lg rounded-lg text-sm size-11 flex justify-center items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">
+                                    <i class="fa text-2xl fa-eye" aria-hidden="true"></i>
+                                </a>
+                            </td>
                         @else
-                            <td
-                                class="px-7 py-1  font-medium text-gray-900 whitespace-nowrap dark:text-white font-parastoo">
+                            <td data-value="{{ $item[$key] }}"
+                                class="px-7 py-1   font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{-- {{$item[$key]}} --}}
                                 {{ $item[$key] }}
                             </td>
@@ -73,7 +72,7 @@
                                 class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 
                             hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800
                              font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                <i class="fa fa-pencil-square-o " style="color: white !important"
+                                <i class="fa fa-pencil " style="color: white !important"
                                     aria-hidden="true"></i>
                             </a>
                     <td>

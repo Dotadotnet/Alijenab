@@ -1,5 +1,5 @@
-@php $nav_items = [['icon' => 'shopping-bag', 'text' => 'محصولات ما', 'link' => '#category'], ['icon' => 'info-circle', 'text' => 'درباره ما', 'link' => '/about'], ['icon' => 'phone', 'text' => 'تماس با ما', 'link' => '/call']]; @endphp
-<nav class=" fixed right-0 top-0 p-3 z-40 w-full justify-center items-center">
+@php $nav_items = [['icon' => 'cutlery', 'text' => 'منو', 'link' => '/menu'], ['icon' => 'info-circle', 'text' => 'درباره ما', 'link' => '/about'], ['icon' => 'phone', 'text' => 'تماس با ما', 'link' => '/contact'],['icon' => 'blog', 'text' => 'بلاگ ها', 'link' => '/blogs']]; @endphp
+<nav class=" fixed right-0 top-0 sm:p-3 p-2 z-40 w-full justify-center items-center">
     @php
         $user = Auth::guard('user')->user();
         if ($user) {
@@ -8,15 +8,15 @@
     @endphp
     <div
         class=" z-40 w-full backdrop-blur flex-none transition-colors duration-500
-        dark:bg-dark-opacity-30 bg-light-opacity-30 py-1 px-2 sm:py-3 sm:px-8 rounded-full
-       shadow-xl dark:shadow-white shadow-primary-200  flex justify-between items-center overflow-hidden ">
+        dark:bg-dark-opacity-30 bg-light-opacity-30 pe-4 ps-2 sm:py-3 sm:px-8 rounded-full
+       shadow-lg sm:shadow-xl dark:shadow-white shadow-primary-200  flex justify-between items-center overflow-hidden ">
         <a href="#bar" class="group">
-            <button type="button" class="p-3 button-bar  md:hidden">
+            <button type="button" class="p-3 button-bar  lg:hidden">
                 <svg class=" group-hover:scale-125 size-8 text-white" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
-                    <rect fill="#ffffff" rx="1" ry="1" x="4" y="5" width="16" height="2" />
-                    <rect fill="#ffffff" rx="1" ry="1" x="4" y="11" width="16" height="2" />
-                    <rect fill="#ffffff" rx="1" ry="1" x="4" y="17" width="16" height="2" />
+                    <rect class="fill-black dark:fill-white" rx="1" ry="1" x="4" y="5" width="16" height="2" />
+                    <rect class="fill-black dark:fill-white" rx="1" ry="1" x="4" y="11" width="16" height="2" />
+                    <rect class="fill-black dark:fill-white" rx="1" ry="1" x="4" y="17" width="16" height="2" />
                 </svg>
             </button>
         </a>
@@ -25,7 +25,7 @@
         </a>
         <div id="item_navbar" class=" hidden lg:flex w-full px-4">
             @foreach ($nav_items as $nav_item)
-                <a class=" group mx-2  text-black hover:after:w-full after:transition-all after:w-0 after:content-[''] after:rounded-md after:right-1.5 after:bg-primary-200 after:h-1 relative after:absolute after:-bottom-1 group-hover:font-bold dark:text-white justify-around text-md sm:text-lg
+                <a rel="nofollow" class=" group mx-2  text-black hover:after:w-full after:transition-all after:w-0 after:content-[''] after:rounded-md after:right-1.5 dark:after:bg-white after:bg-primary-200 after:h-[3px] relative after:absolute after:-bottom-1.5 group-hover:font-bold dark:text-white justify-around text-md sm:text-lg
                  items-center flex hover:font-bold"
                     href="{{ $nav_item['link'] }} ">
                     <i style="transition: 0s !important"
@@ -37,27 +37,16 @@
         </div>
 
         <div class=" flex justify-between lg:w-auto items-center">
-            <a href="#cart"
-                class="flex ml-1 relative flex-shrink-0  sm:ml-2 justify-center items-center  size-8 sm:size-10 cursor-pointer 
-             bg-primary-200 shadow-[0px_0px_4px_1px_rgba(0,0,0,0.7)] dark:shadow-[0px_0px_4px_1px_rgba(255,255,255,1)]  hover:bg-[#06777b] hover:dark:bg-[#09adb3] rounded-full">
+            <a rel="nofollow" href="#cart"
+                class="flex ml-2 relative flex-shrink-0  group sm:ml-2 justify-center items-center  size-8 sm:size-10 cursor-pointer 
+             bg-primary-200 shadow-[0px_0px_0px_0px] shadow-[rgba(0,0,0,0.7)] hover:shadow-[0px_0px_4px_1px] dark:shadow-[rgba(255,255,255,1)] rounded-full">
                 {{-- <i class="fa font-bold text-white  fa-shopping-cart sm:text-xl text-md" aria-hidden="true"></i> --}}
-                <svg class="font-bold text-white sm:size-7  size-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001"
-                        stroke="currentColor" strokeWidth="2" strokeMiterlimit="15" strokeLinecap="round"
-                        strokeLinejoin="round"></path>
-                    <path
-                        d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z"
-                        stroke="currentColor" strokeWidth="2" strokeMiterlimit="15" strokeLinecap="round"
-                        strokeLinejoin="round"></path>
-                    <path
-                        d="M8.25 22C8.94036 22 9.5 21.4404 9.5 20.75C9.5 20.0596 8.94036 19.5 8.25 19.5C7.55964 19.5 7 20.0596 7 20.75C7 21.4404 7.55964 22 8.25 22Z"
-                        stroke="currentColor" strokeWidth="2" strokeMiterlimit="15" strokeLinecap="round"
-                        strokeLinejoin="round"></path>
-                    <path d="M9 8H21" stroke="currentColor" strokeWidth="2" strokeMiterlimit="15"
-                        strokeLinecap="round" strokeLinejoin="round"></path>
+                <svg class="scale-90 sm:scale-125 " width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+                    <path class="fill-white group-hover:opacity-95 opacity-80"
+                        d="M16.62 22H7.38c-2.69 0-4.88-2.169-4.88-4.835v-5.33C2.5 9.17 4.69 7 7.38 7h9.24c2.69 0 4.88 2.169 4.88 4.835v5.33C21.5 19.83 19.31 22 16.62 22z" />
+                    <path class="fill-white group-hover:opacity-85 opacity-70"
+                        d="M15.755 10a.734.734 0 01-.745-.722V6.357c0-1.606-1.346-2.912-3.001-2.912a3.13 3.13 0 00-2.13.843 2.847 2.847 0 00-.89 2.055v2.935a.734.734 0 01-.744.722.734.734 0 01-.745-.722V6.357a4.27 4.27 0 011.33-3.094c.85-.82 1.95-1.231 3.182-1.263C14.485 2 16.5 3.954 16.5 6.357v2.92a.734.734 0 01-.745.723z" />
                 </svg>
-                
                 <span
                     class="absolute text-xs sm:text-sm count-shoping-cart text-white bg-red-600 size-5 sm:size-6 pt-[1.5px] font-bold flex justify-center items-center rounded-full -top-1.5 -right-2.5">
                     0
@@ -71,7 +60,7 @@
             </a> --}}
 
             @if ($user)
-                <a href="/profile" class="flex justify-around ml-1 size-8 sm:size-10 items-center">
+                <a href="/profile" class="hidden sm:flex  justify-around ml-1 size-8 sm:size-10 items-center">
                     <img src="{{ $user->img }}"
                         class="size-8 rounded-full object-cover border-2 border-primary-100 dark:border-primary-200 sm:size-10"
                         alt="" title="{{ $user->name }}">
@@ -82,11 +71,18 @@
                     {{ $user->name }}
                 </a>
             @else
-                <div class=" sm:ml-2 flex justify-center items-center ml-1 h-full w-16 sm:w-24  relative">
+                <div class="  sm:ml-2 hidden sm:flex justify-center items-center ml-1 h-full w-16 sm:w-20 group   relative">
                     <a href="/login"
-                        class="p-1 flex justify-center items-center text-white w-full rounded-full shadow-[0px_0px_4px_1px_rgba(0,0,0,0.7)] dark:shadow-[0px_0px_4px_1px_rgba(255,255,255,1)]  hover:bg-[#06777b] hover:dark:bg-[#09adb3] bg-primary-200">
-                        <svg class="sm:size-6 size-5" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 48 48"><defs><mask id="ipTUser0"><g fill="none" stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4"><circle cx="24" cy="12" r="8" fill="#555555"/><path d="M42 44c0-9.941-8.059-18-18-18S6 34.059 6 44"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipTUser0)"/></svg>
-                        <span class="font-vazir mt-0.5 sm:mt-0 text-[12px] sm:text-base mr-1 sm:mr-2 font-bold">
+                        class="py-0.5 sm:p-1 flex justify-center group items-center text-white w-full rounded-full shadow-[0px_0px_0px_0px] shadow-[rgba(0,0,0,0.7)] hover:shadow-[0px_0px_4px_1px_rgba(0,0,0,0.7)] dark:shadow-[rgba(255,255,255,1)]  bg-primary-200">
+
+                        <svg class="sm:scale-110 scale-90" width="24" height="24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path class="fill-white group-hover:opacity-85 opacity-70"
+                                d="M11.997 15.175c-4.313 0-7.997.68-7.997 3.4C4 21.295 7.66 22 11.997 22c4.313 0 7.997-.68 7.997-3.4 0-2.721-3.66-3.425-7.997-3.425z" />
+                            <path class="fill-white group-hover:opacity-95 opacity-80"
+                                d="M11.997 12.584a5.273 5.273 0 005.292-5.292A5.273 5.273 0 0011.997 2a5.274 5.274 0 00-5.292 5.292 5.274 5.274 0 005.292 5.292z" />
+                        </svg>
+                        <span class="font-vazir  text-[12px] sm:text-base mr-0.5 sm:mr-1 font-bold">
                             ورود
                         </span>
                     </a>
@@ -109,12 +105,12 @@
             @endif
             <div
                 class="flex flex-shrink-0 justify-center items-center size-8 sm:size-10 cursor-pointer border-[2px]
-             group dark:border-[rgb(7,140,145)] border-primary-300 rounded-full button-dark-mode">
+             group dark:border-[rgb(7,140,145)] border-[rgb(184,117,12)] rounded-full button-dark-mode">
                 <span style="transition:2s" class="scale-125 sm:scale-150 group-hover:rotate-[360deg]">
                     <svg class="dark:hidden" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
-                        <path class=" fill-primary-300"
+                        <path class=" fill-[rgb(184,117,12)]"
                             d="M7 0h2v2H7zM12.88 1.637l1.414 1.415-1.415 1.413-1.413-1.414zM14 7h2v2h-2zM12.95 14.433l-1.414-1.413 1.413-1.415 1.415 1.414zM7 14h2v2H7zM2.98 14.364l-1.413-1.415 1.414-1.414 1.414 1.415zM0 7h2v2H0zM3.05 1.706 4.463 3.12 3.05 4.535 1.636 3.12z" />
-                        <path class=" fill-primary-300" d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z" />
+                        <path class=" fill-[rgb(184,117,12)]" d="M8 4C5.8 4 4 5.8 4 8s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4Z" />
                     </svg>
                     <svg class=" hidden dark:block" width="16" height="16" xmlns="http://www.w3.org/2000/svg">
                         <path class="fill-[rgb(7,140,145)]"
@@ -142,9 +138,9 @@
     </a>
     <br>
     <div class=" h-40 p-5 flex items-center label-text-search">
-        <h1 class=" text font-bold text-lg sm:text-2xl">
+        <div class=" text font-bold text-lg sm:text-2xl">
             دنبال چه چیزی هستید ؟
-        </h1>
+        </div>
     </div>
     @component('user.components.input_search')
     @endcomponent

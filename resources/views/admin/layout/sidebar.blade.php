@@ -110,12 +110,6 @@
                             <a href="{{ route('order_all') }}">تمام سفارشات</a>
                         </li>
                         <li>
-                            <a href="{{ route('order_all_post') }}">تحویل سفارشات پستی</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('order_all_courier') }}">تحویل سفارشات پیک</a>
-                        </li>
-                        <li>
                             <a href="{{ route('order_all_map') }}">سفارشات روی نقشه</a>
                         </li>
                         {{-- <li>

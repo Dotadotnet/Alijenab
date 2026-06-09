@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/blogs', [BlogController::class, 'viewAll'])->name('userShowAllBlog');
 Route::get('/product/{id}', [ProductController::class, 'shortLink'])->name('shortLink');
 Route::get('/product/{category}/{name}', [ProductController::class, 'userShow'])->name('userShow');
 Route::get('/blog/{id}', [BlogController::class, 'shortLink'])->name('shortLinkBlog');
@@ -37,11 +38,11 @@ Route::get('/blog/{id}/{name}', [BlogController::class, 'userShow'])->name('user
 Route::post('/user/send-comment', [CommentController::class, 'add_comment_user'])->name('add_comment_user');
 Route::get('/search/{pagintion}/{input}', [SearchController::class, 'view']);
 Route::post('/translate-data-cart', [ShopCartController::class, 'translateData']);
-Route::get('/call', [HomeController::class, 'call']);
+Route::get('/contact', [HomeController::class, 'call']);
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/send-sms', [HomeController::class, 'sendSms']);
-Route::get('/show-all', [HomeController::class, 'showAll']);
-Route::get('/about', [BlogController::class, 'about']);
+Route::get('/menu', [HomeController::class, 'showAll']);
+Route::get('/about', [HomeController::class, 'about']);
 Route::prefix('panel')->group(function () {
     Route::middleware('admin_auth')->group(function () {
         Route::post('/comment/{id}/replay/{value}', [CommentController::class, 'replay']);
@@ -79,7 +80,7 @@ Route::get('/login', function () {
 Route::post('/verify/send', [UserAuthController::class, 'save_phone'])->name('send_sms');
 Route::get('/selected-items-api', [ProductController::class, 'selectedItemsApi']);
 Route::get('/verify/{phone}/{code}', [UserAuthController::class, 'link_verify'])->name('verify_link');
-Route::post('/verify-chack/{phone}', [UserAuthController::class, 'chack_verify'])->name('chack_verify');
+Route::get('/verify-chack/{phone}', [UserAuthController::class, 'chack_verify'])->name('chack_verify');
 Route::get('/admin_login', [AdminAuthController::class, 'getLogin'])->name('admin_login');
 Route::post('/admin_login', [AdminAuthController::class, 'postLogin'])->name('adminLoginPost'); // admin_login
 Route::get('/admin_logout', [AdminAuthController::class, 'adminLogout'])->name('admin_logout');
@@ -109,6 +110,7 @@ Route::middleware('user_auth')->group(function () {
     Route::get('/order-set-location/{id}', [OrderController::class, 'order_set_location'])->name('order_set_location');
     Route::get('/orders', [OrderController::class, 'show']);
     Route::post('/change-plate/{id}/{plate}', [OrderController::class, 'change_plate']);
+    Route::post('/change-address/{id}/{address}', [OrderController::class, 'change_address']);
     Route::post('/change-unit/{id}/{unit}', [OrderController::class, 'change_unit']);
     Route::post('/change-location/{id}/{lat}/{lng}', [OrderController::class, 'change_location']);
     Route::post('/change-postal-code/{id}/{code}', [OrderController::class, 'change_postal_code']);

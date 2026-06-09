@@ -81,7 +81,7 @@
                                 </div>
                                 <button
                                     class="focus:outline-none change-value mr-2 text-white bg-cyan-400 hover:bg-cyan-500 focus:ring-4 focus:ring-cyan-200 font-lg rounded-lg text-sm size-9 flex justify-center items-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-900">
-                                    <i class="fa text-lg fa-pencil-square-o" aria-hidden="true"></i>
+                                    <i class="fa text-lg fa-pencil" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </td>
@@ -118,13 +118,13 @@
             let input = change_value_button.parentNode.querySelector('input');
             let id = change_value_button.parentNode.parentNode.parentNode.children[0].innerHTML.trim();
             const function_change_value = () => {
-                if (icon.classList.contains('fa-pencil-square-o')) {
-                    icon.classList.remove('fa-pencil-square-o')
+                if (icon.classList.contains('fa-pencil')) {
+                    icon.classList.remove('fa-pencil')
                     icon.classList.add('fa-check');
                     input.disabled = false;
                     input.focus()
                 } else {
-                    icon.classList.add('fa-pencil-square-o')
+                    icon.classList.add('fa-pencil')
                     icon.classList.remove('fa-check');
                     input.disabled = true;
                     window.axios({

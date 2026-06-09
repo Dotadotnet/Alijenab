@@ -9,7 +9,7 @@
             @foreach ($products as $data)
                 <div
                     class="flex shadow-lg dark:shadow-gray-700 items-center ps-4 border border-gray-200 rounded  dark:border-gray-700">
-                    <input data-src="{{ '/storage/' . json_decode($data->img)[0] }}"
+                    <input data-src="{{ "/storage/" . $data->thumbnail}}"
                         {{ in_array($data->id, $selecteds) ? 'checked' : '' }} id="{{ $data->id }}" type="checkbox"
                         data-name='{{ $data->name }}' name="item"
                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 dark:bg-gray-700
@@ -44,7 +44,7 @@
                                 {{ $data->name }}
                             </div>
                             <img class="size-full select-none object-cover"
-                                src="{{ '/storage/' . json_decode($data->img)[0] }}" alt="">
+                                src="{{ '/storage/' . $data->thumbnail }}" alt="">
                         </div>
                     </li>
                 @endif
@@ -93,12 +93,8 @@ cursor-pointer
         </div>
             <img class="size-full select-none object-cover" src="${input_chacked.dataset.src}" alt="">
     </div>
-</li>
-              `
+</li>`
                     }
-
-
-
                     let elements = document.querySelectorAll('ul#sortbale li span.remove')
                     elements.forEach(element => {
                         element.addEventListener('click', () => {
