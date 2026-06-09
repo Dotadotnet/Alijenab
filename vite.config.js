@@ -14,7 +14,8 @@ export default defineConfig({
                 'resources/css/panel.css',
                 'resources/css/admin.css',
                 'resources/js/crisp_chat.js',
-                'resources/css/auth.css'
+                'resources/css/auth.css',
+                "resources/sass/app.scss"
             ],
             refresh: true,
         }),
