@@ -13,7 +13,7 @@ export default defineConfig({
                 'resources/css/user.css',
                 'resources/css/panel.css',
                 'resources/css/admin.css',
-                'resources/sass/app.scss',
+                'resources/js/crisp_chat.js',
                 'resources/css/auth.css',
             ],
             refresh: true,
@@ -21,5 +21,5 @@ export default defineConfig({
     ],
     server: {
         host: '127.0.0.1'
-      },
+    },
 });

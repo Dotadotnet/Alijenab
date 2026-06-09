@@ -146,7 +146,7 @@
     @endcomponent
 </div>
 <div
-    class="div-bar  z-50 hidden fixed top-0 right-0 h-full w-full backdrop-blur dark:bg-dark-opacity-30 bg-light-opacity-30 sm:p-10 p-0 pt-14 sm:pt-16 pb-5">
+    class="div-bar  z-[10000000000000000000] hidden fixed top-0 right-0 h-full w-full backdrop-blur dark:bg-dark-opacity-30 bg-light-opacity-30 sm:p-10 p-0 pt-14 sm:pt-16 pb-5">
     <div class=" absolute flex px-5 items-center top-0 right-0 w-full h-[54px]">
         <a href="#null">
             <div
@@ -163,13 +163,18 @@
         <p class=" text mr-5 font-bold text-address-bar ">
         </p>
     </div>
+
     <div class="overflow-auto p-2 div-bar-item z-50 shadow-primary-200 max-h-full flex-wrap flex sm:justify-around">
 
     </div>
-
-    <div class="  div-navbar-items grid grid-cols-1 p-4 gap-6 ">
+ <div class="h-full flex flex-col justify-between" >
+<div class="  div-navbar-items grid grid-cols-1 p-4 gap-6 ">
 
     </div>
+    asdfasd
+ </div>
+    
+    
 </div>
 
 <div
