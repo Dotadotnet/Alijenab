@@ -75,7 +75,7 @@
         <br>
         @component('user.components.line_text', ['text' => 'دسته بندی ها'])
         @endcomponent
-        <div class=" flex flex-wrap  gap-3 justify-center  w-full ">
+        <div class=" flex flex-wrap gap-3 sm:gap-6 justify-center  w-full ">
             @foreach ($categorys as $category)
                 <a rel="nofollow" class="group" href="{{ '#category_' . $category['id'] }}">
                     <div class=" flex flex-col  ">
