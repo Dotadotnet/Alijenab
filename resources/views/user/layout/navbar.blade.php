@@ -240,20 +240,13 @@
 
             <div class="px-3">
                 <a href="/cart"
-                    class="flex py-2  text-white flex-shrink-0  sm:ml-2 justify-center items-center  w-full  cursor-pointer 
-             bg-primary-200 shadow-[0px_0px_4px_1px_rgba(0,0,0,0.7)] dark:shadow-[0px_0px_4px_1px_rgba(255,255,255,1)]  hover:bg-[#06777b] hover:dark:bg-[#09adb3] rounded-lg button-search-open">
+                    class="flex py-2 mb-3  text-white flex-shrink-0  sm:ml-2 justify-center items-center  w-full  cursor-pointer 
+             bg-primary-200 shadow-[0px_0px_4px_1px_rgba(0,0,0,0.7)] dark:shadow-[0px_0px_4px_1px_rgba(255,255,255,1)]  hover:bg-[#06777b] hover:dark:bg-[#09adb3] rounded-full button-search-open">
                     پرداخت صورت حساب
                 </a>
             </div>
 
-            <div class="px-3 mb-3">
-                <a href="/show-all"
-                    class="flex py-2  mt-3 text-white flex-shrink-0  sm:ml-2 justify-center items-center  w-full  cursor-pointer 
-             bg-primary-200 shadow-[0px_0px_4px_1px_rgba(0,0,0,0.7)] dark:shadow-[0px_0px_4px_1px_rgba(255,255,255,1)]  hover:bg-[#06777b] hover:dark:bg-[#09adb3] rounded-lg button-search-open">
-                    اضافه کردن محصول
-                </a>
-            </div>
-
+           
         </div>
 
 

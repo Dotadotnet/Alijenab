@@ -60,7 +60,7 @@ import{a as ot}from"./axios-ByLvdZbW.js";import{g as at}from"./_commonjsHelpers-
                 text-shadow: 2px 2px 1px blue, -2px -2px 1px red
             }
         </style>
-        <a href="/show-all" class="text link-home block text-center mt-16 text-lg">
+        <a href="/menu" class="text link-home block text-center mt-16 text-lg">
             برای اضافه کردن کالا به سبد خرید کلیک کنید
         </a>`)}Se&&window.axios({method:"post",url:E+"/translate-data-cart",data:{data:JSON.parse(e)}}).then(function(n){if(n.data){let a=n.data;if(a.forEach(t=>{Se.innerHTML+=`
                         <div class="flex cart-shoping relative  mb-4 "  data-price="${t.off?t.price-t.price/100*t.off:t.price}" data-id="${t.id}" id="${t.id}" data-type="${t.type}">

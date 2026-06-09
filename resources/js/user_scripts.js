@@ -527,7 +527,7 @@ const renderCartLocal = () => {
                                    <div class="w-full p-2">
                                           
                                             <div data-id="{{ $selected->id }}" id="{{ $selected->id }}"
-                                                class="group flex  w-full   box-card-control  bg-white/10 backdrop-blur-sm
+                                                class="group !flex  w-full   box-card-control  bg-white/10 backdrop-blur-sm
           text-sm  h-8 px-1 flex justify-between  items-center text-white hover:font-bold  group rounded-full ">
                                                 <button
                                                     class="
