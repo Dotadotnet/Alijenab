@@ -44,21 +44,21 @@
             <ul class=" w-full mx-1 flex items-center justify-center ">
                 <li class="mx-2">
                     <a target="_blank" class="group " title="کانال تلگرامی ما"
-                        href="https://t.me/share/url?url=http://confectionary.ir/products/1&amp;text=قنادی اعتماد حلوا خرمایی">
+                        href="https://t.me/share/url?url=http://confectionary.ir/products/1&amp;text=کافه عالیجناب">
                         <img class=" group-hover:scale-125  group-hover:rotate-[360deg] size-12 rounded-full object-cover overflow-hiddens "
                             src="/image/app/telegram.jpg">
                     </a>
                 </li>
                 <li class="mx-2">
                     <a target="_blank" class="group " title="کانال ایتا"
-                        href="https://www.eitaa.com/share/url?url=قنادی اعتماد حلوا خرمایی">
+                        href="https://www.eitaa.com/share/url?url=کافه عالیجناب">
                         <img class=" group-hover:scale-125  group-hover:rotate-[360deg] size-12 rounded-full object-cover overflow-hiddens "
                             src="/image/app/eitaa.jpg">
                     </a>
                 </li>
                 <li class="mx-2">
                     <a target="_blank" class="group " title="پیچ اینیستاگرام ما"
-                        href="https://www.twitter.com/intent/tweet?url=http://confectionary.ir/products/1&amp;text=قنادی اعتماد حلوا خرمایی">
+                        href="https://www.twitter.com/intent/tweet?url=http://confectionary.ir/products/1&amp;text=کافه عالیجناب">
                         <img class=" group-hover:scale-125  group-hover:rotate-[360deg] size-12 rounded-full object-cover overflow-hiddens "
                             src="/image/app/instagram.jpg">
                     </a>

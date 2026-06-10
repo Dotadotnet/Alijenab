@@ -1,7 +1,7 @@
 "use strict";
 var host = window.location.protocol + "//" + window.location.host;
 var current_url = window.location.href;
-var name_business = 'قنادی ناب';
+var name_business = 'کافه عالیجناب';
 if (current_url.split('?')) {
     current_url = current_url.split('?')[0];
 }

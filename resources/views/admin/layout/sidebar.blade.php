@@ -5,7 +5,7 @@
                 <span class="sr-only">Home</span>
                 <span class="icon logo" aria-hidden="true"></span>
                 <div class="logo-text">
-                    <span class="logo-title font-lg mr-5 relative font-parastoo">ناب <span class=" text-xs absolute -top-2 -right-2">قنادی</span></span>
+                    <span class="logo-title font-lg mr-5 relative font-parastoo">عالیجناب <span class=" text-xs absolute -top-2 -right-2">کافه</span></span>
                     <span class="logo-subtitle mr-5 font-parastoo font-bold">کنترل پنل</span>
                 </div>
 
