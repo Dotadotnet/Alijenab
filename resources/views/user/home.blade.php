@@ -75,7 +75,7 @@
         <br>
         @component('user.components.line_text', ['text' => 'دسته بندی ها'])
         @endcomponent
-        <div class=" flex flex-wrap gap-3 sm:gap-6 justify-center  w-full ">
+        <div class=" flex flex-wrap gap-5 sm:gap-8 justify-center  w-full ">
             @foreach ($categorys as $category)
                 <a rel="nofollow" class="group" href="{{ '#category_' . $category['id'] }}">
                     <div class=" flex flex-col  ">
@@ -219,11 +219,15 @@
 
 
                 </div>
-                <div class="swiper-button-prev swiper-button-prev-offer  	">
-                    <i class="fa fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
-                </div>
-                <div class="swiper-button-next 	swiper-button-next-offer ">
-                    <i class="fa fa-caret-left text-white text-[30px] sm:text-[40px]" aria-hidden="true"></i>
+                <div class="absolute top-0 right-0 size-full" >
+                    <div class="flex justify-between w-full items-center" >
+                        <div class="swiper-button-prev swiper-button-prev-offer  sm:-translate-y-0 -translate-y-10	">
+                            <i class="fa fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
+                        </div>
+                        <div class="swiper-button-next 	swiper-button-next-offer sm:-translate-y-0 -translate-y-10 ">
+                            <i class="fa fa-caret-left text-white text-[30px] sm:text-[40px]" aria-hidden="true"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -342,12 +346,21 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="swiper-button-prev swiper-button-prev-sell  	">
-                    <i class="fa fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
+
+
+                   <div class="absolute top-0 right-0 size-full" >
+                    <div class="flex justify-between w-full items-center" >
+                        <div class="swiper-button-prev swiper-button-prev-sell  sm:-translate-y-0 -translate-y-10	">
+                            <i class="fa fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
+                        </div>
+                        <div class="swiper-button-next 	swiper-button-next-sell sm:-translate-y-0 -translate-y-10 ">
+                            <i class="fa fa-caret-left text-white text-[30px] sm:text-[40px]" aria-hidden="true"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="swiper-button-next 	swiper-button-next-sell ">
-                    <i class="fa fa-caret-left text-white text-[30px] sm:text-[40px]" aria-hidden="true"></i>
-                </div>
+
+
+
             </div>
         </div>
     </div>
