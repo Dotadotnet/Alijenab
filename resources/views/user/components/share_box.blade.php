@@ -1,6 +1,6 @@
 <div class=" w-full px-6 " >
     <div class=" flex lg:flex-row  flex-col w-full  ">
-        <h3 class=" flex items-center  flex-grow text-nowrap m-1 text-md sm:text-lg text">اشتراک گزاری در :</h3>
+        <h3 class=" flex items-center  flex-grow text-nowrap m-1 text-md sm:text-lg text">اشتراک گذاری در :</h3>
         <ul  class=" w-full mx-1 mt-2 mb-4 flex items-center share-box " >
          
         </ul>

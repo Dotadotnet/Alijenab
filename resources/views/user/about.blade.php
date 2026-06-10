@@ -190,7 +190,7 @@
                 <div class="bg-gray-200 dark:bg-gray-700 pb-8 pt-5 sm:pt-2  md:pt-5 lg:pt-5 xl:pt-2 px-5 rounded-lg w-full">
 
                     <div class=" flex flex-col sm:flex-row  md:flex-col lg:flex-col xl:flex-row   w-full  ">
-                        <h3 class=" flex items-center  flex-grow text-nowrap m-1 text-xl sm:text-lg text">اشتراک گزاری در
+                        <h3 class=" flex items-center  flex-grow text-nowrap m-1 text-xl sm:text-lg text">اشتراک گذاری در
                             :</h3>
                         <ul class=" w-full mx-1 mt-2 lg:mt-4 mb-4 flex items-center share-box ">
 
@@ -224,7 +224,7 @@
                         class="bg-gray-200 dark:bg-gray-700 pb-8 pt-5 sm:pt-2  md:pt-5 lg:pt-5 xl:pt-2 px-5 rounded-2xl w-full">
 
                         <div class=" flex flex-col sm:flex-row  md:flex-col lg:flex-col xl:flex-row   w-full  ">
-                            <h3 class=" flex items-center  flex-grow text-nowrap m-1 text-xl sm:text-lg text">اشتراک گزاری
+                            <h3 class=" flex items-center  flex-grow text-nowrap m-1 text-xl sm:text-lg text">اشتراک گذاری
                                 در
                                 :</h3>
                             <ul class=" w-full mx-1 mt-2 lg:mt-4 mb-4 flex items-center share-box ">
