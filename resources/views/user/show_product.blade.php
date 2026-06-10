@@ -60,9 +60,9 @@
                 @endcomponent
             </div>
             <br>
-            <p class="sm:text-2xl text-xl mt-2 text ">
+            {{-- <p class="sm:text-2xl text-xl mt-2 text ">
                 کالا های مشابه :
-            </p>
+            </p> --}}
             <br>
             <div>
                 <div class="swiper-similer swiper -z-50 w-full relative">
