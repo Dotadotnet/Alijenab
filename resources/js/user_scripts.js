@@ -1042,7 +1042,7 @@ boxs_share.forEach(box_share => {
         if (box_share)
             box_share.innerHTML += `
                    <li class="mx-1" >
-                            <a target="_blank" class="group " title = "${'اشتراک گزاری در' + ' ' + application.fa_name}"
+                            <a target="_blank" class="group " title = "${'اشتراک گذاری در' + ' ' + application.fa_name}"
                             href="${application.format.replace("{url}", current_url).replace("{text}", name_business + " " + document.title)}">
                                 <img class=" group-hover:scale-125  group-hover:rotate-[360deg] size-10 rounded-full object-cover overflow-hiddens "
                                  src="${host + '/image/app/' + application.name + '.jpg'}">
