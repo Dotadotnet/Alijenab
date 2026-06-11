@@ -80,21 +80,21 @@
                             </td>
                             <td>
                                 <div class=" py-3 w-100 flex justify-center items-center h-100">
-                                    <button onclick="remove_comment({{ $item->id }},this)" type="button"
-                                        class="text-white bg-gradient-to-r from-red-400 via-red-500
-                                     to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300
-                                      dark:focus:ring-red-800 font-bold rounded-lg text-lg px-5 py-2.5 text-center">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </td>
-                            <td>
-                                <div class=" py-3 w-100 flex justify-center items-center h-100">
                                     <button type="button" onclick="accept_comment({{ $item->id }},this)"
                                         class="text-white font-bold bg-gradient-to-r from-green-400 via-green-500
                                      to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300
                                       dark:focus:ring-green-800  rounded-lg text-lg px-5 py-2.5 text-center">
                                         <i class="fa fa-check" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class=" py-3 w-100 flex justify-center items-center h-100">
+                                    <button onclick="remove_comment({{ $item->id }},this)" type="button"
+                                        class="text-white bg-gradient-to-r from-red-400 via-red-500
+                                     to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300
+                                      dark:focus:ring-red-800 font-bold rounded-lg text-lg px-5 py-2.5 text-center">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
                                     </button>
                                 </div>
                             </td>
