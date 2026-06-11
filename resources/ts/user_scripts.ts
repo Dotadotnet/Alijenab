@@ -580,8 +580,8 @@ const renderCartLocal = () => {
             }).then(function (response: any) {
                 if (response.data) {
                     let data: any[] = response.data;
+                    cart_box.innerHTML = '';
                     data.forEach(item => {
-                        cart_box.innerHTML = '';
                         cart_box.innerHTML += `
                         <div class="flex cart-shoping relative bg-gray-100 dark:bg-gray-900 p-2 rounded-2xl  mb-4 "  data-price="${item.off ? item.price - (item.price / 100) * item.off : item.price}" data-id="${item.id}" id="${item.id}" data-type="${item.type}">
                
