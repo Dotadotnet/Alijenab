@@ -14,8 +14,8 @@
                     {{ $caption }}
                 </p>
             </article>
-            <div class="justify-center items-center pt-6 pb-7 px-10 flex">
-                <div class=" w-3/4 ">
+            <div class="justify-center items-center pt-6 pb-2 sm:pb-3 px-10 flex">
+                <div class=" flex justify-center items-center w-3/4 ">
                     <img class="rounded-2xl " src="{{ '/storage/' . $thumbnail }}" alt="">
                 </div>
             </div>
