@@ -43,7 +43,7 @@
                 </div>
             @else
                 <div class=" text pr-7  md:pr-2 text-md sm:text-lg ">
-                    قیمت : <b>{!! App\Helpers\Helper::price($price) !!}</b>
+                     قیمت : <b>{!! App\Helpers\Helper::price($price) !!}</b>
                 </div>
             @endif
             <br>
@@ -155,11 +155,7 @@
                         </div>
                     @endfor
                 </div>
-                <div
-                    class=" fixed top-20 sm:top-24 z-[60000000000000000000000000000000000000000000000000]  left-7 animate__animated animate__pulse animate__delay-3s  animate__infinite inline-block">
-                    @component('user.components.add_card', ['id' => $id])
-                    @endcomponent
-                </div>
+              
             </div>
         </div>
         <div class="w-full md:w-1/2 hidden  md:flex "></div>

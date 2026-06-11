@@ -487,47 +487,41 @@ const renderCartLocal = () => {
         cart_box.innerHTML = '';
     if (data) {
         let items = JSON.parse(data);
-        if (!items.length) {
-            const cart_box = document.querySelector('div.cart-shoping-main');
-            if (cart_box) {
-                cart_box.innerHTML += `
-
-           
-        <h1 class="text text-center sm:mt-32 text-lg ">
-            سبد خرید شما خالی است
-        </h1>
-        <style>
-            .dark a.link-home {
-                text-shadow: 2px 2px 1px blue, -2px -2px 1px green
-            }
-
-            a.link-home {
-                text-shadow: 2px 2px 1px blue, -2px -2px 1px red
-            }
-        </style>
-        <a href="/show-all" class="text link-home block text-center mt-16 text-lg">
-            برای اضافه کردن کالا به سبد خرید کلیک کنید
-        </a>`;
-            }
-        }
         if (cart_box) {
-            window.axios({
-                method: 'post',
-                url: host + '/translate-data-cart',
-                data: { data: JSON.parse(data) }
-            }).then(function (response) {
-                if (response.data) {
-                    let data = response.data;
-                    data.forEach(item => {
-                        cart_box.innerHTML += `
+            if (!items.length) {
+                const cart_box = document.querySelector('div.cart-shoping-main');
+                cart_box.innerHTML = empty_text;
+            }
+            else {
+                cart_box.innerHTML = `
+                <div class="size-full flex justify-center items-center">
+                <div class=" flex justify-center items-center flex-col " >
+
+                <div class="loader3 scale-150  text-primary-200 "></div>
+                <span class=" text text-lg my-8 " >
+                درحال بارگیری اطلاعات
+                </span>
+                </div>
+                </div>
+                `;
+                window.axios({
+                    method: 'post',
+                    url: host + '/translate-data-cart',
+                    data: { data: JSON.parse(data) }
+                }).then(function (response) {
+                    if (response.data) {
+                        let data = response.data;
+                        data.forEach(item => {
+                            cart_box.innerHTML = '';
+                            cart_box.innerHTML += `
                         <div class="flex cart-shoping relative bg-gray-100 dark:bg-gray-900 p-2 rounded-2xl  mb-4 "  data-price="${item.off ? item.price - (item.price / 100) * item.off : item.price}" data-id="${item.id}" id="${item.id}" data-type="${item.type}">
                
                         <div class=" relative" >
                         <div class="absolute right-0 bottom-0  size-full flex justify-center items-end" >
                                    <div class="w-full p-2">
                                           
-                                            <div data-id="{{ $selected->id }}" id="{{ $selected->id }}"
-                                                class="group !flex  w-full   box-card-control  bg-white/10 backdrop-blur-sm
+                                            <div data-id="${item.id}" id="${item.id}"
+                                                class="group !flex  w-full isnot-removeble  box-card-control  bg-white/10 backdrop-blur-sm
           text-sm  h-8 px-1 flex justify-between  items-center text-white hover:font-bold  group rounded-full ">
                                                 <button
                                                     class="
@@ -587,41 +581,11 @@ const renderCartLocal = () => {
                 </div>
           </div>
                         `;
-                    });
-                    if (carts.length) {
-                        let data = localStorage.getItem('carts_data');
-                        let data_response = response.data;
-                        if (data) {
-                            let items = JSON.parse(data);
-                            items.forEach(item => {
-                                carts.forEach(cart => {
-                                    if (cart.dataset.id == String(item.id)) {
-                                        let numbers = cart.querySelectorAll('span.number');
-                                        numbers.forEach(number => {
-                                            number.innerHTML = String(item.count);
-                                        });
-                                    }
-                                });
-                            });
-                        }
-                    }
-                    let dat = localStorage.getItem('carts_data');
-                    if (dat) {
-                        let data_response = data;
-                        let item_res = [];
-                        let items = JSON.parse(dat);
-                        data_response.forEach(item_response => {
-                            items.forEach(item => {
-                                if (item_response.id == item.id) {
-                                    item_res.push(item);
-                                }
-                            });
                         });
-                        localStorage.setItem('carts_data', JSON.stringify(item_res));
                     }
-                }
-                load_evens_carts();
-            });
+                    load_evens_carts();
+                });
+            }
         }
     }
 };
@@ -681,6 +645,7 @@ function load_controller_card() {
             let number = box_card_control.querySelector("span.number");
             let plus_butt = box_card_control.querySelector("button.plus");
             let nega_butt = box_card_control.querySelector("button.nega");
+            console.log(number, plus_butt, nega_butt);
             if (number && plus_butt && nega_butt) {
                 let count_of_cart = 0;
                 let id = 0;
@@ -696,14 +661,17 @@ function load_controller_card() {
                         negaItemCard(box_card_control.dataset.id);
                     }
                     else {
-                        boxs_card_control.forEach(box_control => {
-                            var _a, _b;
-                            if (box_control.dataset.id == box_card_control.dataset.id) {
-                                (_b = (_a = box_control.parentElement) === null || _a === void 0 ? void 0 : _a.querySelector("button")) === null || _b === void 0 ? void 0 : _b.classList.remove("hidden");
-                                box_control.classList.add("hidden");
-                                removeItemCard(box_control.dataset.id);
-                            }
-                        });
+                        console.log(boxs_card_control.classList);
+                        if (!box_card_control.classList.contains("isnot-removeble")) {
+                            boxs_card_control.forEach(box_control => {
+                                var _a, _b;
+                                if (box_control.dataset.id == box_card_control.dataset.id) {
+                                    (_b = (_a = box_control.parentElement) === null || _a === void 0 ? void 0 : _a.querySelector("button")) === null || _b === void 0 ? void 0 : _b.classList.remove("hidden");
+                                    box_control.classList.add("hidden");
+                                    removeItemCard(box_control.dataset.id);
+                                }
+                            });
+                        }
                         reload_count_cart_shop();
                     }
                 };
@@ -713,6 +681,14 @@ function load_controller_card() {
         });
     }
 }
+const empty_text = `  
+        <h1 class="text text-center sm:mt-32 text-lg ">
+            سبد خرید شما خالی است
+        </h1>
+      
+        <a href="/menu" class=" font-bold link-home block opacity-85 hover:opacity-100 text-primary-200 text-center mt-16 text-lg">
+            برای اضافه کردن کالا به سبد خرید کلیک کنید
+        </a>`;
 load_controller_card();
 function load_evens_carts() {
     const carts = document.querySelectorAll('div.cart-shoping');
@@ -722,44 +698,6 @@ function load_evens_carts() {
         let nega_buttons = cart.querySelectorAll('button.nega');
         let numbers = cart.querySelectorAll('span.number');
         let remove_buttons = cart.querySelectorAll('button.remove');
-        const save_data = () => {
-            let data = [];
-            const carts = document.querySelectorAll('div.cart-shoping');
-            carts.forEach(cart => {
-                let number = cart.querySelector('span.number');
-                if (number) {
-                    data.push({ id: cart.dataset.id, count: parseFloat(number.innerHTML) });
-                }
-                localStorage.setItem('carts_data', JSON.stringify(data));
-            });
-        };
-        const functionPlus = () => {
-            numbers.forEach(number => {
-                let num = parseFloat(number.innerHTML);
-                number.innerHTML = String(num + 1);
-            });
-            save_data();
-            load_controller_card();
-        };
-        const functionNega = () => {
-            numbers.forEach(number => {
-                let num = parseFloat(number.innerHTML);
-                if (num - 1 < 0) {
-                    number.innerHTML = '0';
-                }
-                else {
-                    number.innerHTML = String(num - 1);
-                }
-            });
-            save_data();
-            load_controller_card();
-        };
-        plus_buttons.forEach(plus_button => {
-            plus_button.addEventListener('click', () => { functionPlus(); });
-        });
-        nega_buttons.forEach(nega_button => {
-            nega_button.addEventListener('click', () => { functionNega(); });
-        });
         remove_buttons.forEach(remove_button => {
             remove_button.addEventListener('click', () => {
                 animateCSS(cart, 'fadeOutLeft').then((message) => {
@@ -775,18 +713,17 @@ function load_evens_carts() {
                         }
                     });
                 }
+                // const cart_box = document.querySelector('div.cart-shoping-main');
                 localStorage.setItem('carts_data', JSON.stringify(result_data));
-                window.axios({
-                    method: 'delete',
-                    url: host + '/remove-cart/' + cart.dataset.id,
-                }).then(function (response) {
-                }).catch(function (error) {
-                }).then(function () { });
                 reload_count_cart_shop();
                 reload_button_add_cart_events();
+                if (!result_data.length && cart_box) {
+                    cart_box.innerHTML = empty_text;
+                }
             });
         });
     });
+    load_controller_card();
 }
 // renderCartLocal()
 const button_bar = document.querySelector('button.button-bar');

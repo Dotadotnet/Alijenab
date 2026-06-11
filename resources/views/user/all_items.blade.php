@@ -84,7 +84,7 @@
 
                 </span>
             </div>
-            <div class=" sm:pt-8 pt-4 flex flex-wrap justify-aroun gap-5  p-1 sm:p-4">
+            <div class=" sm:pt-8 pt-4 flex flex-wrap justify-around gap-5  p-1 sm:p-4">
                 @foreach ($products as $product)
                     @if ($product->category == $category->id)
                         <div class="flex cart-shoping animate__animated animate__zoomIn relative w-full sm:w-96 group bg-white dark:bg-gray-800 p-2 rounded-2xl  "
