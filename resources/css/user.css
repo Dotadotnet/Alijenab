@@ -727,10 +727,10 @@
 }
 
 .blog h2 {
-  @apply text-2xl md:text-3xl font-semibold mt-5 sm:mt-7 mb-2 sm:mb-3 leading-tight;
+  @apply text-xl md:text-3xl font-semibold mt-5 sm:mt-7 mb-2 sm:mb-3 leading-tight;
 }
 .blog h2 span {
-  @apply text-2xl md:text-3xl font-semibold mt-5 sm:mt-7 mb-2 sm:mb-3 leading-tight;
+  @apply text-xl md:text-3xl font-semibold mt-5 sm:mt-7 mb-2 sm:mb-3 leading-tight;
 }
 
 .blog h3 {
