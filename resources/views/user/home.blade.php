@@ -1,3 +1,4 @@
+
 @extends('user.layout.main')
 @section('title')
     کافه عالیجناب | جایی برای یه قهوه واقعی
@@ -5,6 +6,11 @@
 @section('header')
     <meta name="description"
         content="در کافه عالیجناب طعم غذای کره‌ای، سوشی، قهوه تخصصی و دسرهای تازه را در فضایی گرم و متفاوت تجربه کنید." />
+    <meta property="og:title" content="{{ "کافه عالیجناب" }}">
+    <meta property="og:description" content="{{ "در کافه عالیجناب طعم غذای کره‌ای، سوشی، قهوه تخصصی و دسرهای تازه را در فضایی گرم و متفاوت تجربه کنید ." }}">
+    <meta property="og:image" content="{{ asset('image/unnamed.webp') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
 @endsection
 @section('main')
     <div>
@@ -170,7 +176,7 @@
                                                 <div style="width:calc(100% + 8px)"
                                                     class="absolute  z-10 flex justify-center items-center top-0.5 -right-1  h-full">
                                                     <div class="w-full bg-black rounded-sm   dark:bg-white h-0.5">
-                                                        
+
                                                     </div>
                                                 </div>
                                                 {{ \App\Helpers\Helper::price($offer->price) }}
@@ -219,8 +225,8 @@
 
 
                 </div>
-                <div class="absolute top-6 sm:top-0 right-0 size-full" >
-                    <div class="flex justify-between w-full items-center" >
+                <div class="absolute top-6 sm:top-0 right-0 size-full">
+                    <div class="flex justify-between w-full items-center">
                         <div class="swiper-button-prev swiper-button-prev-offer  sm:-translate-y-0 -translate-y-10	">
                             <i class="fa fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
                         </div>
@@ -279,7 +285,7 @@
                                             src="{{ '/storage/' . $selected->thumbnail }}" alt="product image" />
                                     </a>
                                     <div class="px-3 sm:px-5 pb-3">
-                                        <a  href="{{ '/product/' . $selected->id }}" >
+                                        <a href="{{ '/product/' . $selected->id }}">
                                             <h5 data-swiper-parallax="-100"
                                                 class="sm:text-lg text-base font-semibold tracking-tight text-gray-900 dark:text-white">
                                                 {{ $selected->name }}
@@ -309,7 +315,7 @@
                                             </div>
                                         @endif
 
-                                      <div>
+                                        <div>
                                             <button data-id="{{ $selected->id }}"
                                                 class="group  mt-3 add-to-cart bg-primary-200 sm:text-2xl w-full text-lg h-10 sm:h-12 flex justify-center items-center text-white hover:font-bold  group rounded-full ">
                                                 <i class="fa hover:font-bold fa-cart-plus" aria-hidden="true"></i>
@@ -348,8 +354,8 @@
                 </div>
 
 
-                   <div class="absolute top-6 sm:top-0 right-0 size-full" >
-                    <div class="flex justify-between w-full items-center " >
+                <div class="absolute top-6 sm:top-0 right-0 size-full">
+                    <div class="flex justify-between w-full items-center ">
                         <div class="swiper-button-prev swiper-button-prev-sell  sm:-translate-y-0 -translate-y-10	">
                             <i class="fa fa-caret-right text-[30px] sm:text-[40px] text-white" aria-hidden="true"></i>
                         </div>
@@ -500,7 +506,7 @@
     </div>
     <br>
     <br>
-    <div class=" fixed w-full justify-center flex items-center" >
+    <div class=" fixed w-full justify-center flex items-center">
 
     </div>
 @endsection
