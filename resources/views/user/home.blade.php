@@ -438,7 +438,7 @@
                 @foreach ($blogs as $blog)
                     <div class="swiper-slide   ">
                         <div class="flex w-full flex-col justify-center items-center">
-                            <a href="{{ $blog['link'] }}" class=" group ">
+                            <a href="{{ $blog['link'] }}" class=" group flex justify-center flex-col items-center ">
                                 <div
                                     class="sm:w-96 w-72 h-40   sm:h-48 overflow-hidden rounded-2xl border-2 border-primary-200 relative">
 
@@ -484,8 +484,11 @@
 
                                 <div class="w-full flex justify-center  ">
                                     <div
-                                        class="bg-primary-200 text-center text-wrap text-xs sm:text-sm p-2 w-[calc(100%-2rem)] flex justify-center items-center font-bold rounded-b-xl text-white">
-                                        {{ $blog['caption'] }}
+                                        class="bg-primary-200 text-center text-wrap text-xs sm:text-sm p-1.5 sm:p-2 w-[calc(100%-3rem)] flex justify-center items-center font-bold rounded-b-xl text-white">
+                                         <p class="w-full text-center" >
+
+                                             {{ $blog['caption'] }}
+                                            </p>
                                     </div>
                                 </div>
 

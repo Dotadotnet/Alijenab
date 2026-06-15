@@ -1,16 +1,23 @@
 window.$crisp = [];
 window.CRISP_WEBSITE_ID = "4358e404-c4d2-444d-a62a-bb40639ab93e";
 
-(function () {
-    const d = document;
-    const s = d.createElement("script");
+let loaded = false;
 
+function loadCrisp() {
+    if (loaded) return;
+    loaded = true;
+
+    const s = document.createElement("script");
     s.src = "https://client.crisp.chat/l.js";
-    s.async = 1;
+    s.async = true;
 
-    d.getElementsByTagName("head")[0].appendChild(s);
-})();
+    document.head.appendChild(s);
+}
 
+
+setTimeout(() => {
+    loadCrisp()
+}, 1000)
 
 
 let itemsShouldRemove = [
