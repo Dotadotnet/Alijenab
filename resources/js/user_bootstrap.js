@@ -3,7 +3,7 @@ var host = window.location.protocol + "//" + window.location.host;
 import axios from 'axios';
 window.axios = axios;
 import Swiper from 'swiper';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Pagination, Navigation , EffectCube } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -12,8 +12,8 @@ import AOS from 'aos';
 import 'ckeditor5/ckeditor5.css';
 import '../../node_modules/aos/dist/aos.css'
 import 'swiper/css/effect-cube';
-import { EffectCube } from 'swiper/modules';
 window.EffectCube = EffectCube ;
+window.Navigation = Navigation ;
 // console.log(document.querySelector('.document-editor__editable'));
 const animateCSS = (element, animation, prefix = 'animate__') =>
     // We create a Promise and return it

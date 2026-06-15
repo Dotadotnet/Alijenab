@@ -1,4 +1,3 @@
-
 @extends('user.layout.main')
 @section('title')
     کافه عالیجناب | جایی برای یه قهوه واقعی
@@ -6,8 +5,9 @@
 @section('header')
     <meta name="description"
         content="در کافه عالیجناب طعم غذای کره‌ای، سوشی، قهوه تخصصی و دسرهای تازه را در فضایی گرم و متفاوت تجربه کنید." />
-    <meta property="og:title" content="{{ "کافه عالیجناب" }}">
-    <meta property="og:description" content="{{ "در کافه عالیجناب طعم غذای کره‌ای، سوشی، قهوه تخصصی و دسرهای تازه را در فضایی گرم و متفاوت تجربه کنید ." }}">
+    <meta property="og:title" content="{{ 'کافه عالیجناب' }}">
+    <meta property="og:description"
+        content="{{ 'در کافه عالیجناب طعم غذای کره‌ای، سوشی، قهوه تخصصی و دسرهای تازه را در فضایی گرم و متفاوت تجربه کنید .' }}">
     <meta property="og:image" content="{{ asset('image/unnamed.webp') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
@@ -485,10 +485,10 @@
                                 <div class="w-full flex justify-center  ">
                                     <div
                                         class="bg-primary-200 text-center text-wrap text-xs sm:text-sm p-1.5 sm:p-2 w-[calc(100%-3rem)] flex justify-center items-center font-bold rounded-b-xl text-white">
-                                         <p class="w-full text-center" >
+                                        <p class="w-full text-center">
 
-                                             {{ $blog['caption'] }}
-                                            </p>
+                                            {{ $blog['caption'] }}
+                                        </p>
                                     </div>
                                 </div>
 
@@ -606,6 +606,7 @@
                 effect: 'free',
                 grabCursor: true,
                 loop: true,
+                modules: [window.Navigation],
                 pauseOnMouseEnter: true,
                 speed: 1000,
                 autoplay: {
@@ -633,11 +634,10 @@
                 },
 
                 navigation: {
-                    nextEl: '.swiper-button-next-blog',
-                    prevEl: '.swiper-button-prev-blog',
+                    nextEl: 'div.swiper-button-next-blog',
+                    prevEl: 'div.swiper-button-prev-blog',
                 },
             });
-
 
 
 

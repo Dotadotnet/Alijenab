@@ -215,7 +215,7 @@
                     عناوین :
                 </div>
 
-                <div class="titles py-3 pr-5">
+                <div class="titles py-3 pr-3 sm:pr-5">
 
                 </div>
                 <p class="w-full h-4">&nbsp;</p>
