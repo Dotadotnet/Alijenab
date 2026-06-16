@@ -7,7 +7,7 @@
         $user = Auth::guard('user')->user();
     @endphp
 
-    <div class="flex sm:flex-row gap-4 justify-around flex-col cart-shoping-main  mt-4">
+    <div class="flex sm:flex-row gap-4 justify-around flex-col cart-shoping-main flex-wrap  mt-4">
 
     </div>
     <br>
