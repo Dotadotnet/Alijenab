@@ -484,7 +484,7 @@
 
                                 <div class="w-full flex justify-center  ">
                                     <div
-                                        class="bg-primary-200 text-center text-wrap text-xs sm:text-sm p-1.5 sm:p-2 w-[calc(100%-3rem)] flex justify-center items-center font-bold rounded-b-xl text-white">
+                                        class="bg-primary-200 text-center text-wrap text-xs sm:text-sm p-1.5 sm:p-2 w-64 sm:w-80 flex justify-center items-center font-bold rounded-b-xl text-white">
                                         <p class="w-full text-center">
 
                                             {{ $blog['caption'] }}
