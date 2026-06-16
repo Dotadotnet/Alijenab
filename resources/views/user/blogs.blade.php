@@ -117,11 +117,15 @@
         @endif
 
         {{-- Pagination --}}
-        @if ($blogs->hasPages())
-            <div class="mt-10">
-                {{ $blogs->links() }}
-            </div>
-        @endif
+      
+          
+         @component('user.components.pagenation',[ "total" => $blogs->total() , "page" => $blogs->currentPage() , "perPage" =>  6 ])
+        @endcomponent
+
 
     </div>
+
+
+
+
 @endsection

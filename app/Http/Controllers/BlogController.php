@@ -228,7 +228,7 @@ class BlogController extends Controller
 
         $blogs = $query
             ->latest('id')
-            ->paginate(10)
+            ->paginate(6)
             ->withQueryString();
 
         return view('user.blogs', compact('blogs', 'search'));
