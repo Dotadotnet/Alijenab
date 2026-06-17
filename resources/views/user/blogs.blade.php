@@ -1,5 +1,15 @@
 @extends('user.layout.main')
-
+@section('header')
+    <meta name="description" content="آخرین مقالات و دستور غذا های کافه عالیجناب">
+    <meta property="og:title" content="{{ 'آخرین مقالات ما' }}">
+    <meta property="og:description"content="{{ "آخرین مقالات و دستور غذا های کافه عالیجناب" }}">
+    <meta property="og:image" content="{{ asset('image/cafePhoto2.webp') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+@endsection
+@section('title')
+    کافه عالیجناب | آخرین مقالات
+@endsection
 @section('main')
     <br>
     <div class="max-w-7xl mx-auto px-4 py-4">

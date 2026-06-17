@@ -1,7 +1,11 @@
 @extends('user.layout.main')
 @section('header')
-    <meta name="description"
-        content="منوی کامل کافه شامل غذاهای اصیل کره‌ای، قهوه‌های تخصصی، نوشیدنی‌های گرم و سرد، شیک‌های متنوع، ساندویچ‌ها و دسرهای خوش‌طعم.">
+    <meta name="description" content="منوی کامل کافه شامل غذاهای اصیل کره‌ای، قهوه‌های تخصصی، نوشیدنی‌های گرم و سرد، شیک‌های متنوع، ساندویچ‌ها و دسرهای خوش‌طعم.">
+    <meta property="og:title" content="{{ 'منو کافه عالیجناب' }}">
+    <meta property="og:description"content="{{ 'منوی کامل کافه عالیجناب شامل انوع نوشیدنی و غذا ها' }}">
+    <meta property="og:image" content="{{ asset('image/cafePhoto1.webp') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
 @endsection
 @section('title')
     منو کامل | کافه عالیجناب
@@ -166,7 +170,7 @@
                             </div>
                             </p>
                         </div>
-            {{-- <div
+                        {{-- <div
                             class="animate__animated animate__zoomIn relative group  sm:w-96 w-full mb-4 similar_item cursor-pointer p-1  sm:p-2 flex bg-white border border-gray-200 rounded-lg  hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                             @if ($product->off)
                                 <div class='absolute z-10 sm:top-2 sm:right-2 top-1 right-1'><span
@@ -228,10 +232,10 @@
 
                             </div>
                         </div> --}}
-        @endif
+                    @endif
+                @endforeach
+            </div>
         @endforeach
-    </div>
-    @endforeach
     </div>
 
 
@@ -273,7 +277,7 @@
                 data_poss.reverse()
                 let id = 0;
                 data_poss.forEach(poss => {
-                    if (poss.poss  < possition_box) {
+                    if (poss.poss < possition_box) {
                         if (!id)
                             id = poss.id;
                     }
@@ -330,9 +334,9 @@
                 setimeout_slideer_category = setTimeout(() => {
                     let id_slide = document.querySelector(".swiper-two .swiper-slide-next").dataset.id;
                     let item_view = document.getElementById(id_slide);
-                    if (id_slide !== now_poss) {                        
+                    if (id_slide !== now_poss) {
                         let first_top_pos = document.querySelector("div.category-bable").offsetTop;
-                        let topPos = item_view.offsetTop - first_top_pos;                        
+                        let topPos = item_view.offsetTop - first_top_pos;
                         scroll_bar_procuct.scrollTop = topPos;
                         now_poss = id_slide
                     }

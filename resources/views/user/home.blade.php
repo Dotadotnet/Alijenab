@@ -645,4 +645,36 @@
 
         })
     </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "کافه عالیجناب",
+  "url": "{{ env("APP_URL") }}",
+  "image": "{{ env("APP_URL") }}/image/Logo%20light.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "تجریش، مجتمع تجاری ارگ، جنب خروجی پارکینگ",
+    "addressLocality": "تهران",
+    "addressCountry": "IR"
+  },
+  "sameAs": [
+    "https://www.instagram.com/excellency_cafe"
+  ]
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SiteNavigationElement",
+  "name": [
+    "منو",
+    "تماس با ما"
+  ],
+  "url": [
+    "{{ env("APP_URL") }}/menu",
+    "{{ env("APP_URL") }}/contact"
+  ]
+}
+</script>
 @endsection

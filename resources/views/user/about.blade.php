@@ -4,8 +4,12 @@
     درباره ما | کافه عالیجناب
 @endsection
 @section('header')
-    <meta name="description"
-        content="در کافه عالیجناب، از طعم‌های محبوب کره‌ای تا ساندویچ‌های تازه، قهوه‌های تخصصی و نوشیدنی‌های متنوع، هر انتخاب برای ساختن تجربه‌ای متفاوت کنار هم قرار گرفته است .">
+    <meta name="description" content="در کافه عالیجناب، از طعم‌های محبوب کره‌ای تا ساندویچ‌های تازه، قهوه‌های تخصصی و نوشیدنی‌های متنوع، هر انتخاب برای ساختن تجربه‌ای متفاوت کنار هم قرار گرفته است .">
+    <meta property="og:title" content="{{ 'صحفه درباره ما کافه عالیجناب' }}">
+    <meta property="og:description"content="{{ "در کافه عالیجناب، از طعم‌های محبوب کره‌ای تا ساندویچ‌های تازه، قهوه‌های تخصصی و نوشیدنی‌های متنوع، هر انتخاب برای ساختن تجربه‌ای متفاوت کنار هم قرار گرفته است ." }}">
+    <meta property="og:image" content="{{ asset('image/cafePhoto2.webp') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
 @endsection
 @section('main')
     <div class="flex min-h-[50vh]  md:flex-row flex-col-reverse justify-end px-2 md:px-5">
@@ -22,7 +26,7 @@
             </article>
             <div class="justify-center items-center pt-6 pb-7 px-10 flex">
                 <div class=" w-3/4 ">
-                    <img class="rounded-2xl max-w-" src="{{ '/image/' . 'unnamed5.webp' }}" alt="">
+                    <img class="rounded-2xl max-w-" src="{{ '/image/' . 'cafePhoto2.webp' }}" alt="">
                 </div>
             </div>
             <br>

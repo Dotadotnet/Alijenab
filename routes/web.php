@@ -15,6 +15,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ShopCartController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\UserAuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -38,11 +39,13 @@ Route::get('/blog/{id}/{name}', [BlogController::class, 'userShow'])->name('user
 Route::post('/user/send-comment', [CommentController::class, 'add_comment_user'])->name('add_comment_user');
 Route::get('/search/{pagintion}/{input}', [SearchController::class, 'view']);
 Route::post('/translate-data-cart', [ShopCartController::class, 'translateData']);
-Route::get('/contact', [HomeController::class, 'call']);
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/contact', [HomeController::class, 'call'])->name("contact");
+Route::get('/sitemap.xml', [SitemapController::class, 'home']);
+Route::get('/sitemap/{sitemap}.xml', [SitemapController::class, 'dynamicSitemap']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/send-sms', [HomeController::class, 'sendSms']);
-Route::get('/menu', [HomeController::class, 'showAll']);
-Route::get('/about', [HomeController::class, 'about']);
+Route::get('/menu', [HomeController::class, 'showAll'])->name("menu");
+Route::get('/about', [HomeController::class, 'about'])->name("about");
 Route::prefix('panel')->group(function () {
     Route::middleware('admin_auth')->group(function () {
         Route::post('/comment/{id}/replay/{value}', [CommentController::class, 'replay']);
@@ -127,3 +130,4 @@ Route::get('/is-added-to-cart/{id}', [ShopCartController::class, 'is_added'])->n
 Route::get('/data_server', function () {
     return response($_SERVER);
 });
+
