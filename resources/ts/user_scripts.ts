@@ -71,7 +71,7 @@ function format_item_bar_product(data: { id: string, price: number, url: string,
                 </div>
                 <div style="width: calc(100% - 88px)" class="flex py-2 flex-col relative justify-around pr-5" >
                   <p class="text flex justify-between items-center">
-                     <a  href="${'/product/' + data.id}" class="text-base sm:text-lg select-none font-bold">${data.name}</a>
+                     <a  href="${'/product/' + data.id}" class="text-sm sm:text-base select-none font-bold">${data.name}</a>
                    <a href="${'/product/' + data.id}" rel="nofollow"
                 class="dark:text-gray-100 pl-2 group text-sm dark:hover:text-primary-200 hover:text-primary-200 text-gray-600 flex items-center gap-2  transition">
                 ${data.off ?
