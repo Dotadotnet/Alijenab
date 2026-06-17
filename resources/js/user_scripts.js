@@ -21,7 +21,7 @@ function format_item_bar_product(data) {
     let image = typeof (data.img) == 'string' ? data.img : data.img[0];
     let image_2 = typeof (data.img) == 'string' ? null : data.img;
     return `
-       <div class="flex cart-shoping animate__animated animate__zoomIn relative w-full sm:w-96 group bg-gray-100 dark:bg-gray-900 p-2 rounded-2xl  "  data-id="${data.id}" id="${data.id}" >
+       <div class="flex cart-shoping animate__animated animate__zoomIn relative w-full sm:w-[400px] group bg-gray-100 dark:bg-gray-900 p-2 rounded-2xl  "  data-id="${data.id}" id="${data.id}" >
                         <div class=" relative" >
                         <div class="absolute z-10 right-0 bottom-0  size-full flex justify-center items-end" >
                                    <div class="w-full p-2 scale-[1.1]">
@@ -69,7 +69,7 @@ function format_item_bar_product(data) {
                   <p class="text flex justify-between items-center">
                      <a  href="${'/product/' + data.id}" class="text-sm sm:text-base select-none font-bold">${data.name}</a>
                    <a href="${'/product/' + data.id}" rel="nofollow"
-                class="dark:text-gray-100 pl-2 group text-sm dark:hover:text-primary-200 hover:text-primary-200 text-gray-600 flex items-center gap-2  transition">
+                class="dark:text-gray-100 pl-1 group text-sm dark:hover:text-primary-200 hover:text-primary-200 text-gray-600 flex items-center gap-1  transition">
                 ${data.off ?
         `<span>  %${data.off} تخفیف </span>`
         :
