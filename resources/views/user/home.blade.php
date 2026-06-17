@@ -136,7 +136,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-full sm:px-2 md:pt-0 pt-4 justify-center  flex items-center">
+        <div class="w-full flex-1 min-w-0 sm:px-2 md:pt-0 pt-4 justify-center  flex items-center">
             <div class="swiper-offer   swiper -z-50 w-full relative">
                 <!-- Parallax background element -->
                 <div class="parallax-bg" style="background-image:url(path/to/image.jpg)" data-swiper-parallax="-23%">
@@ -254,7 +254,7 @@
             </div>
 
         </div>
-        <div class="w-full sm:px-2 md:pt-0 pt-4 justify-center  flex items-center">
+        <div class="flex-1 min-w-0 sm:px-2 md:pt-0 pt-4 justify-center  flex items-center">
             <div class="swiper-sell   swiper -z-50 w-full relative">
                 <!-- Parallax background element -->
                 <div class="parallax-bg" style="background-image:url(path/to/image.jpg)" data-swiper-parallax="-23%">
@@ -529,6 +529,7 @@
                 autoplay: {
                     delay: 0,
                 },
+                modules: [window.Navigation],
                 breakpoints: {
                     // when window width is >= 320px
                     370: {
@@ -566,6 +567,7 @@
                 loop: true,
                 pauseOnMouseEnter: true,
                 speed: 1000,
+                modules: [window.Navigation],
                 autoplay: {
                     delay: 0,
                 },
