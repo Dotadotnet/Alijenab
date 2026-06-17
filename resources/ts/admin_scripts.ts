@@ -1,7 +1,7 @@
 {
     const all_input_items: NodeListOf<HTMLElement> = document.querySelectorAll("div.input-admin");
     const characters_en = "QWERTYUIOPLKJHGFDSAZXCVBNM qwertyuiopasdfghjklzxcvbnm,.?!+-@_:/";
-    const characters_fa = "ضصثقفغعهخحجچپچشسیبلاتنمکگظطزرذدئو./.وئدذرزطظظشسیبلاتنمکگچجحخهعغفقثصضا   ، ٌٍريالريال،؛،ريالإآـ«»«ُِةةژإء«\\,،ريالٌٍٍريالٌٌٍّؤؤِإّۀأآءآ«ـ«»آ«ـ[ٍ،ريالٌٌٍٍژآ ؟!";
+    const characters_fa = "ضصثقفغعهخحجچپچشسیبلاتنمکگظطزرذدئو./.وئدذرزطظظشسیبلاتنمکگچجحخهعغفقثصضا، ، ٌٍريالريال،؛،ريالإآـ«»«ُِةةژإء«\\,،ريالٌٍٍريالٌٌٍّؤؤِإّۀأآءآ«ـ«»آ«ـ[ٍ،ريالٌٌٍٍژآ ؟!";
     const numbers = "0987654321 ۱۲۳۴۵۶۷۸۹۰ +";
     const map_pattern: [type: string, characters: string][] = [["fa", characters_fa], ["en", characters_en], ["num", numbers]];
     var host = window.location.protocol + "//" + window.location.host;
