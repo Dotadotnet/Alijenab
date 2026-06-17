@@ -87,7 +87,7 @@
             <div class=" sm:pt-8 pt-4 flex flex-wrap justify-around gap-5  p-1 sm:p-4">
                 @foreach ($products as $product)
                     @if ($product->category == $category->id)
-                        <div class="flex cart-shoping animate__animated animate__zoomIn relative w-full sm:w-96 group bg-white dark:bg-gray-800 p-2 rounded-2xl  "
+                        <div class="flex cart-shoping animate__animated animate__zoomIn relative w-full sm:w-[420px] group bg-white dark:bg-gray-800 p-2 rounded-2xl  "
                             data-id="{{ $product->id }}" id="{{ $product->id }}">
                             <div class=" relative">
                                 <div class="absolute z-10 right-0 bottom-0  size-full flex justify-center items-end">
@@ -136,9 +136,9 @@
                             <div style="width: calc(100% - 88px)" class="flex py-2 flex-col relative justify-around pr-5">
                                 <p class="text flex justify-between items-center">
                                     <a href="{{ '/product/' . $product->id }}"
-                                        class="text-base sm:text-lg select-none font-bold">{{ $product->name }}</a>
+                                        class="text-sm sm:text-base select-none font-bold">{{ $product->name }}</a>
                                     <a href="{{ '/product/' . $product->id }}" rel="nofollow"
-                                        class="dark:text-gray-100 pl-2 group text-sm dark:hover:text-primary-200 hover:text-primary-200 text-gray-600 flex items-center gap-2  transition">
+                                        class="dark:text-gray-100 pl-1 group text-sm dark:hover:text-primary-200 hover:text-primary-200 text-gray-600 flex items-center gap-1  transition">
                                         @if ($product->off)
                                             <span> %{{ $product->off }} تخفیف </span>
                                         @else
@@ -152,10 +152,10 @@
                                 <div class="flex justify-between  items-center">
                                     <div class="w-full flex flex-wrap  items-center ">
                                         <span
-                                            class=" select-none   flex-nowrap text-xs opacity-50 scale-75 line-through sm:text-sm text-nowrap text">
+                                            class=" select-none   flex-nowrap text-[10px] opacity-50 scale-75 line-through sm:text-xs text-nowrap text">
                                             {{ \App\Helpers\Helper::price($product->price) }}
                                         </span>
-                                        <span class=" select-none  flex-nowrap text-sm sm:text-base text-nowrap text">
+                                        <span class=" select-none  flex-nowrap text-xs sm:text-sm text-nowrap text">
                                             {{ \App\Helpers\Helper::price($product->off ? $product->price - ($product->price / 100) * $product->off : $product->price) }}
                                         </span>
 
@@ -273,7 +273,7 @@
                 data_poss.reverse()
                 let id = 0;
                 data_poss.forEach(poss => {
-                    if (poss.poss + 40 < possition_box) {
+                    if (poss.poss  < possition_box) {
                         if (!id)
                             id = poss.id;
                     }
@@ -328,15 +328,11 @@
             function slideChangeScrollToProducts() {
                 window.removeEventListener('scroll', scrolledOnCategory)
                 setimeout_slideer_category = setTimeout(() => {
-                    
                     let id_slide = document.querySelector(".swiper-two .swiper-slide-next").dataset.id;
-                    console.log(id_slide);
                     let item_view = document.getElementById(id_slide);
                     if (id_slide !== now_poss) {                        
                         let first_top_pos = document.querySelector("div.category-bable").offsetTop;
-                        let topPos = item_view.offsetTop - first_top_pos;
-                        console.log(topPos);
-                        
+                        let topPos = item_view.offsetTop - first_top_pos;                        
                         scroll_bar_procuct.scrollTop = topPos;
                         now_poss = id_slide
                     }

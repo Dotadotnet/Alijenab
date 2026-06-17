@@ -164,7 +164,7 @@
         </p>
     </div>
 
-    <div class="overflow-auto p-2 gap-3 div-bar-item z-50 shadow-primary-200 max-h-full flex-wrap flex sm:justify-around">
+    <div class="overflow-auto p-2 sm:gap-6 gap-3 div-bar-item z-50 shadow-primary-200 max-h-full flex-wrap flex sm:justify-around">
 
     </div>
  <div class="h-full flex flex-col justify-between" >
