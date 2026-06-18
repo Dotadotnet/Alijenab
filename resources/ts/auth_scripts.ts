@@ -195,14 +195,11 @@ if (button_submit_register && info_div && accept_div) {
                         show_phone.innerHTML = '09' + inputs[0].value;
                 }
                 if (!error) {
-                    let data: { fild: string, value: string }[] = [];
-                    inputs.forEach(input => {
-                        data.push({ fild: input.name, value: input.value })
-                    });
+                   
                     window.axios({
                         method: 'post',
                         url: host + 'verify/send',
-                        data: data
+                        data: {phone : inputs[0].value}
                     }).then(function (response: any) {
                         let res: string | { phone: string[], password: string[], name: string[] } = response.data;
                         if (res.status) {

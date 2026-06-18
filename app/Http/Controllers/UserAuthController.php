@@ -19,13 +19,7 @@ class UserAuthController extends Controller
     {
         $data = [];
         $phone = null;
-        $inputs = $request->all();
-
-
-        foreach ($inputs as $input) {
-            $data[$input['fild']] = $input['value'];
-        }
-        $data['phone'] = '09' . $data['phone'];
+        $data['phone'] = '09' . $request->phone;
         $validator = Validator::make($data, [
             'phone' => 'required|max:11|min:11',
         ]);
@@ -45,7 +39,8 @@ class UserAuthController extends Controller
         }
 
         $user = Auth::guard('user');
-        if(isset($user) &&  $user && $data['phone'] == $user->user()->phone){
+
+        if(isset($user) &&  $user->user() && $data['phone'] == $user->user()->phone){
            return response(
                 [
                     "title" => "این شماره در سیستم شما ثبت شده است",

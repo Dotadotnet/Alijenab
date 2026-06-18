@@ -192,14 +192,10 @@ if (button_submit_register && info_div && accept_div) {
                         show_phone.innerHTML = '09' + inputs[0].value;
                 }
                 if (!error) {
-                    let data = [];
-                    inputs.forEach(input => {
-                        data.push({ fild: input.name, value: input.value });
-                    });
                     window.axios({
                         method: 'post',
                         url: host + 'verify/send',
-                        data: data
+                        data: { phone: inputs[0].value }
                     }).then(function (response) {
                         let res = response.data;
                         if (res.status) {

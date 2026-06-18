@@ -14,9 +14,12 @@
             <button type="button" class="p-3 button-bar  lg:hidden">
                 <svg class=" group-hover:scale-125 size-8 text-white" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
-                    <rect class="fill-black dark:fill-white" rx="1" ry="1" x="4" y="5" width="16" height="2" />
-                    <rect class="fill-black dark:fill-white" rx="1" ry="1" x="4" y="11" width="16" height="2" />
-                    <rect class="fill-black dark:fill-white" rx="1" ry="1" x="4" y="17" width="16" height="2" />
+                    <rect class="fill-black dark:fill-white" rx="1" ry="1" x="4" y="5" width="16"
+                        height="2" />
+                    <rect class="fill-black dark:fill-white" rx="1" ry="1" x="4" y="11" width="16"
+                        height="2" />
+                    <rect class="fill-black dark:fill-white" rx="1" ry="1" x="4" y="17" width="16"
+                        height="2" />
                 </svg>
             </button>
         </a>
@@ -25,7 +28,8 @@
         </a>
         <div id="item_navbar" class=" hidden lg:flex w-full px-4">
             @foreach ($nav_items as $nav_item)
-                <a rel="nofollow" class=" group mx-2  text-black hover:after:w-full after:transition-all after:w-0 after:content-[''] after:rounded-md after:right-1.5 dark:after:bg-white after:bg-primary-200 after:h-[3px] relative after:absolute after:-bottom-1.5 group-hover:font-bold dark:text-white justify-around text-md sm:text-lg
+                <a rel="nofollow"
+                    class=" group mx-2  text-black hover:after:w-full after:transition-all after:w-0 after:content-[''] after:rounded-md after:right-1.5 dark:after:bg-white after:bg-primary-200 after:h-[3px] relative after:absolute after:-bottom-1.5 group-hover:font-bold dark:text-white justify-around text-md sm:text-lg
                  items-center flex hover:font-bold"
                     href="{{ $nav_item['link'] }} ">
                     <i style="transition: 0s !important"
@@ -62,7 +66,7 @@
             @if ($user)
                 <a href="/profile" class="hidden sm:flex  justify-around ml-1 size-8 sm:size-10 items-center">
                     <img src="{{ $user->img }}"
-                        class="size-8 rounded-full object-cover border-2 border-primary-100 dark:border-primary-200 sm:size-10"
+                        class="size-8 rounded-full object-cover border-2 border-primary-200 sm:size-10"
                         alt="" title="{{ $user->name }}">
 
                 </a>
@@ -71,10 +75,10 @@
                     {{ $user->name }}
                 </a>
             @else
-                <div class="  sm:ml-2 hidden sm:flex justify-center items-center ml-1 h-full w-16 sm:w-20 group   relative">
-                    <a href="/login"
+                <div
+                    class="  sm:ml-2 hidden sm:flex justify-center items-center ml-1 h-full w-16 sm:w-20 group   relative">
+                    <a href="/login" rel="nofollow"
                         class="py-0.5 sm:p-1 flex justify-center group items-center text-white w-full rounded-full shadow-[0px_0px_0px_0px] shadow-[rgba(0,0,0,0.7)] hover:shadow-[0px_0px_4px_1px_rgba(0,0,0,0.7)] dark:shadow-[rgba(255,255,255,1)]  bg-primary-200">
-
                         <svg class="sm:scale-110 scale-90" width="24" height="24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path class="fill-white group-hover:opacity-85 opacity-70"
@@ -164,17 +168,61 @@
         </p>
     </div>
 
-    <div class="overflow-auto p-2 sm:gap-6 gap-3 div-bar-item z-50 shadow-primary-200 max-h-full flex-wrap flex sm:justify-around">
+    <div
+        class="overflow-auto p-2 sm:gap-6 gap-3 div-bar-item z-50 shadow-primary-200 max-h-full flex-wrap flex sm:justify-around">
 
     </div>
- <div class="h-full flex flex-col justify-between" >
-<div class="  div-navbar-items grid grid-cols-1 p-4 gap-6 ">
+    <div class="h-full flex flex-col justify-between">
+        <div class="  div-navbar-items grid grid-cols-1 p-4 gap-6 ">
 
+        </div>
+        <div class="flex justify-center items-center pb-4 p-2 sm:pb-8">
+
+            @if ($user)
+                <div class="flex items-center rounded-full bg-white p-2 w-full sm:w-1/2  sm:p-3 dark:bg-gray-800">
+
+                    <a href="/profile" class=" flex  justify-around ml-1 sm:size-20  size-16 items-center">
+                        <img src="{{ $user->img }}" class=" rounded-full object-cover " alt=""
+                            title="{{ $user->name }}">
+
+                    </a>
+                    <div class="flex flex-col py-2 gap-2 sm:gap-3 pr-2 sm:pr-3 justify-between">
+
+                        <a href="/profile" style="text-align: right !important"
+                            class="text-right  sm:text-lg  font-bold text ml-2 mr-1 text-base text-nowrap">
+
+                            {{ $user->name }}
+
+                        </a>
+                        <span style="text-align: right !important"
+                            class="text-right flex items-center text-gray-600 dark:text-gray-200  sm:text-base text-sm  sm:inline-block font-bold text ml-2 mr-1  text-nowrap">
+
+                            شماره تلفن : <b class="sm:mr-0 mr-2" >{{ $user->phone }}</b>
+
+                        </span>
+                    </div>
+                </div>
+            @else
+                <a href="/login" rel="nofollow"
+                    class="py-2 sm:p-3 flex justify-center group items-center text-white 
+                sm:w-1/2 w-full rounded-full shadow-[0px_0px_0px_0px] shadow-[rgba(0,0,0,0.7)] hover:shadow-[0px_0px_4px_1px_rgba(0,0,0,0.7)] dark:shadow-[rgba(255,255,255,1)]  bg-primary-200">
+                    <svg class="scale-150" width="24" height="24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path class="fill-white group-hover:opacity-85 opacity-70"
+                            d="M11.997 15.175c-4.313 0-7.997.68-7.997 3.4C4 21.295 7.66 22 11.997 22c4.313 0 7.997-.68 7.997-3.4 0-2.721-3.66-3.425-7.997-3.425z" />
+                        <path class="fill-white group-hover:opacity-95 opacity-80"
+                            d="M11.997 12.584a5.273 5.273 0 005.292-5.292A5.273 5.273 0 0011.997 2a5.274 5.274 0 00-5.292 5.292 5.274 5.274 0 005.292 5.292z" />
+                    </svg>
+                    <span class="font-vazir sm:text-xl  text-lg  mr-2 sm:mr-3 font-bold">
+                        ورود / ثبت نام
+                    </span>
+                </a>
+            @endif
+
+        </div>
     </div>
-    asdfasd
- </div>
-    
-    
+
+
 </div>
 
 <div
@@ -251,7 +299,7 @@
                 </a>
             </div>
 
-           
+
         </div>
 
 
