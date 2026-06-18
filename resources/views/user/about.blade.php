@@ -65,7 +65,7 @@
                                 </div>
 
                                 <div>
-                                    <h2 class="mb-6 text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+                                    <h2 class="mb-6 text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                                         تخصص ما؛ غذاهای کره‌ای اصیل
                                     </h2>
 
@@ -83,7 +83,7 @@
                                 </div>
 
                                 <div>
-                                    <h2 class="mb-6 text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+                                    <h2 class="mb-6 text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                                         قهوه تخصصی با استاندارد حرفه‌ای
                                     </h2>
 
@@ -101,7 +101,7 @@
                                 </div>
 
                                 <div>
-                                    <h2 class="mb-6 text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+                                    <h2 class="mb-6 text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                                         منویی متنوع برای همه سلیقه‌ها
                                     </h2>
 
@@ -129,7 +129,7 @@
                                 </div>
 
                                 <div>
-                                    <h2 class="mb-6 text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+                                    <h2 class="mb-6 text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                                         محیطی آرام برای لحظه‌های خوب
                                     </h2>
 
@@ -147,7 +147,7 @@
                                 </div>
 
                                 <div>
-                                    <h2 class="mb-6 text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+                                    <h2 class="mb-6 text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                                         چرا ما را انتخاب کنید؟
                                     </h2>
 
@@ -162,7 +162,7 @@
                                 </div>
 
                                 <div>
-                                    <h2 class="mb-6 text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+                                    <h2 class="mb-6 text-xl sm:text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                                         منتظر دیدار شما هستیم
                                     </h2>
 

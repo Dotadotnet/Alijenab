@@ -92,7 +92,7 @@
                 @foreach ($products as $product)
                     @if ($product->category == $category->id)
                         <div class="flex cart-shoping animate__animated animate__zoomIn relative w-full sm:w-[420px] group bg-white dark:bg-gray-800 p-2 rounded-2xl  "
-                            data-id="{{ $product->id }}" id="{{ $product->id }}">
+                            data-id="{{ $product->id }}" >
                             <div class=" relative">
                                 <div class="absolute z-10 right-0 bottom-0  size-full flex justify-center items-end">
                                     <div class="w-full p-2 scale-[1.1]">
@@ -332,8 +332,8 @@
             function slideChangeScrollToProducts() {
                 window.removeEventListener('scroll', scrolledOnCategory)
                 setimeout_slideer_category = setTimeout(() => {
-                    let id_slide = document.querySelector(".swiper-two .swiper-slide-next").dataset.id;
-                    let item_view = document.getElementById(id_slide);
+                    let id_slide = document.querySelector(".swiper-two .swiper-slide-next").dataset.id;                    
+                    let item_view = document.querySelector(`div.category-bable[id="${id_slide}"]`);                    
                     if (id_slide !== now_poss) {
                         let first_top_pos = document.querySelector("div.category-bable").offsetTop;
                         let topPos = item_view.offsetTop - first_top_pos;
