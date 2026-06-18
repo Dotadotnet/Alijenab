@@ -1,6 +1,6 @@
 @extends('user.layout.main')
 @section('title')
-    تماس با ما | کافه عالی جناب تهران
+    تماس با ما | کافه عالیجناب تهران
 @endsection
 @section('header')
     <meta name="description" content="شماره تماس و شبکه های اجتماعی کافه عالیجناب در تهران">

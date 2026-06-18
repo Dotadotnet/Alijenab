@@ -26,7 +26,7 @@
             <a href="/about" class="mr-4 text-md sm:text-lg hover:pr-5 hover:font-bold mt-3"> <i
                     class="fa translate-y-1 fa-info-circle" aria-hidden="true"></i>
                 درباره ما</a>
-            <a href="/call" class="mr-4 mt-3 text-md sm:text-lg hover:pr-5 hover:font-bold"> <i class="fa fa-phone"
+            <a href="/contact" class="mr-4 mt-3 text-md sm:text-lg hover:pr-5 hover:font-bold"> <i class="fa fa-phone"
                     aria-hidden="true"></i>
                 تماس با ما</a>   
             <a href="/" class="mr-4 mt-3 text-md sm:text-lg hover:pr-5 hover:font-bold"> <i class="fa fa-home"
